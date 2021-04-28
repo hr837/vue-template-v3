@@ -1,11 +1,14 @@
 <template>
-  <div class='page main'>
-    main
-  </div>
+  <div class="page main"></div>
 </template>
 
 <script lang='ts' setup="">
 
 </script>
+
+<style lang="less" scoped>
+.main {
+}
+</style>
 
 

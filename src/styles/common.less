@@ -1,0 +1,22 @@
+// 生成 .u-line-2 .... .u-line-5
+each(range(2,5),{
+   // .u-line-2 代表内容最多显示2行，多余的省略
+   .g-line-@{value} {
+    -webkit-line-clamp: @value;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box; // 弹性伸缩盒
+    -webkit-box-orient: vertical; // 设置伸缩盒子元素排列方式
+  }
+});
+
+.g-ov-h {
+  overflow: hidden;
+}
+
+.g-no-scorll {
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}

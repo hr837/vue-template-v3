@@ -2,11 +2,10 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import usePlugins from "./plugins";
 import useRouter from "./router";
-import "./styles/index.css";
+import "./styles/index.less";
 
 // 更改系统标题
-import { sysName } from "./config/app.config";
-document.title = sysName;
+document.title = import.meta.env.VITE_APP_NAME;
 
 // 创建Vue实例
 const app = createApp(App);
