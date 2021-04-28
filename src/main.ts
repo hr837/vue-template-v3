@@ -13,4 +13,5 @@ const app = createApp(App);
 usePlugins(app);
 // 使用路由
 useRouter(app);
+// 挂载根组件到app节点
 app.mount("#app");
