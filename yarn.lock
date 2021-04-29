@@ -1727,13 +1727,6 @@ git-semver-tags@^4.0.0, git-semver-tags@^4.1.1:
     meow "^8.0.0"
     semver "^6.0.0"
 
-git@^0.1.5:
-  version "0.1.5"
-  resolved "https://registry.npm.taobao.org/git/download/git-0.1.5.tgz#9ef62df93f851c27542143bf52d1c68b1017ca15"
-  integrity sha1-nvYt+T+FHCdUIUO/UtHGixAXyhU=
-  dependencies:
-    mime "1.2.9"
-
 gitconfiglocal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/gitconfiglocal/download/gitconfiglocal-1.0.0.tgz#41d045f3851a5ea88f03f24ca1c6178114464b9b"
@@ -2661,11 +2654,6 @@ mime@1.2.6:
   version "1.2.6"
   resolved "https://registry.npm.taobao.org/mime/download/mime-1.2.6.tgz#b1f86c768c025fa87b48075f1709f28aeaf20365"
   integrity sha1-sfhsdowCX6h7SAdfFwnyiuryA2U=
-
-mime@1.2.9:
-  version "1.2.9"
-  resolved "https://registry.npm.taobao.org/mime/download/mime-1.2.9.tgz#009cd40867bd35de521b3b966f04e2f8d4d13d09"
-  integrity sha1-AJzUCGe9Nd5SGzuWbwTi+NTRPQk=
 
 mime@^1.4.1:
   version "1.6.0"

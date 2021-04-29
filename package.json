@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": " vite build",
     "serve": "vite preview",
-    "commit": "cz",
+    "commit": "cz && version",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "release": "standard-version"
   },
@@ -24,7 +24,6 @@
     "@vue/compiler-sfc": "^3.0.5",
     "commitizen": "^4.2.3",
     "conventional-changelog-cli": "^2.1.1",
-    "git": "^0.1.5",
     "husky": "^6.0.0",
     "less": "^4.1.1",
     "remote": "^0.2.6",
