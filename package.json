@@ -1,12 +1,12 @@
 {
   "name": "dongfeng-web",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "build": " vite build",
     "serve": "vite preview",
     "commit": "cz",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "release": "standard-version"
   },
   "dependencies": {
@@ -17,12 +17,15 @@
     "vue-router": "4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "@types/node": "^14.14.41",
     "@vitejs/plugin-vue": "^1.2.1",
     "@vue/compiler-sfc": "^3.0.5",
     "commitizen": "^4.2.3",
     "conventional-changelog-cli": "^2.1.1",
     "git": "^0.1.5",
+    "husky": "^6.0.0",
     "less": "^4.1.1",
     "remote": "^0.2.6",
     "standard-version": "^9.2.0",
