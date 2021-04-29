@@ -43,7 +43,7 @@
 		"vue-tsc": "^0.0.24"
 	},
 	"lint-staged": {
-		"src/**/*.{jsx,txs,ts,js,vue}": "npm run lint",
+		"/src/**/*.{jsx,txs,ts,js,vue}": "npm run lint",
 		"**/*": "prettier --write --ignore-unknown"
 	}
 }
