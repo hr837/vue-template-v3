@@ -43,3 +43,7 @@ Run `Volar: Switch TS Plugin on/off` from VSCode command palette.
 - npm run release
 - npm run version
 - git push
+
+## 公共样式
+
+项目中页面样式尽可能使用[公共样式](./src/styles/redeme.md)，以减少代码输入

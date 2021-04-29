@@ -20,9 +20,7 @@
 		"src/**/*.d.ts",
 		"src/**/*.tsx",
 		"src/**/*.vue",
-		"types/*.d.ts",
-		".eslintrc.js",
-		".commitlint.config.js"
+		"types/*.d.ts"
 	],
 	"exclude": ["node_modules", "dist", "**/*.js"]
 }

@@ -1,1 +1,94 @@
-{ "path": "cz-conventional-changelog" }
+{
+	"path": "cz-emoji",
+	"config": {
+		"cz-emoji": {
+			"types": [
+				{
+					"emoji": "🚧",
+					"code": ":construction:",
+					"description": "还在开发中，未完成的提交",
+					"name": "wip"
+				},
+				{
+					"emoji": "🐛",
+					"code": ":bug:",
+					"description": "修改Bug",
+					"name": "fix"
+				},
+				{
+					"emoji": "✨",
+					"code": ":sparkles:",
+					"description": "一个新的功能",
+					"name": "feature"
+				},
+				{
+					"emoji": "📝",
+					"code": ":pencil:",
+					"description": "更新文档",
+					"name": "docs"
+				},
+				{
+					"emoji": "🎨",
+					"code": ":art:",
+					"description": "格式化代码",
+					"name": "style"
+				},
+				{
+					"emoji": "⚡️",
+					"code": ":zap:",
+					"description": "优化代码或框架",
+					"name": "perf"
+				},
+				{
+					"emoji": "🔥",
+					"code": ":fire:",
+					"description": "删除文件",
+					"name": "prune"
+				},
+				{
+					"emoji": "💄",
+					"code": ":lipstick:",
+					"description": "更改样式",
+					"name": "ui"
+				},
+				{
+					"emoji": "🔧",
+					"code": ":wrench:",
+					"description": "修改配置文件",
+					"name": "config"
+				},
+				{
+					"emoji": "✏️",
+					"code": ":pencil2:",
+					"description": "修改拼写错误",
+					"name": "typo"
+				},
+				{
+					"emoji": "🔀",
+					"code": ":twisted_rightwards_arrows:",
+					"description": "合并分支或修改冲突",
+					"name": "merge"
+				},
+				{
+					"emoji": "🔊",
+					"code": ":loud_sound:",
+					"description": "添加日志输出",
+					"name": "log-add"
+				},
+				{
+					"emoji": "🏷️",
+					"code": ":label:",
+					"description": "添加或更新类型 (ts类型)",
+					"name": "types"
+				}
+			],
+			"questions": {
+				"type": "请选择你本次提交的更改类型",
+				"scope": "指定一个范围 (可以为空)",
+				"subject": "请输入简短的描述",
+				"body": "可以输入更长更详细的描述 (可以为空)",
+				"issues": "请列出你要关闭的issue编号 (例如:#1001,#1032...)"
+			}
+		}
+	}
+}
