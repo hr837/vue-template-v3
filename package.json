@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": " vite build",
     "serve": "vite preview",
-    "commit": "cz && version",
+    "commit": "cz",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "release": "standard-version"
   },
