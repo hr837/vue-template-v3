@@ -5,7 +5,7 @@
 		"dev": "vite",
 		"build": " vite build",
 		"serve": "vite preview",
-		"lint": "npx eslint --ext .js,.vue src",
+		"lint": "npx eslint . --ext .js,.jsx,.ts,.tsx,.vue --fix",
 		"commit": "cz",
 		"release": "standard-version",
 		"prepare": "husky install"
@@ -43,6 +43,7 @@
 		"vue-tsc": "^0.0.24"
 	},
 	"lint-staged": {
+		"pre-commit": "npm run lint",
 		"**/*": "prettier --write --ignore-unknown"
 	}
 }

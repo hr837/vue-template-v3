@@ -5,11 +5,15 @@ module.exports = {
 		parser: "@typescript-eslint/parser",
 		ecmaVersion: 2020,
 		sourceType: "module",
+		ecmaFeatures: {
+			jsx: true,
+		},
+		extraFileExtensions: [".vue"],
 	},
 	plugins: ["@typescript-eslint"],
 	extends: [
 		"plugin:@typescript-eslint/recommended",
-		"plugin:vue/vue3-essential",
+		"plugin:vue/vue3-strongly-recommended",
 		"prettier",
 	],
 	globals: {
@@ -21,5 +25,6 @@ module.exports = {
 	},
 	rules: {
 		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
 	},
 };
