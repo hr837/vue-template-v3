@@ -11,6 +11,6 @@ const router = createRouter({
 
 useGuards(router);
 
-export default function useRouter(app: App) {
-	return app.use(router);
+export default function useRouter(app: App): void {
+	app.use(router);
 }
