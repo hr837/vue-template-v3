@@ -1,4 +1,4 @@
-import useElementUI from "./element-plus.plugin";
+import useElementUI from "./element-plus-plugin";
 import useSvgIcon from "./svg-icon-plugin/index";
 import { App } from "vue";
 

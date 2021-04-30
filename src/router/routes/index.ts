@@ -1,15 +1,21 @@
 import BlankRoutes from "./blank.routes";
-import WorkspaceRoutes from "./workspace.routes";
+import SettingRoutes from "./setting.routes";
+import HomeRoutes from "./home.routes";
 
 export default [
 	{
 		path: "/",
-		component: () => import("@/layout/blank-layout.vue"),
+		component: () => import("@/layout/BlankLayout.vue"),
 		children: BlankRoutes,
 	},
 	{
-		path: "/workspace",
-		component: () => import("@/layout/workspace-layout.vue"),
-		children: WorkspaceRoutes,
+		path: "/home",
+		component: () => import("@/layout/WorkspaceLayout.vue"),
+		children: HomeRoutes,
+	},
+	{
+		path: "/setting",
+		component: () => import("@/layout/WorkspaceLayout.vue"),
+		children: SettingRoutes,
 	},
 ];
