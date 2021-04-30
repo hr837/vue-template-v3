@@ -11,6 +11,10 @@ const router = createRouter({
 
 useGuards(router);
 
+/**
+ * 使用路由
+ * @param app
+ */
 export default function useRouter(app: App): void {
 	app.use(router);
 }
