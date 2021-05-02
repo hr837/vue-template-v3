@@ -3,7 +3,7 @@
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.formatOnSave": true,
 	"[vue]": {
-		"editor.defaultFormatter": "johnsoncodehk.volar"
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 	"eslint.validate": ["javascript", "javascriptreact", "vue"]
 }

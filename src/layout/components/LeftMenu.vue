@@ -1,11 +1,11 @@
 <template>
 	<el-menu
+		v-if="resources.length"
 		class="left-menu"
 		router
-		v-if="resources.length"
 		:default-active="route.path"
 	>
-		<el-submenu :index="sub.name" v-for="sub of resources" :key="sub.name">
+		<el-submenu v-for="sub of resources" :key="sub.name" :index="sub.name">
 			<template #title>
 				<i class="el-icon-message"></i>
 				{{ sub.name }}

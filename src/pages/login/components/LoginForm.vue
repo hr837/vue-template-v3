@@ -1,5 +1,5 @@
 <template>
-	<el-form class="login-form" :model="model" :rules="rules" ref="form">
+	<el-form ref="form" class="login-form" :model="model" :rules="rules">
 		<el-form-item prop="uname">
 			<el-input v-model="model.uname" />
 		</el-form-item>

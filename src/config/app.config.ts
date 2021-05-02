@@ -5,15 +5,15 @@
 const { appConfig: customConfig } = window;
 
 let appConfig = {
-  encryptSwitch: false,
-  server: {
-    url: import.meta.env.VITE_APP_SERVE,
-    timeOut: 3000,
-  },
+	encryptSwitch: false,
+	server: {
+		url: import.meta.env.VITE_APP_SERVE,
+		timeOut: 3000,
+	},
 };
 
 if (customConfig && customConfig.enabled) {
-  appConfig = { ...appConfig, ...customConfig };
+	appConfig = { ...appConfig, ...customConfig };
 }
 
 export default appConfig;
