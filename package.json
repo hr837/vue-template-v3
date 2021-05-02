@@ -6,8 +6,8 @@
 		"build": " vite build",
 		"serve": "vite preview",
 		"lint": "eslint src --ext .js,.jsx,.ts,.tsx,.vue --format table",
-		"commit": "cz",
-		"changelog": "conventional-changelog -p gitmoji-config -i CHANGELOG.md -s -r 0",
+		"commit": "npm run changelog && cz",
+		"changelog": "conventional-changelog -p atom -i CHANGELOG.md -s -r 0",
 		"release": "standard-version"
 	},
 	"dependencies": {

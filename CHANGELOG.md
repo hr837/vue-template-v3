@@ -1,27 +1,23 @@
-## 0.0.0 (2021-05-02)
+# 0.0.0 (2021-05-02)
 
-* :sparkles:  添加菜单跳转 ([0e584fb](https://github.com/hr837/vue-study/commit/0e584fb))
-* :sparkles:  添加store引用 ([4a45bda](https://github.com/hr837/vue-study/commit/4a45bda))
-* :wrench:  修改日志记录 ([6027234](https://github.com/hr837/vue-study/commit/6027234))
-* :wrench:  修改lint配置 ([13e300e](https://github.com/hr837/vue-study/commit/13e300e))
-* :wrench:  lint ([748eb14](https://github.com/hr837/vue-study/commit/748eb14))
-* :zap:  去除husky ([9ee566e](https://github.com/hr837/vue-study/commit/9ee566e))
-* :zap:  修改commitizen 适配器 ([bedf2fe](https://github.com/hr837/vue-study/commit/bedf2fe))
-* :zap:  lint config ([bacc115](https://github.com/hr837/vue-study/commit/bacc115))
-* :zap: (添加vue-lint) ([9bfa468](https://github.com/hr837/vue-study/commit/9bfa468))
-* 添加基础样式 ([ae663c0](https://github.com/hr837/vue-study/commit/ae663c0))
-* 修改prettier配置 ([b1b5235](https://github.com/hr837/vue-study/commit/b1b5235))
-* init ([0a45dbf](https://github.com/hr837/vue-study/commit/0a45dbf))
-* test ([85f980a](https://github.com/hr837/vue-study/commit/85f980a))
-* ci: 添加日志提交钩子 ([df4da5b](https://github.com/hr837/vue-study/commit/df4da5b))
-* ci: 添加prettier ([67d0069](https://github.com/hr837/vue-study/commit/67d0069))
-* docs: 修改readme 添加工作流程说明 ([ffd648a](https://github.com/hr837/vue-study/commit/ffd648a))
-* docs: 修改readme 添加工作流程说明 ([dcc4d91](https://github.com/hr837/vue-study/commit/dcc4d91))
-* chore(release): 0.0.0 ([e28a8b8](https://github.com/hr837/vue-study/commit/e28a8b8))
-* chore(release): 0.0.0 ([bb04fc5](https://github.com/hr837/vue-study/commit/bb04fc5))
-* chore(release): 0.0.1 ([d7cb174](https://github.com/hr837/vue-study/commit/d7cb174))
-* chore(release): 0.0.1 ([3e7f5fe](https://github.com/hr837/vue-study/commit/3e7f5fe))
-* feat: 添加svg-icon组件，并全局引用 ([781fff3](https://github.com/hr837/vue-study/commit/781fff3))
+
+### :sparkles:
+
+*  添加菜单跳转 ([0e584fb](https://github.com/hr837/vue-study/commit/0e584fbfc5306029dd0e13327fc14c36bdd898e3))
+*  添加store引用 ([4a45bda](https://github.com/hr837/vue-study/commit/4a45bda213d6714dca3ef0645cbbbf291a6abc4b))
+
+### :wrench:
+
+*  修改日志记录 ([6027234](https://github.com/hr837/vue-study/commit/602723445e5c580b230425c5f4ced603d97bfd92))
+*  修改lint配置 ([13e300e](https://github.com/hr837/vue-study/commit/13e300ea5310f18a224d491fa2ef4411940a28e4))
+*  lint ([748eb14](https://github.com/hr837/vue-study/commit/748eb1423a0cfcd6ddee85725ce866e57ed9b247))
+
+### :zap:
+
+*  去除husky ([9ee566e](https://github.com/hr837/vue-study/commit/9ee566e3001a333bdd1d693666c27226f93d55b8))
+*  修改commitizen 适配器 ([bedf2fe](https://github.com/hr837/vue-study/commit/bedf2feeca289701674b854fa3498f19fc88bfb4))
+*  lint config ([bacc115](https://github.com/hr837/vue-study/commit/bacc115f48950f87ffe79fc07c327644829690f9))
+* (添加vue-lint) ([9bfa468](https://github.com/hr837/vue-study/commit/9bfa468871e8bd9d92c2d3a6a8cb7d2a583528ad))
 
 
 
