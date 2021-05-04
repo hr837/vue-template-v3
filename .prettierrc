@@ -1,6 +1,6 @@
 {
 	"tabWidth": 2,
 	"useTabs": true,
-	"htmlWhitespaceSensitivity": "css",
+	"htmlWhitespaceSensitivity": "ignore",
 	"jsxBracketSameLine": true
 }

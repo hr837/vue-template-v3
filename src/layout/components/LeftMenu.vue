@@ -4,26 +4,35 @@
 		class="left-menu"
 		router
 		:default-active="route.path"
+		:collapse="collapse"
 	>
 		<el-submenu v-for="sub of resources" :key="sub.name" :index="sub.name">
 			<template #title>
 				<i class="el-icon-message"></i>
-				{{ sub.name }}
+				<span>{{ sub.name }}</span>
 			</template>
 			<el-menu-item
 				v-for="item of sub.childrens"
 				:key="item.path"
 				:index="item.path"
-				>{{ item.name }}</el-menu-item
 			>
+				<i class="el-icon-arrow-right"></i>
+				<span>{{ item.name }}</span>
+			</el-menu-item>
 		</el-submenu>
 	</el-menu>
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, watch } from "vue";
+import { computed, defineProps, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { getStore } from "@/store";
+
+defineProps({
+	collapse: {
+		type: Boolean,
+	},
+});
 
 const store = getStore();
 
@@ -54,3 +63,12 @@ watch(
 	{ immediate: true }
 );
 </script>
+<style lang="less" scoped>
+.left-menu {
+	height: 100%;
+	box-sizing: border-box;
+	&:not(.el-menu--collapse) {
+		width: 224px;
+	}
+}
+</style>
