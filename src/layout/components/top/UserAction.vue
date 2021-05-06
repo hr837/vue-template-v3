@@ -1,5 +1,5 @@
 <template>
-	<el-avatar :src="userInfo.avatar"></el-avatar>
+	<el-avatar :src="userInfo.avatar" :size="22"></el-avatar>
 	<el-dropdown class="user-dropdown" trigger="click" @command="onCommand">
 		<span class="el-dropdown-link">
 			{{ userInfo.name }}
@@ -44,7 +44,7 @@ const onCommand = function (command: string) {
 
 <style lang="less">
 .user-dropdown {
-	margin-left: 20px;
+	margin-left: 10px;
 	.el-dropdown-link {
 		font-weight: bold;
 	}

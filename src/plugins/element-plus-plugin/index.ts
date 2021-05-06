@@ -3,5 +3,5 @@ import "./element-variables.scss";
 import { App } from "vue";
 
 export default function useElementUI(app: App): void {
-	app.use(ElementPlus);
+	app.use(ElementPlus, { size: "small" });
 }

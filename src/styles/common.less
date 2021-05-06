@@ -21,7 +21,25 @@ each(range(2,5),{
 	}
 }
 
+// .g-rotate-x1 ... 代表内容旋转几个90度
+each(range(4),{
+  .g-rotate-x@{value} {
+    transform: rotate(90deg * @value);
+ }
+});
+
 .full-page {
 	height: 100vh;
 	width: 100vw;
+}
+
+/* 公共颜色 */
+@import "./common-color.less";
+
+.g-c-gray {
+	color: @gray;
+}
+
+.g-c-black {
+	color: @black;
 }

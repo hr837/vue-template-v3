@@ -26,13 +26,11 @@ import TopMenu from "./components/top/TopMenu.vue";
 import UserAction from "./components/top/UserAction.vue";
 import Logo from "./components/top/Logo.vue";
 import MenuCollapse from "./components/top/MenuCollapse.vue";
-// import { container } from "./composables/workspace.usePrefectScrollbar";
 
 const route = useRoute();
 const store = getStore();
 
 const collapse = ref(false);
-
 const menuWidth = computed(() => (collapse.value ? "64px" : "224px"));
 
 watch(
@@ -40,17 +38,12 @@ watch(
 	(value: string) => {
 		const [, type] = value.split("/");
 		if (type !== store.state.directory) {
-			console.log(type);
 			store.commit("updateDirectory", type);
 		}
 	},
 	{ immediate: true }
 );
 </script>
-
-<style>
-/* @import "perfect-scrollbar/css/perfect-scrollbar.css"; */
-</style>
 
 <style lang="less">
 .workspace-layout {
@@ -62,11 +55,31 @@ watch(
 	.el-main {
 		background: #f4f5f7;
 		.page {
+			@header-h: 65px;
+			@padding: 20px * 2;
 			background: #fff;
 			border-radius: 8px;
+			min-height: calc(100vh - @header-h - @padding);
 			// height: 100%;
 			overflow: auto;
-			// position: relative;
+		}
+		&::-webkit-scrollbar {
+			width: 0.5rem;
+			height: 0.5rem;
+			background: rgba(255, 255, 255, 0.6);
+		}
+		&::-webkit-scrollbar-track {
+			border-radius: 0;
+		}
+		&::-webkit-scrollbar-thumb {
+			border-radius: 0;
+			background-color: rgba(95, 95, 95, 0.4);
+			transition: all 0.2s;
+			border-radius: 0.5rem;
+
+			&:hover {
+				background-color: rgba(95, 95, 95, 0.7);
+			}
 		}
 	}
 }

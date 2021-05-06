@@ -13,3 +13,7 @@
 ### .g-no-scorll
 
 不显示滚动条
+
+## element-plus 默认主题
+
+参考[npm 包地址](../../node_modules/element-plus/packages/theme-chalk/src/common/var.scss)

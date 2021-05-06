@@ -6,12 +6,19 @@
 
 /* Color
 -------------------------- */
+/// color|1|Font Color|2
+$--color-text-primary: #202020 !default;
 /// color|1|Brand Color|0
 $--color-primary: #e50220 !default;
 
 /* Size
 -------------------------- */
-$--size-base: 14px !default;
+$--font-size-base: 12px;
+
+/* Menu
+--------------------------*/
+/// fontSize||Font|1
+$--menu-item-font-size: 14px !default;
 
 /* 改变 icon 字体路径变量，必需 */
 $--font-path: "/node_modules/element-plus/lib/theme-chalk/fonts";

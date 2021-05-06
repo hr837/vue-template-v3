@@ -3,4 +3,8 @@ declare module "*.vue" {
 	/** eslint-ignore */
 	const component: DefineComponent<{}, {}, any>;
 	export default component;
+
+	interface ElForm {
+		validate: () => Promise<boolean>;
+	}
 }

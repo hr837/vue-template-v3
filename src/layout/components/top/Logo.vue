@@ -1,13 +1,13 @@
 <template>
 	<el-image
 		style="width: 160px; height: 42px"
-		:src="logoUrl"
+		src="/images/logo.png"
 		fit="contain"
 	></el-image>
 	<el-divider class="divider-line" direction="vertical"></el-divider>
-	<h3 class="sys-name">
+	<div class="sys-name g-c-black">
 		{{ sysName }}
-	</h3>
+	</div>
 </template>
 
 <script lang="ts" setup>
@@ -19,7 +19,11 @@ const sysName = import.meta.env.VITE_APP_NAME;
 
 <style lang="less" scoped>
 .divider-line {
-	height: 2em;
+	height: 1.5em;
 	color: #e5e5e5;
+}
+.sys-name {
+	font-size: 18px;
+	font-weight: bold;
 }
 </style>

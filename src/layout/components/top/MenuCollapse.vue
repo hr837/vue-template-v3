@@ -1,6 +1,6 @@
 <template>
 	<transition name="el-zoom-in-center">
-		<i :class="iconName" @click="emitCollapse"></i>
+		<i class="menu-action g-c-gray" :class="iconName" @click="emitCollapse"></i>
 	</transition>
 </template>
 <script lang="ts" setup>
@@ -23,4 +23,9 @@ const iconName = computed(() => {
 });
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.menu-action {
+	margin: 0 22px;
+	font-size: 22px;
+}
+</style>

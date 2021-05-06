@@ -46,7 +46,6 @@ const resources = ref<any>([]);
 watch(
 	() => direcotry.value,
 	(value) => {
-		console.log(value, "left");
 		resources.value = getMenus(value);
 		const [first] = resources.value;
 		if (!first) return;
