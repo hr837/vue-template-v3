@@ -5,6 +5,7 @@
 		router
 		:default-active="route.path"
 		:collapse="collapse"
+		text-color="#6a6a6a"
 	>
 		<el-submenu v-for="sub of resources" :key="sub.name" :index="sub.name">
 			<template #title>

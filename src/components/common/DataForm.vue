@@ -10,7 +10,7 @@
 			<slot>plase insert your form items</slot>
 			<el-form-item class="form-action">
 				<el-button type="primary" @click="emitSearch">搜索</el-button>
-				<el-button type="primary" @click="emitReset" plain>重置</el-button>
+				<el-button type="primary" plain @click="emitReset">重置</el-button>
 				<slot name="action">
 					<el-button v-if="!hidden" type="text" @click="onCollapse">
 						收起
@@ -38,7 +38,7 @@ defineProps({
 
 const emiter = defineEmit(["search", "reset"]);
 
-const form = ref(null);
+const form = ref<ElFrom>();
 const hidden = ref(false);
 
 const formDom = computed<Element>(() => {
@@ -50,8 +50,10 @@ const formItems = computed(() => {
 	return formDom.value.children;
 });
 
-const onSearch = () => emiter("search");
-const onReset = function () {
+const emitSearch = () => emiter("search");
+
+const emitReset = function () {
+	form.value?.resetFields();
 	emiter("reset");
 };
 
@@ -62,9 +64,11 @@ const onCollapse = function () {
 	const items = formItems.value;
 	if (items.length < 2) return;
 	const inputItems = Array.from(items);
-	// 按钮宽度
-	const actionItemWidth = inputItems.pop()?.clientWidth;
-	if (!actionItemWidth) return;
+	// 去除操作按钮
+	inputItems.pop();
+	// // 按钮宽度
+	// const actionItemWidth = inputItems.pop()?.clientWidth;
+	// if (!actionItemWidth) return;
 	// 容器宽度
 	const containerWidth = formDom.value.clientWidth;
 	let computedWidth = 0;

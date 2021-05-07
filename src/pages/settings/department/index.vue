@@ -1,6 +1,6 @@
 <template>
 	<div class="page main">
-		<DataForm :model="query">
+		<DataForm :model="query" @search="onSearch">
 			<el-form-item label="部门名称">
 				<el-input v-model="query.name"></el-input>
 			</el-form-item>
@@ -42,6 +42,10 @@ import { reactive } from "vue";
 const query = reactive({
 	name: "",
 });
+
+const onSearch = function () {
+	console.log("search");
+};
 </script>
 
 <style lang="less" scoped>

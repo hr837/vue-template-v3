@@ -7,9 +7,9 @@
 			<el-input v-model="model.pwd" type="password" />
 		</el-form-item>
 	</el-form>
-	<el-button class="login-button" type="primary" @click="submit"
-		>登录</el-button
-	>
+	<el-button class="login-button" type="primary" @click="submit">
+		登录
+	</el-button>
 </template>
 
 <script lang="ts" setup>
