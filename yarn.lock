@@ -271,6 +271,11 @@
   resolved "https://registry.npm.taobao.org/@types/minimist/download/@types/minimist-1.2.1.tgz#283f669ff76d7b8260df8ab7a4262cc83d988256"
   integrity sha1-KD9mn/dte4Jg34q3pCYsyD2YglY=
 
+"@types/mockjs@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.npm.taobao.org/@types/mockjs/download/@types/mockjs-1.0.3.tgz#bd8ee3c7cbbd9a18788ab677b9e4f97c8d0bb0bf"
+  integrity sha1-vY7jx8u9mhh4irZ3ueT5fI0LsL8=
+
 "@types/node@^14.14.41":
   version "14.14.44"
   resolved "https://registry.nlark.com/@types/node/download/@types/node-14.14.44.tgz?cache=0&sync_timestamp=1620169747301&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-14.14.44.tgz#df7503e6002847b834371c004b372529f3f85215"
@@ -1038,6 +1043,11 @@ colors@0.x.x:
   resolved "https://registry.npm.taobao.org/colors/download/colors-0.6.2.tgz#2423fe6678ac0c5dae8852e5d0e5be08c997abcc"
   integrity sha1-JCP+ZnisDF2uiFLl0OW+CMmXq8w=
 
+commander@*, commander@^7.1.0:
+  version "7.2.0"
+  resolved "https://registry.nlark.com/commander/download/commander-7.2.0.tgz?cache=0&sync_timestamp=1618847174396&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcommander%2Fdownload%2Fcommander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
+  integrity sha1-o2y1fQtQHOEI5NIFWaFQo5HZerc=
+
 commander@1.1.1:
   version "1.1.1"
   resolved "https://registry.nlark.com/commander/download/commander-1.1.1.tgz?cache=0&sync_timestamp=1618847174396&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcommander%2Fdownload%2Fcommander-1.1.1.tgz#50d1651868ae60eccff0a2d9f34595376bc6b041"
@@ -1049,11 +1059,6 @@ commander@^6.2.0:
   version "6.2.1"
   resolved "https://registry.nlark.com/commander/download/commander-6.2.1.tgz?cache=0&sync_timestamp=1618847174396&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcommander%2Fdownload%2Fcommander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
   integrity sha1-B5LraC37wyWZm7K4T93duhEKxzw=
-
-commander@^7.1.0:
-  version "7.2.0"
-  resolved "https://registry.nlark.com/commander/download/commander-7.2.0.tgz?cache=0&sync_timestamp=1618847174396&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcommander%2Fdownload%2Fcommander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
-  integrity sha1-o2y1fQtQHOEI5NIFWaFQo5HZerc=
 
 commitizen@^4.0.3, commitizen@^4.2.3:
   version "4.2.3"
@@ -3628,6 +3633,13 @@ mkdirp@0.x.x, "mkdirp@>=0.5 0":
   integrity sha1-2Rzv1i0UNsoPQWIOJRKI1CAJne8=
   dependencies:
     minimist "^1.2.5"
+
+mockjs@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.npm.taobao.org/mockjs/download/mockjs-1.1.0.tgz#e6a0c378e91906dbaff20911cc0273b3c7d75b06"
+  integrity sha1-5qDDeOkZBtuv8gkRzAJzs8fXWwY=
+  dependencies:
+    commander "*"
 
 modify-values@^1.0.0:
   version "1.0.1"

@@ -1,3 +1,3 @@
 interface Window {
-  appConfig: any;
+	appConfig: any;
 }

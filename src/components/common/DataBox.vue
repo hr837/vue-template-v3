@@ -1,6 +1,13 @@
 <template>
 	<div class="component data-box">
-		<el-table :data="data" border header-row-class-name="data-box_header">
+		<el-table
+			ref="table"
+			:data="data"
+			border
+			header-row-class-name="data-box_header"
+			@select="emitSelection"
+			@select-all="emitSelection"
+		>
 			<el-table-column
 				v-if="selection"
 				type="selection"
@@ -24,7 +31,7 @@
 
 <script lang="ts" setup>
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { computed, defineProps } from "vue";
+import { computed, defineEmit, defineProps, watch, ref } from "vue";
 
 const props = defineProps({
 	data: {
@@ -34,7 +41,38 @@ const props = defineProps({
 	hiddenSelection: {
 		type: Boolean,
 	},
+	selectionRows: {
+		type: Array,
+	},
 });
 
+const emiter = defineEmit(["update:selectionRows"]);
 const selection = computed(() => !props.hiddenSelection);
+
+const emitSelection = (rows: any[], row: any) => {
+	emiter("update:selectionRows", rows);
+};
+
+const table = ref();
+
+watch(
+	() => props.data,
+	(rows) => {
+		const filterRows = rows.filter((row) => props.selectionRows?.includes(row));
+		emiter("update:selectionRows", filterRows);
+	},
+	{ deep: true }
+);
+
+watch(
+	() => props.selectionRows || [],
+	(rows) => {
+		if (!table.value) return;
+		props.data.forEach((row) => {
+			const checkFlag = rows.includes(row);
+			table.value.toggleRowSelection(row, checkFlag);
+		});
+	},
+	{ immediate: true }
+);
 </script>

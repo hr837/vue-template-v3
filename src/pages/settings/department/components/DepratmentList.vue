@@ -1,27 +1,25 @@
 <template>
-	<DataBox :data="dataSet">
+	<DataBox v-model:selectionRows="selectionRows" :data="dataSet">
 		<el-table-column label="部门名称" prop="name"></el-table-column>
 		<el-table-column label="管理员" prop="business"></el-table-column>
 		<el-table-column label="创收" prop="amount"></el-table-column>
 		<el-table-column label="案件数" prop="account"></el-table-column>
+		<el-table-column label="操作">
+			<template #default="{ row, $index }">
+				<el-button type="text" @click="onDelete($index)">删除</el-button>
+				<el-button type="text" @click="onEdit(row)">编辑</el-button>
+			</template>
+		</el-table-column>
 	</DataBox>
 </template>
 
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
-import faker from "faker";
-faker.setLocale("zh_CN");
+import { dataSet, refreshData, selectionRows } from "../composables";
 
-const dataSet = ref<Array<any>>([]);
-
-onMounted(() => {
-	dataSet.value = [
-		faker.helpers.createTransaction(),
-		faker.helpers.createTransaction(),
-		faker.helpers.createTransaction(),
-		faker.helpers.createTransaction(),
-		faker.helpers.createTransaction(),
-		faker.helpers.createTransaction(),
-	];
-});
+onMounted(refreshData);
+const onDelete = (index) => dataSet.value.splice(index, 1);
+const onEdit = (row) => {
+	return;
+};
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<DataForm :model="query" class="g-container" @search="onSearch">
+	<DataForm :model="query" @search="onSearch">
 		<el-form-item label="部门名称">
 			<el-input v-model="query.name"></el-input>
 		</el-form-item>
@@ -34,11 +34,12 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, defineEmit } from "vue";
-import { emitter } from "../composables";
+import { reactive } from "vue";
+import { refreshData } from "../composables";
+
 const query = reactive({
 	name: "",
 });
 
-const onSearch = () => emitter.emit("search", query);
+const onSearch = () => refreshData(query);
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<div class="page main">
+	<div class="g-container main">
 		<h1>todo item 1</h1>
 		<h1>todo item 1</h1>
 		<h1>todo item 1</h1>

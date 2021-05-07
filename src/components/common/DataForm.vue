@@ -3,12 +3,12 @@
 		<el-form
 			ref="form"
 			:model="model"
-			inline
 			label-width="110px"
 			label-suffix="︰"
+			class="flex-row flex-wrap"
 		>
 			<slot>plase insert your form items</slot>
-			<el-form-item class="form-action">
+			<el-form-item class="form-action" label-width="0px">
 				<el-button type="primary" @click="emitSearch">搜索</el-button>
 				<el-button type="primary" plain @click="emitReset">重置</el-button>
 				<slot name="action">
@@ -95,6 +95,12 @@ const onExpand = function () {
 
 <style lang="less">
 .component.data-form {
+	.el-form {
+		gap: 16px 10px;
+		.el-form-item {
+			margin: 0;
+		}
+	}
 	.form-action {
 		padding-left: 40px;
 	}

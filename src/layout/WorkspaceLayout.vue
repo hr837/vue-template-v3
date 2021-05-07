@@ -54,6 +54,7 @@ watch(
 	}
 	.el-main {
 		background: #f4f5f7;
+		padding: 0;
 		.page {
 			@header-h: 65px;
 			@padding: 20px * 2;
