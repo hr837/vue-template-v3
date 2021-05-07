@@ -95,7 +95,6 @@ const onExpand = function () {
 
 <style lang="less">
 .component.data-form {
-	margin: 20px 0;
 	.form-action {
 		padding-left: 40px;
 	}

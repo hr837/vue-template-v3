@@ -15,6 +15,7 @@
 		"@gopowerteam/http-request": "^0.1.2",
 		"axios": "^0.21.1",
 		"element-plus": "^1.0.2-beta.40",
+		"mitt": "^2.1.0",
 		"normalize.css": "^8.0.1",
 		"qs": "^6.10.1",
 		"rxjs": "^7.0.0",

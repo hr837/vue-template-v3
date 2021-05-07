@@ -20,6 +20,11 @@ $--font-size-base: 12px;
 /// fontSize||Font|1
 $--menu-item-font-size: 14px !default;
 
+/* Table */
+$--table-font-color: $--color-text-primary;
+$--table-header-font-color: #a5a5a5;
+$--table-header-background-color: #f8f8f8;
+
 /* 改变 icon 字体路径变量，必需 */
 $--font-path: "/node_modules/element-plus/lib/theme-chalk/fonts";
 @import "node_modules/element-plus/packages/theme-chalk/src/index";

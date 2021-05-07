@@ -57,8 +57,7 @@ watch(
 		.page {
 			@header-h: 65px;
 			@padding: 20px * 2;
-			background: #fff;
-			border-radius: 8px;
+
 			min-height: calc(100vh - @header-h - @padding);
 			// height: 100%;
 			overflow: auto;

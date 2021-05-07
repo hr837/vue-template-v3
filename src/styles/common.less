@@ -43,3 +43,11 @@ each(range(4),{
 .g-c-black {
 	color: @black;
 }
+
+.g-container {
+	background-color: @white;
+	border-radius: 8px;
+	+ .g-container {
+		margin: 16px 0;
+	}
+}
