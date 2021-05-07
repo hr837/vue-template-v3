@@ -3,6 +3,7 @@ import App from "./App.vue";
 import usePlugins from "./plugins";
 import useRouter from "./router";
 import { useStore } from "./store";
+import { boot } from "./bootstrap/boot";
 import "./styles/index.less";
 
 // 更改系统标题
@@ -15,3 +16,5 @@ useRouter(app);
 useStore(app);
 // 挂载根组件到app节点
 app.mount("#app");
+
+boot();

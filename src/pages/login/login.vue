@@ -10,10 +10,14 @@
 import { useRouter } from "vue-router";
 import LoginForm from "./components/LoginForm.vue";
 import type { LoginModel } from "./login.type";
+import { login } from "./composables/login.service";
 
 const router = useRouter();
 
-const onLogin = (model: LoginModel) => {
-	router.push("/home");
+const onLogin = async (model: LoginModel) => {
+	const result = await login(model);
+	if (result) {
+		router.replace("/home");
+	}
 };
 </script>

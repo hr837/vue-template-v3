@@ -57,7 +57,7 @@ watch(
 		if (!match) {
 			const [item] = first.childrens;
 			if (!item) return;
-			router.push(item.path);
+			router.replace(item.path);
 		}
 	},
 	{ immediate: true }

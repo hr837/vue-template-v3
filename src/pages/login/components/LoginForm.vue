@@ -1,5 +1,11 @@
 <template>
-	<el-form ref="form" class="login-form" :model="model" :rules="rules">
+	<el-form
+		ref="form"
+		class="login-form"
+		:model="model"
+		:rules="rules"
+		@keyup.enter="submit"
+	>
 		<el-form-item prop="uname">
 			<el-input v-model="model.uname" />
 		</el-form-item>
@@ -14,7 +20,7 @@
 
 <script lang="ts" setup>
 import { ref, defineEmit } from "vue";
-import { rules, model } from "./login-form.data";
+import { rules, model } from "../composables/login-form.data";
 
 const emit = defineEmit(["validated"]);
 
