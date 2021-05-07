@@ -50,6 +50,9 @@
 		"vue-tsc": "^0.0.24"
 	},
 	"lint-staged": {
-		"**/*.{js,ts,vue}": "eslint --format table"
+		"**/*.{js,ts,vue}": [
+			"eslint --fix --format table",
+			"git add"
+		]
 	}
 }
