@@ -9,6 +9,6 @@ export default {
 	login: {
 		type: RequestMethod.Post,
 		controller: "",
-		path: "/management-service/lcs-management/api/loginController/login",
+		path: "/manage/api/user/login",
 	},
 };

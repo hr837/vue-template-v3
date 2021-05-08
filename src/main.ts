@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import usePlugins from "./plugins";
 import useRouter from "./router";
-import { useStore } from "./store";
+import { useVuex } from "./store";
 import { boot } from "./bootstrap/boot";
 import "./styles/index.less";
 
@@ -13,7 +13,7 @@ document.title = import.meta.env.VITE_APP_NAME;
 const app = createApp(App);
 usePlugins(app);
 useRouter(app);
-useStore(app);
+useVuex(app);
 // 挂载根组件到app节点
 app.mount("#app");
 

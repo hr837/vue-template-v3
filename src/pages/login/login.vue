@@ -10,18 +10,17 @@
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
 import LoginForm from "./components/LoginForm.vue";
-import type { LoginModel } from "./composables/login.type";
-import { login } from "./composables/login.service";
+import { login } from "./composables";
 import LoginBanner from "./components/LoginBanner.vue";
 
 const router = useRouter();
 
-const onLogin = async (model: LoginModel) => {
-	const result = await login(model);
+async function onLogin() {
+	const result = await login();
 	if (result) {
 		router.replace("/home");
 	}
-};
+}
 </script>
 
 <style lang="less" scoped>

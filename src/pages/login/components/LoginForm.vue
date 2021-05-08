@@ -36,7 +36,7 @@
 
 <script lang="ts" setup>
 import { ref, defineEmit } from "vue";
-import { rules, model } from "../composables/login-form.data";
+import { rules, model } from "../composables";
 
 const emit = defineEmit(["validated"]);
 const checked = ref(false);

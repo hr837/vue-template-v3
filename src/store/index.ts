@@ -1,32 +1,31 @@
-import { createStore, Store, useStore as baseUseStore } from "vuex";
+import { createStore, Store, useStore } from "vuex";
 
-import { App } from "vue";
-import state from "./state";
-import mutations from "./mutations";
-import actions from "./actions";
-import getters from "./getters";
-import { InjectionKey } from "@vue/runtime-core";
-import { State } from "./types";
+import { App, InjectionKey } from "vue";
+import { RootState } from "./type";
+import rootStore from "./root.store";
+// modules
+import departmentModule from "./modules/department.store";
+import userModule from "./modules/user.store";
 
-const key: InjectionKey<Store<State>> = Symbol();
+const key: InjectionKey<Store<RootState>> = Symbol();
 
-const store = createStore<State>({
-	state,
-	mutations,
-	actions,
-	getters,
-	modules: {},
+const store = createStore<RootState>({
+	...rootStore,
+	modules: {
+		department: departmentModule,
+		user: userModule,
+	},
 	plugins: [],
 });
 
-export function getStore() {
-	return baseUseStore(key);
+export function getStore(module?: string) {
+	return useStore(module || key);
 }
 
 /**
  * 使用store
  * @param app
  */
-export function useStore(app: App) {
+export function useVuex(app: App) {
 	app.use(store, key);
 }
