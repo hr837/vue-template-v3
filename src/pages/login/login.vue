@@ -16,7 +16,7 @@ import LoginBanner from "./components/LoginBanner.vue";
 
 const router = useRouter();
 
-const onLogin = async (model: LoginModel) => {
+const onLogin2 = async (model: LoginModel) => {
 	const result = await login(model);
 	if (result) {
 		router.replace("/home");
