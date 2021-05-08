@@ -36,13 +36,24 @@ each(range(4),{
 /* 公共颜色 */
 @import "./common-color.less";
 
-.g-c-gray {
-	color: @gray;
-}
+/*
+	.g-c-primary 
+	.g-c-gray
+	....
 
-.g-c-black {
-	color: @black;
-}
+	.g-bg-primary
+	.g-bg-gray
+	....
+*/
+@list: primary, gray, black;
+each(@list,{
+	.g-c-@{value}{
+		color: @@value;
+	}
+	.g-bg-@{value}{
+		background-color: @@value;
+	}
+});
 
 .g-container {
 	background-color: @white;

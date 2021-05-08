@@ -1,5 +1,5 @@
 import { readonly, ref } from "vue";
-import type { LoginModel } from "../login.type";
+import type { LoginModel } from "./login.type";
 
 export const model = ref<LoginModel>({
 	uname: "",
