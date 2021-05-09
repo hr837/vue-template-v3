@@ -3,7 +3,7 @@ import { RootState, UserState } from "../type";
 
 const userModule: Module<UserState, RootState> = {
 	namespaced: true,
-	state: {
+	state: () => ({
 		departmentId: "",
 		departmentName: "",
 		departmentCode: "",
@@ -14,7 +14,7 @@ const userModule: Module<UserState, RootState> = {
 		resource: [],
 		isManage: "NO",
 		userId: "",
-	},
+	}),
 	mutations: {
 		/**
 		 * 更新用户部门信息

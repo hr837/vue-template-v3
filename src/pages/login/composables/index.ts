@@ -4,21 +4,23 @@ import { UserService } from "@/services/user.service";
 import { firstValueFrom } from "rxjs";
 import { MenuItem } from "@/types/menu.type";
 import { UserBase, UserRole } from "@/types/user.type";
-import { getStore } from "@/store";
+import { store } from "@/store";
 
 /**
  * 登录表单实体
  */
-export type LoginModel = {
+export interface LoginModel {
 	uname: string;
 	pwd: string;
-};
+}
 
-export type LoginRes = {
+/**
+ * 登录返回
+ */
+export interface LoginRes extends UserBase, UserRole {
 	token: string;
 	menu: MenuItem[];
-} & UserBase &
-	UserRole;
+}
 
 export const model = ref<LoginModel>({
 	uname: "",
@@ -46,12 +48,17 @@ export function login() {
 		.then(saveUserData)
 		.catch(() => false);
 }
-const store = getStore("user");
-const baseStore = getStore();
 
 function saveUserData(data: LoginRes) {
-	console.log(123);
-	store.commit("updateUserInfo", data);
-	baseStore.commit("updateLoginTime", Date.now());
+	store.commit("user/updateUserInfo", data);
+	store.commit("updateLoginTime", Date.now());
 	return true;
+}
+
+/**
+ * 重置sotre
+ */
+export function resetStore() {
+	store.commit("updateLoginTime", -1);
+	store.commit("user/updateUserInfo", {});
 }

@@ -1,7 +1,8 @@
 import { createStore, Store, useStore } from "vuex";
 
 import { App, InjectionKey } from "vue";
-import { RootState } from "./type";
+import createPersistedState from "vuex-persistedstate";
+import { AllState, RootState } from "./type";
 import rootStore from "./root.store";
 // modules
 import departmentModule from "./modules/department.store";
@@ -9,18 +10,19 @@ import userModule from "./modules/user.store";
 
 const key: InjectionKey<Store<RootState>> = Symbol();
 
-const store = createStore<RootState>({
+/**
+ * 以模块方式调用的sotre
+ */
+export const store = createStore<RootState>({
 	...rootStore,
 	modules: {
 		department: departmentModule,
 		user: userModule,
 	},
-	plugins: [],
-});
+	plugins: [createPersistedState()],
+}) as Store<AllState>;
 
-export function getStore(module?: string) {
-	return useStore(module || key);
-}
+export const getStore = () => useStore<AllState>(key);
 
 /**
  * 使用store

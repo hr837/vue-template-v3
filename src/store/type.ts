@@ -18,3 +18,11 @@ export interface UserState extends UserBase, UserRole {
 export interface DepartmentState {
 	departmentList: DepartmentInfo[];
 }
+
+/**
+ * 所有sotre state tree
+ */
+export interface AllState extends RootState {
+	department: DepartmentState;
+	user: UserState;
+}

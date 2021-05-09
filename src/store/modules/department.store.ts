@@ -4,7 +4,7 @@ import { DepartmentState, RootState } from "../type";
 
 const departmentModule: Module<DepartmentState, RootState> = {
 	namespaced: true,
-	state: {
+	state: () => ({
 		departmentList: [
 			{
 				departCode: "oooooo",
@@ -14,7 +14,7 @@ const departmentModule: Module<DepartmentState, RootState> = {
 				status: "ON",
 			},
 		],
-	},
+	}),
 	mutations: {
 		updateDepartmentList(state, list: DepartmentInfo[]) {
 			state.departmentList = list;

@@ -8,19 +8,24 @@
 </template>
 
 <script lang="ts" setup>
+import { onBeforeMount } from "vue";
 import { useRouter } from "vue-router";
 import LoginForm from "./components/LoginForm.vue";
-import { login } from "./composables";
+import { login, resetStore } from "./composables";
 import LoginBanner from "./components/LoginBanner.vue";
 
 const router = useRouter();
 
 async function onLogin() {
-	const result = await login();
+	const result = await login()
+		.then(() => true)
+		.catch(() => false);
 	if (result) {
 		router.replace("/home");
 	}
 }
+
+onBeforeMount(resetStore);
 </script>
 
 <style lang="less" scoped>

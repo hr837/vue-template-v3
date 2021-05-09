@@ -2,5 +2,6 @@
 	"tabWidth": 2,
 	"useTabs": true,
 	"htmlWhitespaceSensitivity": "ignore",
-	"jsxBracketSameLine": true
+	"jsxBracketSameLine": true,
+	"endOfLine": "auto"
 }
