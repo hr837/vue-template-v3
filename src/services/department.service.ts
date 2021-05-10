@@ -16,4 +16,40 @@ export class DepartmentService {
 	public query(requestParam: RequestParams) {
 		return requestParam.request();
 	}
+
+	/**
+	 * 添加部门
+	 * @param requestParam
+	 * @returns
+	 */
+	@Request({
+		server: DepartmentController.addDepartemnt,
+	})
+	public add(requestParam: RequestParams) {
+		return requestParam.request();
+	}
+
+	/**
+	 * 删除部门
+	 * @param requestParam
+	 * @returns
+	 */
+	@Request({
+		server: DepartmentController.deleteDepartment,
+	})
+	public delete(requestParam: RequestParams) {
+		return requestParam.request();
+	}
+
+	/**
+	 * 修改部门
+	 * @param requestParam
+	 * @returns
+	 */
+	@Request({
+		server: DepartmentController.modifyDepartment,
+	})
+	public modify(requestParam: RequestParams) {
+		return requestParam.request();
+	}
 }

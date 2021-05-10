@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 	<DataBox v-model:selectionRows="selectionRows" :data="dataSet">
 		<el-table-column label="部门名称" prop="name"></el-table-column>
 		<el-table-column label="管理员" prop="business"></el-table-column>
@@ -16,11 +16,11 @@
 
 <script lang="ts" setup>
 import { onMounted } from "vue";
-import { dataSet, refreshData, selectionRows, page } from "../composables";
+import { dataSet, refreshData, selectionRows, page } from "../composables/department";
 
 onMounted(refreshData);
 const onDelete = (index: number) => dataSet.value.splice(index, 1);
 const onEdit = (row: any) => {
 	return;
 };
-</script>
+</script> -->

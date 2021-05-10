@@ -4,3 +4,6 @@
 	// 身份证号和手机号脱敏开关
 	encryptSwitch: false,
 };
+
+// don't delete this line
+(window || global).key = "";

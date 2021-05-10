@@ -1,4 +1,4 @@
 declare type ElFrom = {
-	validate: () => Promise<boolean>;
+	validate: (callback?: (result: boolean) => void) => Promise<boolean> | void;
 	resetFields: () => void;
 };

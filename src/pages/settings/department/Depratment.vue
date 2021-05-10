@@ -1,46 +1,44 @@
 <template>
-	<div v-loading="loadingStatus" class="page department">
+	<div v-loading="loadingStatus" class="page department flex">
 		<div class="g-container">
-			<DepartmentQueryForm />
+			<DepartmentTree />
 		</div>
-		<div class="g-container">
-			<!-- <DataBoxActions>
+		<div class="g-container flex-span-1">
+			<!-- <DepartmentQueryForm />
+			<DataBoxAction>
 				<template #buttons>
-					<el-button type="primary" @click="onDelete">删除</el-button>
-					<el-button type="primary">按钮二</el-button>
-					<el-button type="primary">按钮三</el-button>
+					<el-button type="primary">新增用户</el-button>
+					<el-button type="primary">批量分配角色</el-button>
+					<el-button type="primary">批量重置密码</el-button>
 				</template>
-				<template #append>
-					<el-button type="primary">按钮一</el-button>
-					<el-button type="primary">按钮二</el-button>
-					<el-button type="primary">按钮三</el-button>
-				</template>
-			</DataBoxActions> -->
-			<DepratmentList />
+			</DataBoxAction>
+			<DepratmentList /> -->
 		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-import DepartmentQueryForm from "./components/DepartmentQueryForm.vue";
-import DepratmentList from "./components/DepratmentList.vue";
-import { loading, selectionRows } from "./composables";
+// import DepartmentQueryForm from "./components/DepartmentQueryForm.vue";
+// import DepratmentList from "./components/DepratmentList.vue";
+import { loading } from "./composables/department";
 import { ElMessage } from "element-plus";
 import { onBeforeMount, ref } from "@vue/runtime-core";
+import DepartmentTree from "@/components/business-common/DepartmentTree.vue";
 
 const loadingStatus = ref(false);
 
 onBeforeMount(() => {
 	loading.status.subscribe((data) => (loadingStatus.value = data));
 });
-
-const onDelete = function () {
-	if (!selectionRows.value.length) {
-		const messageHandle = ElMessage.info("请选择数据行");
-		return;
-	}
-
-	// const names = selectionRows.value.map((x) => x.name);
-	// console.log(names);
-};
 </script>
+
+<style lang="less" scoped>
+.department {
+	.g-container + .g-container {
+		margin-left: 0;
+	}
+	&-tree {
+		width: 300px;
+	}
+}
+</style>

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 	<DataForm :model="query" @search="onSearch">
 		<el-form-item label="部门名称">
 			<el-input v-model="query.name"></el-input>
@@ -35,11 +35,11 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { refreshData } from "../composables";
+import { refreshData } from "../composables/department";
 
 const query = ref({
 	name: "",
 });
 
 const onSearch = () => refreshData(query);
-</script>
+</script> -->

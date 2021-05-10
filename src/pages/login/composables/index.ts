@@ -50,6 +50,7 @@ export function login() {
 }
 
 function saveUserData(data: LoginRes) {
+	localStorage.setItem("token", data.token);
 	store.commit("user/updateUserInfo", data);
 	store.commit("updateLoginTime", Date.now());
 	return true;
