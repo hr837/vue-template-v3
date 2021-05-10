@@ -1,10 +1,10 @@
 <template>
 	<div v-loading="loadingStatus" class="page department">
 		<div class="g-container">
-			<QueryForm />
+			<DepartmentQueryForm />
 		</div>
 		<div class="g-container">
-			<DataBoxActions>
+			<!-- <DataBoxActions>
 				<template #buttons>
 					<el-button type="primary" @click="onDelete">删除</el-button>
 					<el-button type="primary">按钮二</el-button>
@@ -15,17 +15,24 @@
 					<el-button type="primary">按钮二</el-button>
 					<el-button type="primary">按钮三</el-button>
 				</template>
-			</DataBoxActions>
+			</DataBoxActions> -->
 			<DepratmentList />
 		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-import QueryForm from "./components/QueryForm.vue";
+import DepartmentQueryForm from "./components/DepartmentQueryForm.vue";
 import DepratmentList from "./components/DepratmentList.vue";
-import { dataSet, loadingStatus, selectionRows } from "./composables";
+import { loading, selectionRows } from "./composables";
 import { ElMessage } from "element-plus";
+import { onBeforeMount, ref } from "@vue/runtime-core";
+
+const loadingStatus = ref(false);
+
+onBeforeMount(() => {
+	loading.status.subscribe((data) => (loadingStatus.value = data));
+});
 
 const onDelete = function () {
 	if (!selectionRows.value.length) {

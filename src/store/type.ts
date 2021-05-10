@@ -6,6 +6,10 @@ import { UserBase, UserRole } from "@/types/user.type";
  */
 export interface RootState {
 	loginTime: number;
+	/**
+	 * 当前路由 目录名称
+	 */
+	directory: string;
 }
 
 export interface UserState extends UserBase, UserRole {

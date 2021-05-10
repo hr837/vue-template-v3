@@ -34,10 +34,10 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from "vue";
+import { ref } from "vue";
 import { refreshData } from "../composables";
 
-const query = reactive({
+const query = ref({
 	name: "",
 });
 

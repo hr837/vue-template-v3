@@ -11,15 +11,16 @@
 			</template>
 		</el-table-column>
 	</DataBox>
+	<Pagination :page="page" @pageChange="refreshData" />
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
-import { dataSet, refreshData, selectionRows } from "../composables";
+import { onMounted } from "vue";
+import { dataSet, refreshData, selectionRows, page } from "../composables";
 
 onMounted(refreshData);
-const onDelete = (index) => dataSet.value.splice(index, 1);
-const onEdit = (row) => {
+const onDelete = (index: number) => dataSet.value.splice(index, 1);
+const onEdit = (row: any) => {
 	return;
 };
 </script>

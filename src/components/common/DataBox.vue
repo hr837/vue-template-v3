@@ -58,6 +58,7 @@ const table = ref();
 watch(
 	() => props.data,
 	(rows) => {
+		if (!rows) return;
 		const filterRows = rows.filter((row) => props.selectionRows?.includes(row));
 		emiter("update:selectionRows", filterRows);
 	},
@@ -67,6 +68,7 @@ watch(
 watch(
 	() => props.selectionRows || [],
 	(rows) => {
+		if (!props.data) return;
 		if (!table.value) return;
 		props.data.forEach((row) => {
 			const checkFlag = rows.includes(row);
