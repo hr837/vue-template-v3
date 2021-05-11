@@ -33,16 +33,15 @@ export const rules = readonly({
 });
 
 const service = new UserService();
-const params = new RequestParams();
 
 /**
  * login
  */
 export function login() {
-	params.data = {
+	const params = new RequestParams({
 		password: model.value.pwd,
 		username: model.value.uname,
-	};
+	});
 
 	return firstValueFrom(service.login(params))
 		.then(saveUserData)
@@ -54,12 +53,4 @@ function saveUserData(data: LoginRes) {
 	store.commit("user/updateUserInfo", data);
 	store.commit("updateLoginTime", Date.now());
 	return true;
-}
-
-/**
- * 重置sotre
- */
-export function resetStore() {
-	store.commit("updateLoginTime", -1);
-	store.commit("user/updateUserInfo", {});
 }

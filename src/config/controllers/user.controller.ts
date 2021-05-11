@@ -1,6 +1,6 @@
 import { RequestMethod } from "@gopowerteam/http-request";
 
-const controller = "userControll";
+const controller = "user-controller";
 
 export default {
 	/**
@@ -8,7 +8,15 @@ export default {
 	 */
 	login: {
 		type: RequestMethod.Post,
-		controller: "",
+		controller,
 		path: "/manage/api/user/login",
+	},
+	/**
+	 * 查询部门下的用户
+	 */
+	queryUser: {
+		type: RequestMethod.Get,
+		controller,
+		path: "/manage/api/user/{type}",
 	},
 };

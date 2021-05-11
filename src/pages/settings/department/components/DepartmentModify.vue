@@ -13,10 +13,6 @@
 import { ref } from "vue";
 import { dialog, model, saveDepartment } from "../composables/department";
 
-const query = ref({
-	name: "",
-});
-
 const form = ref<ElFrom>();
 
 function onCancel() {

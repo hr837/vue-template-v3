@@ -1,4 +1,12 @@
+import { LoadingService } from "@/bootstrap/services/loading.service";
+import { PageService } from "@/bootstrap/services/page.service";
+import { UserService } from "@/services/user.service";
+import { RequestParams } from "@gopowerteam/http-request";
 import { ref } from "vue";
+import { departmentCode, departmentId } from "./department";
+
+export const dataSet = ref([]);
+export const selectionRows = ref([]);
 
 export const model = ref({
 	name: "",
@@ -34,4 +42,26 @@ export function onAdd(departmentId: string) {
 	userId.value = "";
 	dialog.value.show = true;
 	dialog.value.name = "新增用户";
+}
+
+const service = new UserService();
+export const page = new PageService();
+export const loading = new LoadingService();
+
+const requestParam = new RequestParams(
+	{ departCode: departmentCode },
+	{ page, loading }
+);
+
+/**
+ * 查询用户
+ * @param query
+ */
+export function refreshData(query?: any) {
+	if (query) {
+		requestParam.data = { ...requestParam.data, ...query };
+	}
+	service.query(requestParam, "DepartmentCode").subscribe((data) => {
+		dataSet.value = data;
+	});
 }

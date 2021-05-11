@@ -1,10 +1,10 @@
 <template>
-	<div v-loading="loadingStatus" class="page department flex">
-		<div class="g-container">
-			<DepartmentTree />
+	<div class="page department flex">
+		<div v-loading="loading.department" class="g-container">
+			<DepartmentManage />
 		</div>
-		<div class="g-container flex-span-1">
-			<!-- <DepartmentQueryForm />
+		<div v-loading="loading.user" class="g-container flex-span-1">
+			<UserQueryForm />
 			<DataBoxAction>
 				<template #buttons>
 					<el-button type="primary">新增用户</el-button>
@@ -12,23 +12,28 @@
 					<el-button type="primary">批量重置密码</el-button>
 				</template>
 			</DataBoxAction>
-			<DepratmentList /> -->
+			<UserList />
 		</div>
 	</div>
 </template>
 
 <script lang="ts" setup>
-// import DepartmentQueryForm from "./components/DepartmentQueryForm.vue";
-// import DepratmentList from "./components/DepratmentList.vue";
-import { loading } from "./composables/department";
+import UserQueryForm from "./components/UserQueryForm.vue";
+import UserList from "./components/UserList.vue";
+import { loading as departmentLoading } from "./composables/department";
+import { loading as userLoading } from "./composables/user";
 import { ElMessage } from "element-plus";
 import { onBeforeMount, ref } from "@vue/runtime-core";
-import DepartmentTree from "@/components/business-common/DepartmentTree.vue";
+import DepartmentManage from "./components/DepartmentManage.vue";
 
-const loadingStatus = ref(false);
+const loading = ref({
+	department: false,
+	user: false,
+});
 
 onBeforeMount(() => {
-	loading.status.subscribe((data) => (loadingStatus.value = data));
+	departmentLoading.status.subscribe((v) => (loading.value.department = v));
+	userLoading.status.subscribe((v) => (loading.value.user = v));
 });
 </script>
 
@@ -37,7 +42,7 @@ onBeforeMount(() => {
 	.g-container + .g-container {
 		margin-left: 0;
 	}
-	&-tree {
+	&-manage {
 		width: 300px;
 	}
 }

@@ -31,3 +31,13 @@ export const getStore = () => useStore<AllState>(key);
 export function useVuex(app: App) {
 	app.use(store, key);
 }
+
+/**
+ * 重置store数据
+ */
+export function resetStore() {
+	store.commit("updateLoginTime", -1);
+	store.commit("user/updateUserInfo", {});
+	localStorage.removeItem("token");
+	localStorage.removeItem("vuex");
+}

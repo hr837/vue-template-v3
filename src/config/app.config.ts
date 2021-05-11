@@ -8,7 +8,7 @@ let appConfig = {
 	encryptSwitch: false,
 	server: {
 		url: import.meta.env.VITE_APP_SERVE,
-		timeOut: 3000,
+		timeOut: 30000,
 	},
 };
 

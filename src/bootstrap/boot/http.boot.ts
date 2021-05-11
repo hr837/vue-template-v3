@@ -24,7 +24,7 @@ export default function () {
 	});
 
 	// 添加状态拦截器
-	RequestService.interceptors.status.use(() => {
+	RequestService.interceptors.status.use((response) => {
 		return true;
 	});
 

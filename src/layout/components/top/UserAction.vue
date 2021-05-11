@@ -36,7 +36,7 @@ const userInfo = computed(() => {
 const onCommand = function (command: string) {
 	switch (command) {
 		case "exit":
-			router.push("/login");
+			router.replace("/");
 			break;
 	}
 };

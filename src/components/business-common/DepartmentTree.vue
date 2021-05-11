@@ -17,24 +17,24 @@
 				>
 					<span class="label">{{ data.name }}</span>
 					<div v-if="showEdit" class="actions">
-						<el-link
+						<el-button
 							type="text"
 							icon="el-icon-plus"
 							title="添加部门"
 							@click="onAdd(data)"
-						></el-link>
-						<el-link
-							type="warning"
+						></el-button>
+						<el-button
+							type="text"
 							icon="el-icon-edit"
 							title="修改部门"
 							@click="onEdit(data)"
-						></el-link>
-						<el-link
-							type="danger"
+						></el-button>
+						<el-button
+							type="text"
 							icon="el-icon-delete"
 							title="删除部门"
 							@click="onDelete(data)"
-						></el-link>
+						></el-button>
 					</div>
 				</div>
 			</template>
@@ -75,4 +75,13 @@ function refreshData() {
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.department-tree {
+	.actions {
+		margin-left: 20px;
+		.el-button--text {
+			padding: 0;
+		}
+	}
+}
+</style>

@@ -8,7 +8,7 @@ export class TokenService extends ExtendService {
 		const token = window.localStorage.getItem("token");
 		const header = params.options.header || {};
 		if (token) {
-			header[tokenKey] = "Bearer " + token;
+			header[tokenKey] = token;
 		} else {
 			delete header[tokenKey];
 		}

@@ -1,4 +1,4 @@
-import { DepartmentInfo } from "@/types/department.type";
+import { DepartmentInfo } from "@/types/department.interface";
 import { Module } from "vuex";
 import { DepartmentState, RootState } from "../type";
 
