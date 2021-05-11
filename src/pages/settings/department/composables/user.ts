@@ -11,14 +11,14 @@ export const selectionRows = ref([]);
 export const model = ref({
 	name: "",
 	departmentId: "",
+	status: "NO",
+	phone: "",
+	email: "",
 });
 
 export const userId = ref("");
 
-export const dialog = ref({
-	show: false,
-	name: "",
-});
+export const dialogShow = ref(false);
 
 /**
  * 修改用户
@@ -28,40 +28,43 @@ export function onEdit(data: any) {
 	model.value.departmentId = data.deptId;
 	model.value.name = data.name;
 	userId.value = data.id;
-	dialog.value.show = true;
-	dialog.value.name = "修改用户";
+	dialogShow.value = true;
 }
 
 /**
  * 新增用户
  * @param departmentId
  */
-export function onAdd(departmentId: string) {
-	model.value.departmentId = departmentId;
+export function onAdd() {
+	model.value.departmentId = departmentId.value || "";
 	model.value.name = "";
 	userId.value = "";
-	dialog.value.show = true;
-	dialog.value.name = "新增用户";
+	dialogShow.value = true;
 }
 
 const service = new UserService();
 export const page = new PageService();
 export const loading = new LoadingService();
 
-const requestParam = new RequestParams(
-	{ departCode: departmentCode },
-	{ page, loading }
-);
-
 /**
  * 查询用户
  * @param query
  */
 export function refreshData(query?: any) {
+	let param = {
+		departCode: departmentCode.value,
+	};
 	if (query) {
-		requestParam.data = { ...requestParam.data, ...query };
+		param = { ...param, ...query };
 	}
-	service.query(requestParam, "DepartmentCode").subscribe((data) => {
-		dataSet.value = data;
+
+	const requestParam = new RequestParams(param, { page, loading });
+
+	service.queryUserByDeptCode(requestParam).subscribe({
+		next: (list) => (dataSet.value = list),
 	});
+}
+
+export function saveUser() {
+	return Promise.resolve(true);
 }

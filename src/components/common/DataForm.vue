@@ -11,7 +11,8 @@
 			<el-form-item class="form-action" label-width="0px">
 				<el-button type="primary" @click="emitSearch">搜索</el-button>
 				<el-button type="primary" plain @click="emitReset">重置</el-button>
-				<slot name="action">
+				<slot name="action"></slot>
+				<template v-if="showExpand">
 					<el-button v-if="!hidden" type="text" @click="onCollapse">
 						收起
 						<i class="el-icon-d-arrow-left g-rotate-x1" />
@@ -20,7 +21,7 @@
 						展开
 						<i class="el-icon-d-arrow-left g-rotate-x3" />
 					</el-button>
-				</slot>
+				</template>
 			</el-form-item>
 		</el-form>
 	</div>
@@ -56,6 +57,25 @@ const emitReset = function () {
 	form.value?.resetFields();
 	emiter("reset");
 };
+
+const showExpand = computed(() => {
+	let show = false;
+	if (!form.value) return show;
+	const items = formItems.value;
+	if (items.length < 2) return;
+	const inputItems = Array.from(items);
+	const containerWidth = formDom.value.clientWidth;
+	let computedWidth = 0;
+
+	for (const item of inputItems) {
+		computedWidth += item.clientWidth;
+		if (show) {
+			break;
+		}
+		show = computedWidth > containerWidth;
+	}
+	return show;
+});
 
 /**
  * 收起多余的表单项

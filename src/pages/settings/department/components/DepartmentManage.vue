@@ -1,24 +1,51 @@
 <template>
 	<div class="department-manage">
-		<DepartmentTree @current-change="onCurrentChange" @add="onAdd" />
+		<DepartmentTree
+			:tree-data="treeData"
+			:select-key="departmentId"
+			@current-change="onCurrentChange"
+			@add="addDepartment"
+			@edit="editDepartment"
+			@delete="onDelete"
+		/>
 		<DepartmentModify />
 	</div>
 </template>
 
 <script lang="ts" setup>
-import { ref, defineEmit } from "vue";
+import { computed, defineEmit, onMounted } from "vue";
 import DepartmentTree from "@/components/business-common/DepartmentTree.vue";
 import DepartmentModify from "./DepartmentModify.vue";
 import type { DepartmentInfo } from "@/types/department.interface";
-import { currentDepartment } from "../composables/department";
+import {
+	currentDepartment,
+	addDepartment,
+	editDepartment,
+	departmentId,
+	refreshData,
+	deleteDepartment,
+} from "../composables/department";
+import { getStore } from "@/store";
+import { ElMessageBox } from "element-plus";
+
+const emiter = defineEmit(["departemnt-change"]);
+const sotre = getStore();
+const treeData = computed(() => sotre.getters["department/departmentTreeData"]);
+
+// 第一次打开先加载一次，预防别的管理员操作
+onMounted(refreshData);
 
 function onCurrentChange(data: DepartmentInfo) {
 	currentDepartment.value = data;
+	emiter("departemnt-change");
 }
 
-function onAdd(data: DepartmentInfo) {
-	currentDepartment.value = data;
+function onDelete(data: DepartmentInfo) {
+	ElMessageBox({
+		type: "warning",
+		message: `确定要删除部门【${data.name}】吗?`,
+	})
+		.then(() => deleteDepartment(data))
+		.catch();
 }
 </script>
-
-<style lang="less" scoped></style>

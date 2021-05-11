@@ -6,21 +6,26 @@
 		<el-form-item label="用户账号" prop="userName">
 			<el-input v-model="query.userName"></el-input>
 		</el-form-item>
+		<el-form-item label="用户账号" prop="status">
+			<el-select v-model="query.status">
+				<el-option label="启用" value="ON" />
+				<el-option label="停用" value="OFF" />
+			</el-select>
+		</el-form-item>
 	</DataForm>
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref } from "vue";
+import { ref } from "vue";
 import { refreshData } from "../composables/user";
-import { departmentCode } from "../composables/department";
 
 const query = ref({
 	realName: "",
 	userName: "",
+	status: "",
 });
 
 function onSearch() {
-	const queryModel = { departmentCode: departmentCode, ...query.value };
-	refreshData(queryModel);
+	refreshData(query.value);
 }
 </script>

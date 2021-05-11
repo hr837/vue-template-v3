@@ -31,13 +31,9 @@ export class PageService extends ExtendService {
 		};
 	};
 
-	public after = (response: any) => {
-		const { code, data } = response.data;
-		if (code === 0) {
-			this.total = data.total;
-		} else {
-			this.reset();
-		}
+	public after = (data: any) => {
+		const { totalElements } = data;
+		this.total = totalElements;
 	};
 
 	public reset() {

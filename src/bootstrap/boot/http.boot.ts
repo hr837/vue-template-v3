@@ -54,17 +54,29 @@ export default function () {
 				console.error(respone.data);
 			}
 
-			ElNotification({
-				type: "error",
-				message: errorMessage,
-				title: "服务请求错误",
-			});
+			if (!errorNotifyFlag) {
+				ElNotification({
+					type: "error",
+					message: errorMessage,
+					title: "服务请求错误",
+				});
+				errorNotifyFlag = true;
+			}
+
+			if (respone.status === 401) {
+				setTimeout(() => {
+					window.location.href = "/";
+				}, 500);
+			}
 		} else {
-			ElNotification({
-				type: "error",
-				message: defaultError,
-				title: "网络连接异常",
-			});
+			if (!errorNotifyFlag) {
+				ElNotification({
+					type: "error",
+					message: defaultError,
+					title: "网络连接异常",
+				});
+				errorNotifyFlag = true;
+			}
 		}
 	};
 

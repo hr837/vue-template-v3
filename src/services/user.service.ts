@@ -18,24 +18,26 @@ export class UserService {
 	}
 
 	/**
-	 * 查询用户
+	 * 根据部门ID查询用户
 	 * @param requestParam
-	 * @param type DepartmentId:根据部门ID查询，DepartmentCode:根据部门code查询
 	 * @returns
 	 */
 	@Request({
-		server: UserController.queryUser,
+		server: UserController.findUserByDepartmentId,
 	})
-	public query(
-		requestParam: RequestParams,
-		type: "DepartmentId" | "DepartmentCode"
-	) {
-		const apiSetting = {
-			DepartmentId: "findUserByDepartment",
-			DepartmentCode: "findUserByDepartmentCode",
-		};
-		const append = apiSetting[type];
-		requestParam.options.append = { type: append };
+	public queryUserByDeptId(requestParam: RequestParams) {
+		return requestParam.request();
+	}
+
+	/**
+	 * 根据部门Code查询用户
+	 * @param requestParam
+	 * @returns
+	 */
+	@Request({
+		server: UserController.findUserByDepartmentCode,
+	})
+	public queryUserByDeptCode(requestParam: RequestParams) {
 		return requestParam.request();
 	}
 }

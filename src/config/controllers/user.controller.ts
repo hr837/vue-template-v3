@@ -14,9 +14,17 @@ export default {
 	/**
 	 * 查询部门下的用户
 	 */
-	queryUser: {
+	findUserByDepartmentId: {
 		type: RequestMethod.Get,
 		controller,
-		path: "/manage/api/user/{type}",
+		path: "/manage/api/user/findUserByDepartment",
+	},
+	/**
+	 * 查询部门下的用户
+	 */
+	findUserByDepartmentCode: {
+		type: RequestMethod.Get,
+		controller,
+		path: "/manage/api/user/findUserByDepartmentCode",
 	},
 };

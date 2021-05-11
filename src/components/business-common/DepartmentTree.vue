@@ -9,14 +9,14 @@
 			:indent="10"
 			highlight-current
 			:expand-on-click-node="false"
-			@current-change="emitCurrentChange"
+			@current-change="onCurrentChange"
 		>
 			<template #default="{ data }">
 				<div
-					class="customer-node flex-row no-warp justify-content-between align-items-center"
+					class="customer-node flex-span-1 flex-row no-warp justify-content-between align-items-center"
 				>
 					<span class="label">{{ data.name }}</span>
-					<div v-if="showEdit" class="actions">
+					<div v-if="showEdit && selectKey === data.id" class="actions">
 						<el-button
 							type="text"
 							icon="el-icon-plus"
@@ -43,42 +43,56 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineEmit, defineProps, onMounted, ref } from "vue";
-import { DepartmentService } from "@/services/department.service";
-import { RequestParams } from "@gopowerteam/http-request";
+import { computed, defineEmit, defineProps, ref, nextTick, watch } from "vue";
 
-const service = new DepartmentService();
 const tree = ref();
-const treeData = ref([]);
-
 const props = defineProps({
 	edit: {
 		type: Boolean,
+	},
+	selectKey: {
+		type: String,
+	},
+	treeData: {
+		type: Array,
+		required: true,
 	},
 });
 
 const showEdit = computed(() => props.edit !== undefined || props.edit);
 const emiter = defineEmit(["current-change", "add", "edit", "delete"]);
 
-const emitCurrentChange = (data: any) => emiter("current-change", data);
+function onCurrentChange(data: any) {
+	// 节点每次点击都会触发，所以要做判断
+	if (data.id !== props.selectKey) {
+		emiter("current-change", data);
+	}
+}
 const onAdd = (data: any) => emiter("add", data);
 const onEdit = (data: any) => emiter("edit", data);
 const onDelete = (data: any) => emiter("delete", data);
 
-onMounted(refreshData);
-
-// 刷新数据
-function refreshData() {
-	service.query(new RequestParams()).subscribe((data) => {
-		treeData.value = data;
-	});
-}
+watch(
+	computed(() => props.treeData),
+	(value: any[]) => {
+		if (!value.length) return;
+		nextTick(() => {
+			if (props.selectKey) {
+				tree.value.setCurrentKey(props.selectKey);
+			} else {
+				tree.value.setCurrentKey(value[0].id);
+			}
+			const nodeData = tree.value.getCurrentNode();
+			emiter("current-change", nodeData);
+		});
+	},
+	{ immediate: true }
+);
 </script>
 
 <style lang="less" scoped>
 .department-tree {
 	.actions {
-		margin-left: 20px;
 		.el-button--text {
 			padding: 0;
 		}

@@ -4,13 +4,21 @@
 	>
 		<slot>
 			<el-button @click="cancel">取消</el-button>
-			<el-button type="primary" @click="save">保存</el-button>
+			<el-button :loading="loading" type="primary" @click="save">
+				保存
+			</el-button>
 		</slot>
 	</div>
 </template>
 
 <script lang="ts" setup>
-import { defineEmit } from "vue";
+import { defineEmit, defineProps } from "vue";
+
+defineProps({
+	loading: {
+		type: Boolean,
+	},
+});
 
 const emiter = defineEmit(["cancel", "save"]);
 const cancel = () => emiter("cancel");

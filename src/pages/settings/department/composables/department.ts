@@ -1,65 +1,101 @@
-import { ref, reactive, computed } from "vue";
+import { ref, computed } from "vue";
 import { RequestParams } from "@gopowerteam/http-request";
-import { PageService } from "@/bootstrap/services/page.service";
 import { DepartmentService } from "@/services/department.service";
 import { LoadingService } from "@/bootstrap/services/loading.service";
-import { firstValueFrom, lastValueFrom } from "rxjs";
 import { DepartmentInfo } from "@/types/department.interface";
+import { firstValueFrom } from "rxjs";
+import { store } from "@/store";
 
 export const loading = new LoadingService();
-
-// 网络请求参数
-const requestPram = new RequestParams({}, { loading });
-const service = new DepartmentService();
 
 export const dialog = ref({
 	show: false,
 	name: "",
 });
 
-export const editId = ref("");
-
+// form model
 export const model = ref({
 	name: "",
+	status: "OFF",
 	parentId: "",
 });
 
+export const editId = ref("");
+export const service = new DepartmentService();
+
+// 刷新数据
+export function refreshData() {
+	store.dispatch("department/refreshDeptData").then(() => {
+		if (!currentDepartment.value) {
+			currentDepartment.value = store.state.department.departmentList[0];
+		}
+	});
+}
+
+// event handle
 export function addDepartment(data: DepartmentInfo) {
+	currentDepartment.value = data;
 	editId.value = "";
-	// setting value
-	model.value.name = data.name;
 	model.value.parentId = data.id;
-	// dialog
 	dialog.value.name = "添加部门";
 	dialog.value.show = true;
 }
 
+// event handle
 export function editDepartment(data: DepartmentInfo) {
-	// setting value
+	currentDepartment.value = data;
 	editId.value = data.id;
+
+	// set value
 	model.value.name = data.name;
-	model.value.parentId = data.parent || "";
-	// dialog
+	model.value.status = data.status;
+	model.value.parentId = data.id;
+
 	dialog.value.name = "修改部门";
 	dialog.value.show = true;
 }
 
+/**
+ * 保存部门
+ * @returns
+ */
 export function saveDepartment() {
-	requestPram.data = model.value;
 	if (editId.value) {
 		// modify
-		requestPram.data.id = editId.value;
-		service.modify(requestPram).subscribe((data) => {
-			console.log(data);
+		const requestPram = new RequestParams({
+			...model.value,
+			id: editId.value,
 		});
+
+		return firstValueFrom(service.modify(requestPram))
+			.then(() => {
+				refreshData();
+				return true;
+			})
+			.catch(() => false);
 	} else {
 		// add
-		service.add(requestPram).subscribe((data) => {
-			console.log(data);
-		});
+		const requestPram = new RequestParams(model.value);
+		return firstValueFrom(service.add(requestPram))
+			.then(() => {
+				refreshData();
+				return true;
+			})
+			.catch(() => false);
 	}
 }
 
+export function deleteDepartment(data: DepartmentInfo) {
+	const param = new RequestParams({ id: data.id });
+	service.delete(param).subscribe({
+		next: () => {
+			currentDepartment.value = {} as any;
+			refreshData();
+		},
+	});
+}
+
+// 当前树选中的节点
 export const currentDepartment = ref<DepartmentInfo>();
 
 export const departmentId = computed(() => currentDepartment.value?.id);

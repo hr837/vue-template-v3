@@ -15,10 +15,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from "vue";
 import { dataSet, refreshData, selectionRows, page } from "../composables/user";
-
-onMounted(refreshData);
 const onDelete = (index: number) => dataSet.value.splice(index, 1);
 const onEdit = (row: any) => {
 	return;
