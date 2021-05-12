@@ -11,6 +11,10 @@ const settingRoutes = [
 		path: "system/sys-menu",
 		component: () => import("@/pages/settings/sys-menu/SysMenu.vue"),
 	},
+	{
+		path: "system/roles",
+		component: () => import("@/pages/settings/roles/roles.vue"),
+	},
 ];
 
 export default settingRoutes;

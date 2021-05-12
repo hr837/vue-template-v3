@@ -4,9 +4,32 @@
 	&.el-button--primary {
 		&.is-plain {
 			background: @white;
-			&:hover {
+			&:hover,
+			&:focus {
 				background: @primary-s !important ;
 			}
 		}
+	}
+}
+
+.el-dialog {
+	&__header {
+		background: linear-gradient(90deg, #f7f7f7, transparent);
+	}
+}
+
+.el-form {
+	&-item {
+		&__content {
+			.el-switch {
+				top: -2px;
+			}
+		}
+	}
+}
+
+.el-table {
+	&__empty-text {
+		line-height: 200px;
 	}
 }

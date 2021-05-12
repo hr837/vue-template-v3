@@ -29,16 +29,16 @@ const props = defineProps({
 	},
 });
 
-const emiter = defineEmit(["pageChange"]);
+const emiter = defineEmit(["page-change"]);
 
 const handleSizeChange = function (size: number) {
 	props.page.pageIndex = 1;
 	props.page.pageSize = size;
-	emiter("pageChange");
+	emiter("page-change");
 };
 
 const handleCurrentChange = function (index: number) {
 	props.page.pageIndex = index;
-	emiter("pageChange");
+	emiter("page-change");
 };
 </script>

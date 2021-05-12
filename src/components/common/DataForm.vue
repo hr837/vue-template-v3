@@ -53,10 +53,10 @@ const formItems = computed(() => {
 
 const emitSearch = () => emiter("search");
 
-const emitReset = function () {
+function emitReset() {
 	form.value?.resetFields();
 	emiter("reset");
-};
+}
 
 const showExpand = computed(() => {
 	let show = false;

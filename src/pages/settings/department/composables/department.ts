@@ -86,7 +86,7 @@ export function saveDepartment() {
 }
 
 export function deleteDepartment(data: DepartmentInfo) {
-	const param = new RequestParams({ id: data.id });
+	const param = new RequestParams({ departId: data.id }, { loading });
 	service.delete(param).subscribe({
 		next: () => {
 			currentDepartment.value = {} as any;

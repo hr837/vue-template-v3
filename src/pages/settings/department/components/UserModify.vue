@@ -68,13 +68,8 @@ async function onSave() {
 	result = await saveUser();
 	loadingStatus.value = false;
 	if (result) {
-		ElMessage({
-			type: "success",
-			message: "操作成功",
-		});
+		ElMessage.success("操作成功");
 		onCancel();
 	}
 }
 </script>
-
-<style lang="less" scoped></style>

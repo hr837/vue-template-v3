@@ -1,17 +1,17 @@
 import { Request, RequestParams } from "@gopowerteam/http-request";
-import DepartmentController from "@/config/controllers/department.controller";
+import RoleController from "@/config/controllers/role.controller";
 
 /**
- * 部门管理
+ * 角色管理
  */
-export class DepartmentService {
+export class RoleService {
 	/**
-	 * 查询列表
+	 * 查询角色
 	 * @param requestParam
 	 * @returns
 	 */
 	@Request({
-		server: DepartmentController.queryDepatrment,
+		server: RoleController.findAllRole,
 		force: true,
 	})
 	public query(requestParam: RequestParams) {
@@ -19,36 +19,36 @@ export class DepartmentService {
 	}
 
 	/**
-	 * 添加部门
+	 * 添加角色
 	 * @param requestParam
 	 * @returns
 	 */
 	@Request({
-		server: DepartmentController.addDepartemnt,
+		server: RoleController.addRole,
 	})
 	public add(requestParam: RequestParams) {
 		return requestParam.request();
 	}
 
 	/**
-	 * 删除部门
+	 * 删除角色
 	 * @param requestParam
 	 * @returns
 	 */
 	@Request({
-		server: DepartmentController.deleteDepartment,
+		server: RoleController.deleteRole,
 	})
 	public delete(requestParam: RequestParams) {
 		return requestParam.request();
 	}
 
 	/**
-	 * 修改部门
+	 * 修改角色
 	 * @param requestParam
 	 * @returns
 	 */
 	@Request({
-		server: DepartmentController.modifyDepartment,
+		server: RoleController.modifyRole,
 	})
 	public modify(requestParam: RequestParams) {
 		return requestParam.request();

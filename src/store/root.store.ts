@@ -61,6 +61,10 @@ const rootStore: StoreOptions<RootState> = {
 										name: "系统菜单",
 										path: "/setting/system/sys-menu",
 									},
+									{
+										name: "角色管理",
+										path: "/setting/system/roles",
+									},
 								],
 							},
 						];

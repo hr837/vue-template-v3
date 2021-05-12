@@ -3,7 +3,7 @@
  */
 export interface DepartmentInfo {
 	level: number;
-	status: "OFF" | "ON";
+	status: EnableStatus;
 	departCode: string;
 	id: string;
 	name: string;

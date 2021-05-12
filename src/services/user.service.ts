@@ -24,6 +24,7 @@ export class UserService {
 	 */
 	@Request({
 		server: UserController.findUserByDepartmentId,
+		force: true,
 	})
 	public queryUserByDeptId(requestParam: RequestParams) {
 		return requestParam.request();
@@ -36,6 +37,7 @@ export class UserService {
 	 */
 	@Request({
 		server: UserController.findUserByDepartmentCode,
+		force: true,
 	})
 	public queryUserByDeptCode(requestParam: RequestParams) {
 		return requestParam.request();

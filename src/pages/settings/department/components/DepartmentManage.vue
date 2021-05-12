@@ -1,5 +1,5 @@
 <template>
-	<div class="department-manage">
+	<div class="department-manage" style="width: 300px">
 		<DepartmentTree
 			:tree-data="treeData"
 			:select-key="departmentId"
@@ -44,6 +44,8 @@ function onDelete(data: DepartmentInfo) {
 	ElMessageBox({
 		type: "warning",
 		message: `确定要删除部门【${data.name}】吗?`,
+		title: "删除提示",
+		showCancelButton: true,
 	})
 		.then(() => deleteDepartment(data))
 		.catch();

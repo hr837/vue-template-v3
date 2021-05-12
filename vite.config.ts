@@ -15,7 +15,7 @@ export default defineConfig({
 					esModule: true,
 					ensureStyleFile: true,
 					resolveStyle: (name) => {
-						return `element-plus/lib/theme-chalk/${name}.css`;
+						return `element-plus/lib/theme-chalk/${name}.scss`;
 					},
 					resolveComponent: (name) => {
 						return `element-plus/lib/${name}`;

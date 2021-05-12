@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, defineProps, defineEmit, customRef, watch } from "vue";
+import { ref, computed, defineProps, defineEmit, watch } from "vue";
 import { getStore } from "@/store";
 import type { DepartmentInfo } from "@/types/department.interface";
 
@@ -43,7 +43,7 @@ const setting = {
 	label: "name",
 	checkStrictly: true,
 };
-const treeData = computed(() => store.getters["department/departmentTreeData"]);
+const treeData = store.getters["department/departmentTreeData"];
 
 const getDepartmentInfo: (id: string) => DepartmentInfo =
 	store.getters["department/queryDepartmentInfo"];

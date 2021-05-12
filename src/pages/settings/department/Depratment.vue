@@ -3,7 +3,11 @@
 		<div v-loading="loadingStatus.department" class="g-container">
 			<DepartmentManage @departemnt-change="refreshUser" />
 		</div>
-		<div v-loading="loadingStatus.user" class="g-container flex-span-1">
+		<div
+			v-loading="loadingStatus.user"
+			class="g-container flex-span-1"
+			style="margin-left: 0"
+		>
 			<UserManage />
 		</div>
 	</div>
@@ -31,14 +35,3 @@ onBeforeMount(() => {
 	userLoading.status.subscribe((v) => (loadingStatus.value.user = v));
 });
 </script>
-
-<style lang="less" scoped>
-.department {
-	.g-container + .g-container {
-		margin-left: 0;
-	}
-	&-manage {
-		width: 300px;
-	}
-}
-</style>

@@ -1,3 +1,5 @@
+import { clone } from "lodash";
+
 /**
  * 公共函数
  */
@@ -23,7 +25,7 @@ export class CommonService {
 
 	/**
 	 * 生成树型结构数据
-	 * @param sourceList 包含id 和 pid 的线性数据
+	 * @param sourceList 包含id 和 pid 的一维数组
 	 * @param options 数据项配置 配置 keyName: 主键名称,parentKeyName: 父级键名称
 	 */
 	public static generateTreeData(
@@ -33,6 +35,8 @@ export class CommonService {
 		if (!sourceList) {
 			return [];
 		}
+
+		const source = clone(sourceList);
 
 		// key
 		const keyName = options ? options.keyName : "id";
@@ -46,9 +50,7 @@ export class CommonService {
 		 */
 		const fun = (node: any) => {
 			// 用找到的孩子节点去递归查找孙子节点
-			let children = sourceList.filter(
-				(x) => x[parentKeyName] === node[keyName]
-			);
+			let children = source.filter((x) => x[parentKeyName] === node[keyName]);
 			if (sortKeyName) {
 				children = children.sort((e1, e2) => e1[sortKeyName] - e2[sortKeyName]);
 			}
@@ -60,7 +62,7 @@ export class CommonService {
 			return node;
 		};
 		// 如果有排序则根据排序键进行排序
-		let rootList = CommonService.findRoot(sourceList, keyName, parentKeyName);
+		let rootList = CommonService.findRoot(source, keyName, parentKeyName);
 
 		if (sortKeyName) {
 			rootList = rootList.sort((e1, e2) => e1[sortKeyName] - e2[sortKeyName]);

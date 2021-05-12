@@ -80,10 +80,9 @@ watch(
 			if (props.selectKey) {
 				tree.value.setCurrentKey(props.selectKey);
 			} else {
-				tree.value.setCurrentKey(value[0].id);
+				const el = tree.value.$el.querySelector(".el-tree-node__content");
+				if (el) el.click();
 			}
-			const nodeData = tree.value.getCurrentNode();
-			emiter("current-change", nodeData);
 		});
 	},
 	{ immediate: true }

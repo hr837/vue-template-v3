@@ -1,6 +1,7 @@
-import { ExtendService } from "@gopowerteam/http-request";
+import { ExtendService, RequestParams } from "@gopowerteam/http-request";
 import appConfig from "@/config/app.config";
 import { Observable, Observer } from "rxjs";
+import { timeout } from "rxjs/operators";
 
 export class LoadingService extends ExtendService {
 	public status: Observable<boolean>;
@@ -19,18 +20,14 @@ export class LoadingService extends ExtendService {
 	/**
 	 * 请求前置操作
 	 */
-	public before = () => {
+	public before = (requestParam: RequestParams) => {
 		this.subscriber.next(true);
 
-		// 清除超时操作
-		if (this.timeout) {
-			clearTimeout(this.timeout);
+		if (requestParam.options.loading) {
+			this.timeout = window.setTimeout(() => {
+				this.after();
+			}, appConfig.server.timeOut);
 		}
-
-		// 超时重置状态
-		this.timeout = window.setTimeout(() => {
-			this.subscriber.next(true);
-		}, appConfig.server.timeOut);
 	};
 
 	/**

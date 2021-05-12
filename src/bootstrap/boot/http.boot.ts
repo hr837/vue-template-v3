@@ -31,9 +31,6 @@ export default function () {
 	// 添加成功拦截器
 	RequestService.interceptors.success.use((respone) => {
 		// 通讯成功的时候。通讯错误的弹出标识要重置
-		if (errorNotifyFlag) {
-			errorNotifyFlag = false;
-		}
 		return respone.data;
 	});
 
@@ -45,7 +42,6 @@ export default function () {
 	// 网络异常处理
 	RequestService.requestCatchHandle = (respone) => {
 		const defaultError = "服务通讯连接失败";
-
 		if (respone) {
 			const responseMessage = (respone.data || {}).message;
 			const errorMessage =
@@ -54,14 +50,11 @@ export default function () {
 				console.error(respone.data);
 			}
 
-			if (!errorNotifyFlag) {
-				ElNotification({
-					type: "error",
-					message: errorMessage,
-					title: "服务请求错误",
-				});
-				errorNotifyFlag = true;
-			}
+			ElNotification({
+				type: "error",
+				message: errorMessage,
+				title: "请求处理失败",
+			});
 
 			if (respone.status === 401) {
 				setTimeout(() => {
@@ -76,6 +69,9 @@ export default function () {
 					title: "网络连接异常",
 				});
 				errorNotifyFlag = true;
+				setTimeout(() => {
+					errorNotifyFlag = false;
+				}, 500);
 			}
 		}
 	};
