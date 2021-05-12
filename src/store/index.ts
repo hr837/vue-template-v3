@@ -4,6 +4,7 @@ import { App, InjectionKey } from "vue";
 import createPersistedState from "vuex-persistedstate";
 import { AllState, RootState } from "./type";
 import rootStore from "./root.store";
+
 // modules
 import departmentModule from "./modules/department.store";
 import userModule from "./modules/user.store";
@@ -30,6 +31,7 @@ export const getStore = () => useStore<AllState>(key);
  */
 export function useVuex(app: App) {
 	app.use(store, key);
+	store.dispatch("updateDictData");
 }
 
 /**

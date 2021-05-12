@@ -3,7 +3,7 @@ import { RequestParams } from "@gopowerteam/http-request";
 import { UserService } from "@/services/user.service";
 import { firstValueFrom } from "rxjs";
 import { MenuItem } from "@/types/menu.type";
-import { UserBase, UserRole } from "@/types/user.type";
+import { UserBase, UserRole } from "@/types/user.interface";
 import { store } from "@/store";
 
 /**

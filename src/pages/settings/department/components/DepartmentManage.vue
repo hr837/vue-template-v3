@@ -1,7 +1,6 @@
 <template>
-	<div class="department-manage" style="width: 300px">
+	<div class="department-manage">
 		<DepartmentTree
-			:tree-data="treeData"
 			:select-key="departmentId"
 			@current-change="onCurrentChange"
 			@add="addDepartment"
@@ -13,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineEmit, onMounted } from "vue";
+import { defineEmit, onMounted } from "vue";
 import DepartmentTree from "@/components/business-common/DepartmentTree.vue";
 import DepartmentModify from "./DepartmentModify.vue";
 import type { DepartmentInfo } from "@/types/department.interface";
@@ -25,12 +24,9 @@ import {
 	refreshData,
 	deleteDepartment,
 } from "../composables/department";
-import { getStore } from "@/store";
 import { ElMessageBox } from "element-plus";
 
 const emiter = defineEmit(["departemnt-change"]);
-const sotre = getStore();
-const treeData = computed(() => sotre.getters["department/departmentTreeData"]);
 
 // 第一次打开先加载一次，预防别的管理员操作
 onMounted(refreshData);

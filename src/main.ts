@@ -12,11 +12,12 @@ document.title = import.meta.env.VITE_APP_NAME;
 
 // 创建Vue实例
 const app = createApp(App);
+
+boot();
 usePlugins(app);
 useRouter(app);
 useVuex(app);
 useLibs(app);
+
 // 挂载根组件到app节点
 app.mount("#app");
-
-boot();

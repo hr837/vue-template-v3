@@ -1,13 +1,13 @@
 <template>
 	<DataForm :model="query" @search="onSearch">
 		<el-form-item label="用户名称" prop="realName">
-			<el-input v-model="query.realName"></el-input>
+			<el-input v-model="query.realName" clearable></el-input>
 		</el-form-item>
 		<el-form-item label="用户账号" prop="userName">
-			<el-input v-model="query.userName"></el-input>
+			<el-input v-model="query.userName" clearable></el-input>
 		</el-form-item>
 		<el-form-item label="用户账号" prop="status">
-			<el-select v-model="query.status">
+			<el-select v-model="query.status" clearable>
 				<el-option label="启用" value="ON" />
 				<el-option label="停用" value="OFF" />
 			</el-select>

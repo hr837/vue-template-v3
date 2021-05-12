@@ -1,10 +1,13 @@
 import { StoreOptions } from "vuex";
 import type { RootState } from "./type";
+import { RequestParams } from "@gopowerteam/http-request";
+const createDataDictService = () => import("@/services/data-dict.service");
 
 const rootStore: StoreOptions<RootState> = {
 	state: () => ({
 		loginTime: 0,
 		directory: "",
+		dict: {},
 	}),
 	mutations: {
 		updateLoginTime(state, timeSpan: number) {
@@ -13,8 +16,18 @@ const rootStore: StoreOptions<RootState> = {
 		updateDirectory(state, directory: string) {
 			state.directory = directory;
 		},
+		updateDictData(state, dictData: DictData) {
+			state.dict = dictData;
+		},
 	},
-	actions: {},
+	actions: {
+		async updateDictData({ commit }) {
+			const { DataDictService } = await createDataDictService();
+			new DataDictService().getAll(new RequestParams()).subscribe({
+				next: (data) => commit("updateDictData", data),
+			});
+		},
+	},
 	getters: {
 		getMenus() {
 			return (type: string) => {

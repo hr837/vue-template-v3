@@ -3,10 +3,13 @@
 		<el-table
 			ref="table"
 			:data="data"
+			style="width: 100%"
 			border
 			header-row-class-name="data-box_header"
+			:highlight-current-row="showHightRow"
 			@select="emitSelection"
 			@select-all="emitSelection"
+			@current-change="onCurrentRowChange"
 		>
 			<el-table-column
 				v-if="selection"
@@ -44,13 +47,16 @@ const props = defineProps({
 	selectionRows: {
 		type: Array,
 	},
+	currentRow: {
+		type: Object,
+	},
 });
 
-const emiter = defineEmit(["update:selectionRows"]);
+const emitter = defineEmit(["update:selectionRows", "update:currentRow"]);
 const selection = computed(() => !props.hiddenSelection);
 
 const emitSelection = (rows: any[], row: any) => {
-	emiter("update:selectionRows", rows);
+	emitter("update:selectionRows", rows);
 };
 
 const table = ref();
@@ -60,7 +66,7 @@ watch(
 	(rows) => {
 		if (!rows) return;
 		const filterRows = rows.filter((row) => props.selectionRows?.includes(row));
-		emiter("update:selectionRows", filterRows);
+		emitter("update:selectionRows", filterRows);
 	},
 	{ deep: true }
 );
@@ -74,6 +80,23 @@ watch(
 			const checkFlag = rows.includes(row);
 			table.value.toggleRowSelection(row, checkFlag);
 		});
+	},
+	{ immediate: true }
+);
+
+const showHightRow = computed(() => !!props.currentRow);
+
+// 点击某行
+function onCurrentRowChange(newRow: any) {
+	emitter("update:currentRow", newRow);
+}
+
+// 传入的选中行变化之后设置
+watch(
+	() => props.currentRow,
+	(val) => {
+		if (!table.value) return;
+		table.value.setCurrentRow(val);
 	},
 	{ immediate: true }
 );

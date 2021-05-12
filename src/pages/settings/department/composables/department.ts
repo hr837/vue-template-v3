@@ -45,11 +45,10 @@ export function addDepartment(data: DepartmentInfo) {
 export function editDepartment(data: DepartmentInfo) {
 	currentDepartment.value = data;
 	editId.value = data.id;
-
 	// set value
 	model.value.name = data.name;
 	model.value.status = data.status;
-	model.value.parentId = data.id;
+	model.value.parentId = data.parentId || "";
 
 	dialog.value.name = "修改部门";
 	dialog.value.show = true;
@@ -64,7 +63,7 @@ export function saveDepartment() {
 		// modify
 		const requestPram = new RequestParams({
 			...model.value,
-			id: editId.value,
+			departId: editId.value,
 		});
 
 		return firstValueFrom(service.modify(requestPram))

@@ -2,21 +2,24 @@ import { LoadingService } from "@/bootstrap/services/loading.service";
 import { PageService } from "@/bootstrap/services/page.service";
 import { UserService } from "@/services/user.service";
 import { RequestParams } from "@gopowerteam/http-request";
+import type { UserInfo } from "@/types/user.interface";
+import { firstValueFrom } from "rxjs";
 import { ref } from "vue";
-import { departmentCode, departmentId } from "./department";
+import { departmentCode, departmentId, editId } from "./department";
 
 export const dataSet = ref([]);
 export const selectionRows = ref([]);
 
-export const model = ref({
-	name: "",
-	departmentId: "",
-	status: "NO",
+export const model = ref<UserInfo>({
+	realName: "",
+	username: "",
+	departId: "",
+	status: "",
 	phone: "",
 	email: "",
+	isManage: "",
+	userId: "",
 });
-
-export const userId = ref("");
 
 export const dialogShow = ref(false);
 
@@ -25,9 +28,14 @@ export const dialogShow = ref(false);
  * @param data
  */
 export function onEdit(data: any) {
-	model.value.departmentId = data.deptId;
-	model.value.name = data.name;
-	userId.value = data.id;
+	model.value.departId = data.departId;
+	model.value.username = data.username;
+	model.value.realName = data.realName;
+	model.value.status = data.status;
+	model.value.phone = data.phone;
+	model.value.email = data.email;
+	model.value.isManage = data.isManage;
+	model.value.userId = data.userId;
 	dialogShow.value = true;
 }
 
@@ -36,9 +44,8 @@ export function onEdit(data: any) {
  * @param departmentId
  */
 export function onAdd() {
-	model.value.departmentId = departmentId.value || "";
-	model.value.name = "";
-	userId.value = "";
+	model.value.departId = departmentId.value || "";
+	model.value.userId = "";
 	dialogShow.value = true;
 }
 
@@ -66,5 +73,30 @@ export function refreshData(query?: any) {
 }
 
 export function saveUser() {
-	return Promise.resolve(true);
+	let result = null;
+
+	if (model.value.userId) {
+		const param = new RequestParams(model.value);
+		result = firstValueFrom(service.modify(param));
+	} else {
+		const param = new RequestParams(model.value);
+		result = firstValueFrom(service.add(param));
+	}
+
+	return result
+		.then(() => {
+			refreshData();
+			return true;
+		})
+		.catch(() => false);
+}
+
+export function resetPwd(row: UserInfo) {
+	const param = new RequestParams({ userIds: [row.userId] });
+	return firstValueFrom(service.resetPassword(param))
+		.then(() => {
+			refreshData();
+			return true;
+		})
+		.catch(() => false);
 }

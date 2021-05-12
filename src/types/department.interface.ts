@@ -7,5 +7,5 @@ export interface DepartmentInfo {
 	departCode: string;
 	id: string;
 	name: string;
-	parent?: string;
+	parentId?: string;
 }

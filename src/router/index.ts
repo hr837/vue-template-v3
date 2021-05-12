@@ -4,9 +4,8 @@ import RoutesConfig from "./routes";
 import useGuards from "./router.guard";
 
 const router = createRouter({
-	// 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
 	history: createWebHistory(),
-	routes: RoutesConfig, // `routes: routes` 的缩写
+	routes: RoutesConfig,
 });
 
 useGuards(router);

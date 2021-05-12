@@ -1,5 +1,5 @@
 import { DepartmentInfo } from "@/types/department.interface";
-import { UserBase, UserRole } from "@/types/user.type";
+import { UserBase, UserRole } from "@/types/user.interface";
 
 /**
  * root state
@@ -10,6 +10,7 @@ export interface RootState {
 	 * 当前路由 目录名称
 	 */
 	directory: string;
+	dict: DictData;
 }
 
 export interface UserState extends UserBase, UserRole {

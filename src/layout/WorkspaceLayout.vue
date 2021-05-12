@@ -3,7 +3,7 @@
 		<el-header height="65px" class="flex align-items-center">
 			<Logo />
 			<MenuCollapse v-model="collapse" />
-			<TopMenu class="flex-span-1" />
+			<TopMenu class="flex-auto" />
 			<UserAction />
 		</el-header>
 		<el-container class="flex-auto g-ov-h">
@@ -11,7 +11,7 @@
 				<LeftMenu :collapse="collapse" />
 			</el-aside>
 			<el-main>
-				<router-view id="container" class="page"></router-view>
+				<router-view class="page"></router-view>
 			</el-main>
 		</el-container>
 	</el-container>
@@ -60,7 +60,7 @@ watch(
 
 			min-height: calc(100vh - @header-h);
 			// height: 100%;
-			overflow: auto;
+			overflow-y: auto;
 		}
 		&::-webkit-scrollbar {
 			width: 0.5rem;

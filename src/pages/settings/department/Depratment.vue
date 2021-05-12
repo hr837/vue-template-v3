@@ -5,7 +5,7 @@
 		</div>
 		<div
 			v-loading="loadingStatus.user"
-			class="g-container flex-span-1"
+			class="g-container flex-auto"
 			style="margin-left: 0"
 		>
 			<UserManage />

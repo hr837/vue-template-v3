@@ -1,17 +1,14 @@
 <template>
-	<el-dialog v-model="dialog" class="role_modify" :title="title">
+	<el-dialog v-model="dialog" :title="title">
 		<el-form ref="elFrom" :model="model" :rules="rules" label-width="100px">
 			<el-form-item label="角色名称" prop="name">
 				<el-input v-model="model.name" />
 			</el-form-item>
 			<el-form-item label="是否启用" prop="status">
-				<el-switch
-					v-model="model.status"
-					active-text="启用"
-					inactive-text="停用"
-					active-value="ON"
-					inactive-value="OFF"
-				/>
+				<DictSwitch v-model="model.status" dict-name="BaseStatus" />
+			</el-form-item>
+			<el-form-item label="角色描述" prop="description">
+				<el-input v-model="model.description" type="textarea" />
 			</el-form-item>
 		</el-form>
 		<DialogAction :loading="loadingStatus" @cancel="onCancel" @save="onSave" />
@@ -21,16 +18,11 @@
 <script lang="ts" setup>
 import { ElMessage } from "element-plus";
 import { computed, onMounted, readonly, ref } from "vue";
-import {
-	dialog,
-	editId,
-	model,
-	saveRole,
-	saveloading,
-} from "../composables/roles";
+import { dialog, model, saveRole, saveloading } from "../composables/roles";
+import DictSwitch from "@/components/business-common/DictSwitch.vue";
 
 const elFrom = ref<ElFrom>();
-const title = computed(() => (editId.value ? "编辑角色" : "新增角色"));
+const title = computed(() => (model.value.id ? "编辑角色" : "新增角色"));
 const rules = readonly({
 	name: { required: true, message: "请输入角色名称" },
 });
@@ -45,15 +37,16 @@ function onCancel() {
 	dialog.value = false;
 }
 
-function onSave() {
-	elFrom.value?.validate((v) => {
-		if (!v) return;
-		saveRole().subscribe({
-			next: () => {
-				ElMessage.success("操作成功");
-				onCancel();
-			},
-		});
-	});
+async function onSave() {
+	let result = await elFrom.value
+		?.validate()
+		.then(() => true)
+		.catch(() => false);
+	if (!result) return;
+	result = await saveRole();
+	if (result) {
+		ElMessage.success("操作成功");
+		onCancel();
+	}
 }
 </script>

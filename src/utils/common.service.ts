@@ -44,6 +44,19 @@ export class CommonService {
 		const parentKeyName = options ? options.parentKeyName : "pid";
 		// sort
 		const sortKeyName = options ? options.sortKey : undefined;
+
+		const checkError = sourceList.some((x) => {
+			if (x[keyName] === x[parentKeyName]) {
+				console.error("数据异常，请检查父子关系", x);
+				return true;
+			} else {
+				return false;
+			}
+		});
+		if (checkError) {
+			return [];
+		}
+
 		/**
 		 * 用当前节点去生成他的children节点
 		 * @param any node

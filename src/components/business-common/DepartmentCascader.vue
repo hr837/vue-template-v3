@@ -1,5 +1,6 @@
 <template>
 	<el-cascader
+		ref="cascader"
 		v-model="tmpValue"
 		:options="treeData"
 		:props="setting"
@@ -12,9 +13,10 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, defineProps, defineEmit, watch } from "vue";
+import { ref, computed, defineProps, defineEmit, watch, onMounted } from "vue";
 import { getStore } from "@/store";
 import type { DepartmentInfo } from "@/types/department.interface";
+import { CommonService } from "@/utils/common.service";
 
 const props = defineProps({
 	disabled: {
@@ -26,9 +28,19 @@ const props = defineProps({
 	},
 });
 
-const emiter = defineEmit(["update:modelValue", "select-change"]);
+const store = getStore();
+const departmentList = store.state.department.departmentList;
+const treeData = ref<any[]>([]);
 
 const tmpValue = ref("");
+const cascader = ref();
+
+onMounted(() => {
+	treeData.value = CommonService.generateTreeData(departmentList, {
+		keyName: "id",
+		parentKeyName: "parentId",
+	});
+});
 
 watch(
 	() => props.modelValue,
@@ -36,14 +48,12 @@ watch(
 	{ immediate: true }
 );
 
-const store = getStore();
 const setting = {
 	emitPath: false,
 	value: "id",
 	label: "name",
 	checkStrictly: true,
 };
-const treeData = store.getters["department/departmentTreeData"];
 
 const getDepartmentInfo: (id: string) => DepartmentInfo =
 	store.getters["department/queryDepartmentInfo"];
@@ -51,6 +61,8 @@ const getDepartmentInfo: (id: string) => DepartmentInfo =
 function onChange(value: string) {
 	tmpValue.value = value;
 }
+
+const emiter = defineEmit(["update:modelValue", "select-change"]);
 
 function onVisableChange(visabled: boolean) {
 	if (visabled) return;

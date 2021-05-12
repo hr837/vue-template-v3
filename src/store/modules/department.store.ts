@@ -1,12 +1,12 @@
 import { DepartmentInfo } from "@/types/department.interface";
 import { Module } from "vuex";
 import { DepartmentState, RootState } from "../type";
-import { DepartmentService } from "@/services/department.service";
+
 import { RequestParams } from "@gopowerteam/http-request";
 import { firstValueFrom } from "rxjs";
 import { CommonService } from "@/utils/common.service";
 
-const service = new DepartmentService();
+const createDepartmentService = () => import("@/services/department.service");
 
 const departmentModule: Module<DepartmentState, RootState> = {
 	namespaced: true,
@@ -23,13 +23,15 @@ const departmentModule: Module<DepartmentState, RootState> = {
 	}),
 	mutations: {
 		updateDepartmentList(state, list: DepartmentInfo[]) {
+			console.log("mutation");
 			state.departmentList = list;
 		},
 	},
 	actions: {
-		refreshDeptData({ commit }) {
+		async refreshDeptData({ commit }) {
+			const { DepartmentService } = await createDepartmentService();
+			const service = new DepartmentService();
 			return firstValueFrom(service.query(new RequestParams())).then((data) => {
-				commit("updateDepartmentList", data);
 				return true;
 			});
 		},
@@ -46,13 +48,13 @@ const departmentModule: Module<DepartmentState, RootState> = {
 			};
 		},
 		/**
-		 * 根据ID查询部门信息
+		 * 根据ID查询父级部门信息
 		 * @param state
 		 * @returns
 		 */
-		queryParmentDepartment(state) {
+		queryParentDepartment(state) {
 			return (departentId: string) => {
-				return state.departmentList.find((x) => x.parent === departentId);
+				return state.departmentList.find((x) => x.parentId === departentId);
 			};
 		},
 		/**

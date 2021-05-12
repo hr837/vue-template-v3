@@ -2,11 +2,11 @@
 	<div class="component pagination">
 		<el-pagination
 			prev-text="上一页"
-			:current-page="page.pageIndex"
+			:current-page="page.pageIndex.value"
 			:page-sizes="page.pageSizeOpts"
-			:page-size="page.pageSize"
+			:page-size="page.pageSize.value"
 			:layout="layout"
-			:total="page.total"
+			:total="page.total.value"
 			next-text="下一页"
 			@size-change="handleSizeChange"
 			@current-change="handleCurrentChange"
@@ -32,13 +32,13 @@ const props = defineProps({
 const emiter = defineEmit(["page-change"]);
 
 const handleSizeChange = function (size: number) {
-	props.page.pageIndex = 1;
-	props.page.pageSize = size;
+	props.page.pageIndex.value = 0;
+	props.page.pageSize.value = size;
 	emiter("page-change");
 };
 
 const handleCurrentChange = function (index: number) {
-	props.page.pageIndex = index;
+	props.page.pageIndex.value = index;
 	emiter("page-change");
 };
 </script>

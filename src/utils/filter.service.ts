@@ -1,19 +1,14 @@
+import { DictService } from "./dict.service";
+
 export class FilterService {
 	/**
-	 * 转换状态
-	 * @param status
-	 * @returns
+	 * 转换字典数据
+	 * @param 字典code
 	 */
-	convertState(status: string) {
-		let value = "";
-		switch (status) {
-			case "OFF":
-				value = "禁用";
-				break;
-			case "ON":
-				value = "启用";
-				break;
+	dictConvert(code: string, key: string) {
+		if (!code || !key) {
+			return "";
 		}
-		return value;
+		return DictService.getDictName(code, key);
 	}
 }

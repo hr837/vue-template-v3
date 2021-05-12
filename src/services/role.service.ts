@@ -11,10 +11,23 @@ export class RoleService {
 	 * @returns
 	 */
 	@Request({
-		server: RoleController.findAllRole,
+		server: RoleController.findRoles,
 		force: true,
 	})
 	public query(requestParam: RequestParams) {
+		return requestParam.request();
+	}
+
+	/**
+	 * 获取所有角色
+	 * @param requestParam
+	 * @returns
+	 */
+	@Request({
+		server: RoleController.getAll,
+		force: true,
+	})
+	public getAll(requestParam: RequestParams) {
 		return requestParam.request();
 	}
 
@@ -51,6 +64,18 @@ export class RoleService {
 		server: RoleController.modifyRole,
 	})
 	public modify(requestParam: RequestParams) {
+		return requestParam.request();
+	}
+
+	/**
+	 * 角色分配给用户
+	 * @param requestParam
+	 * @returns
+	 */
+	@Request({
+		server: RoleController.distrbuteRole,
+	})
+	public distrbuteRole(requestParam: RequestParams) {
 		return requestParam.request();
 	}
 }

@@ -4,12 +4,20 @@ const controller = "role-controller";
 
 export default {
 	/**
-	 * 查询角色
+	 * 获取全部角色
 	 */
-	findAllRole: {
+	getAll: {
 		type: RequestMethod.Get,
 		controller,
-		path: "/manage/api/role/getAllRoles/",
+		path: "/manage/api/role/getAllRoles",
+	},
+	/**
+	 * 查询角色
+	 */
+	findRoles: {
+		type: RequestMethod.Get,
+		controller,
+		path: "/manage/api/role/findRoles",
 	},
 	/**
 	 * 添加角色
@@ -42,5 +50,13 @@ export default {
 		type: RequestMethod.Get,
 		controller,
 		path: "/manage/api/role/modifyRole",
+	},
+	/**
+	 * 给用户分配角色
+	 */
+	distrbuteRole: {
+		type: RequestMethod.Post,
+		controller,
+		path: "/manage/api/role/distributeRole",
 	},
 };

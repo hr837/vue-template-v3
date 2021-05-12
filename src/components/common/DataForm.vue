@@ -15,11 +15,11 @@
 				<template v-if="showExpand">
 					<el-button v-if="!hidden" type="text" @click="onCollapse">
 						收起
-						<i class="el-icon-d-arrow-left g-rotate-x1" />
+						<i class="el-icon-d-arrow-left g-rotate-x1"></i>
 					</el-button>
 					<el-button v-else type="text" @click="onExpand">
 						展开
-						<i class="el-icon-d-arrow-left g-rotate-x3" />
+						<i class="el-icon-d-arrow-left g-rotate-x3"></i>
 					</el-button>
 				</template>
 			</el-form-item>
@@ -42,13 +42,12 @@ const emiter = defineEmit(["search", "reset"]);
 const form = ref<ElFrom>();
 const hidden = ref(false);
 
-const formDom = computed<Element>(() => {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	return (form.value as any).$el;
+const formDom = computed(() => {
+	return form.value?.$el;
 });
 
 const formItems = computed(() => {
-	return formDom.value.children;
+	return formDom.value?.children;
 });
 
 const emitSearch = () => emiter("search");
@@ -60,8 +59,9 @@ function emitReset() {
 
 const showExpand = computed(() => {
 	let show = false;
-	if (!form.value) return show;
+	if (!formDom.value) return show;
 	const items = formItems.value;
+	if (!items) return show;
 	if (items.length < 2) return;
 	const inputItems = Array.from(items);
 	const containerWidth = formDom.value.clientWidth;
@@ -81,6 +81,8 @@ const showExpand = computed(() => {
  * 收起多余的表单项
  */
 const onCollapse = function () {
+	if (!formDom.value) return;
+	if (!formItems.value) return;
 	const items = formItems.value;
 	if (items.length < 2) return;
 	const inputItems = Array.from(items);
@@ -106,6 +108,7 @@ const onCollapse = function () {
  * 展开所有表单项
  */
 const onExpand = function () {
+	if (!formItems.value) return;
 	Array.from(formItems.value).forEach((item) =>
 		item.classList.remove("hidden")
 	);

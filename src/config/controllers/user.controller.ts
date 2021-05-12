@@ -27,4 +27,28 @@ export default {
 		controller,
 		path: "/manage/api/user/findUserByDepartmentCode",
 	},
+	/**
+	 * 添加用户
+	 */
+	addUser: {
+		type: RequestMethod.Post,
+		controller,
+		path: "/manage/api/user/addUser",
+	},
+	/**
+	 * 编辑用户
+	 */
+	modifyUser: {
+		type: RequestMethod.Put,
+		controller,
+		path: "/manage/api/user/modifyUser",
+	},
+	/**
+	 * 重置密码
+	 */
+	resetPassword: {
+		type: RequestMethod.Put,
+		controller,
+		path: "/manage/api/user/resetPassword",
+	},
 };
