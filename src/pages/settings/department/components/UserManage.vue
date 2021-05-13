@@ -15,11 +15,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
 import UserQueryForm from "./UserQueryForm.vue";
 import UserModify from "./UserModify.vue";
 import UserList from "./UserList.vue";
 import SelectRole from "./SelectRole.vue";
-import { onAdd, refreshData } from "../composables/user";
-import type { UserRole } from "@/types/user.interface";
+import { onAdd } from "../composables/user";
 </script>

@@ -1,7 +1,6 @@
 import { ExtendService, RequestParams } from "@gopowerteam/http-request";
 import appConfig from "@/config/app.config";
 import { Observable, Observer } from "rxjs";
-import { timeout } from "rxjs/operators";
 
 export class LoadingService extends ExtendService {
 	public status: Observable<boolean>;

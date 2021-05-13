@@ -26,16 +26,14 @@ const title = computed(() => (model.value.id ? "编辑角色" : "新增角色"))
 const rules = readonly({
 	name: { required: true, message: "请输入角色名称" },
 });
-const loadingStatus = ref(false);
-
-onMounted(() => {
-	saveloading.status.subscribe((v) => (loadingStatus.value = v));
-});
 
 function onCancel() {
 	elFrom.value?.resetFields();
 	dialog.value = false;
 }
+
+const loadingStatus = ref(false);
+onMounted(() => saveloading.status.subscribe((v) => (loadingStatus.value = v)));
 
 async function onSave() {
 	let result = await elFrom.value

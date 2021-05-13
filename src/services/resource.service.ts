@@ -1,5 +1,7 @@
 import { Request, RequestParams } from "@gopowerteam/http-request";
 import ResourceController from "@/config/controllers/resource.controller";
+import { Observable } from "rxjs";
+import { ResourceInfo } from "@/types/resource.interface";
 
 export class ResourceService {
 	/**
@@ -9,7 +11,7 @@ export class ResourceService {
 	@Request({
 		server: ResourceController.findAllResource,
 	})
-	public getAll(requestParam: RequestParams) {
+	public getAll(requestParam: RequestParams): Observable<ResourceInfo[]> {
 		return requestParam.request();
 	}
 

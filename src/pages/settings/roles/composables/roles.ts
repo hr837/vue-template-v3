@@ -43,7 +43,7 @@ export function editRole(data: RoleInfo) {
 }
 
 export function saveRole() {
-	let result = null;
+	let result: Promise<any>;
 	const data: any = {
 		...model.value,
 	};
