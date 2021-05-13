@@ -5,11 +5,11 @@ export class PageService extends ExtendService {
 	public default = {
 		pageSize: 20,
 		pageIndex: 0,
-		total: 0,
+		total: 1,
 		pageSizeOpts: [20, 50, 100, 200],
 	};
 	public pageSize = ref(0);
-	public pageIndex = ref(0);
+	public pageIndex = ref(1);
 	public total = ref(0);
 	public pageSizeOpts: number[];
 
@@ -29,7 +29,7 @@ export class PageService extends ExtendService {
 		params.setData({
 			...data,
 			size: this.pageSize.value,
-			page: this.pageIndex.value,
+			page: this.pageIndex.value - 1,
 		});
 	};
 

@@ -5,6 +5,7 @@
 			:data="data"
 			style="width: 100%"
 			border
+			:height="height"
 			header-row-class-name="data-box_header"
 			:highlight-current-row="showHightRow"
 			@select="emitSelection"
@@ -49,6 +50,9 @@ const props = defineProps({
 	},
 	currentRow: {
 		type: Object,
+	},
+	height: {
+		type: String,
 	},
 });
 

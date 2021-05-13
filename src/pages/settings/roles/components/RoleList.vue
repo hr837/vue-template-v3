@@ -1,7 +1,11 @@
 <template>
 	<DataBox :data="dataSet">
 		<el-table-column label="角色名称" prop="name"></el-table-column>
-		<el-table-column label="角色描述" prop="description"></el-table-column>
+		<el-table-column
+			label="角色描述"
+			prop="description"
+			show-overflow-tooltip
+		></el-table-column>
 		<el-table-column
 			label="状态"
 			prop="status"
@@ -9,7 +13,7 @@
 		></el-table-column>
 		<el-table-column label="创建人" prop=""></el-table-column>
 		<el-table-column label="创建时间" prop=""></el-table-column>
-		<el-table-column label="操作">
+		<el-table-column label="操作" width="300" fixed="right">
 			<template #default="{ row }">
 				<el-button type="text" @click="editRole(row)">修改角色</el-button>
 				<el-button type="text" @click="pickResource(row)">模块权限</el-button>

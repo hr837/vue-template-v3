@@ -32,7 +32,7 @@ const props = defineProps({
 const emiter = defineEmit(["page-change"]);
 
 const handleSizeChange = function (size: number) {
-	props.page.pageIndex.value = 0;
+	props.page.pageIndex.value = 1;
 	props.page.pageSize.value = size;
 	emiter("page-change");
 };

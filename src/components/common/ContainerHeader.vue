@@ -2,10 +2,10 @@
 	<div
 		class="component container-title flex-row justify-content-between align-items-center"
 	>
-		<div class="flex align-items-center">
+		<div class="flex align-items-center container-title_info">
 			<div v-if="showIcon">
 				<slot name="icon">
-					<i class="el-icon-s-operation"></i>
+					<i class="el-icon-s-operation g-c-primary"></i>
 				</slot>
 			</div>
 
@@ -30,7 +30,18 @@ const props = defineProps({
 	},
 });
 
-const showIcon = computed(
-	() => props.hiddenIcon === undefined || props.hiddenIcon
-);
+const showIcon = computed(() => !props.hiddenIcon);
 </script>
+
+<style lang="less" scoped>
+.container-title {
+	height: 40px;
+	background-color: #dadada;
+	padding: 0 5px;
+	border-radius: 4px;
+	&_info {
+		font-size: 16px;
+		font-weight: bold;
+	}
+}
+</style>
