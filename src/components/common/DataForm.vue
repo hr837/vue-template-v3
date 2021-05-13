@@ -39,14 +39,16 @@ defineProps({
 
 const emiter = defineEmit(["search", "reset"]);
 
-const form = ref<ElFrom>();
+const form = ref();
 const hidden = ref(false);
 
 const formDom = computed(() => {
-	return form.value?.$el;
+	if (!form.value) return undefined;
+	return form.value.$el;
 });
 
 const formItems = computed(() => {
+	if (!formDom.value) return undefined;
 	return formDom.value?.children;
 });
 
@@ -63,7 +65,7 @@ const showExpand = computed(() => {
 	const items = formItems.value;
 	if (!items) return show;
 	if (items.length < 2) return;
-	const inputItems = Array.from(items);
+	const inputItems: HTMLElement[] = Array.from(items);
 	const containerWidth = formDom.value.clientWidth;
 	let computedWidth = 0;
 
@@ -85,7 +87,7 @@ const onCollapse = function () {
 	if (!formItems.value) return;
 	const items = formItems.value;
 	if (items.length < 2) return;
-	const inputItems = Array.from(items);
+	const inputItems: HTMLElement[] = Array.from(items);
 	// 去除操作按钮
 	inputItems.pop();
 	// // 按钮宽度
@@ -109,7 +111,7 @@ const onCollapse = function () {
  */
 const onExpand = function () {
 	if (!formItems.value) return;
-	Array.from(formItems.value).forEach((item) =>
+	Array.from(formItems.value).forEach((item: any) =>
 		item.classList.remove("hidden")
 	);
 	hidden.value = !hidden.value;

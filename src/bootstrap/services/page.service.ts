@@ -25,11 +25,12 @@ export class PageService extends ExtendService {
 	}
 
 	public before = (params: RequestParams) => {
-		params.data = {
-			...params.data,
+		const data = params.getData();
+		params.setData({
+			...data,
 			size: this.pageSize.value,
 			page: this.pageIndex.value,
-		};
+		});
 	};
 
 	public after = (data: any) => {

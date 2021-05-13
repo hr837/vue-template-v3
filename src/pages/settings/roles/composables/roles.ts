@@ -3,6 +3,7 @@ import { PageService } from "@/bootstrap/services/page.service";
 import { RoleService } from "@/services/manage-service/role.service";
 import type { RoleInfo } from "@/types/role.interface";
 import { RequestParams } from "@gopowerteam/http-request";
+import { ElMessage } from "element-plus";
 import { firstValueFrom } from "rxjs";
 import { reactive, ref } from "vue";
 
@@ -23,7 +24,9 @@ export const page = new PageService();
 
 export function refreshData(query?: any) {
 	service
-		.query(new RequestParams(query || {}, { loading: refreshLoading, page }))
+		.findAllRole(
+			new RequestParams(query || {}, { loading: refreshLoading, page })
+		)
 		.subscribe({
 			next: (data) => (dataSet.value = data),
 		});
@@ -42,6 +45,21 @@ export function editRole(data: RoleInfo) {
 	dialog.value = true;
 }
 
+/**
+ * 复制角色
+ * @param roleId
+ * @returns
+ */
+export function copyRole(roleId: string) {
+	const param = new RequestParams({ roleId });
+	return firstValueFrom(service.copyRole(param))
+		.then(() => {
+			refreshData();
+			return true;
+		})
+		.catch(() => false);
+}
+
 export function saveRole() {
 	let result: Promise<any>;
 	const data: any = {
@@ -51,11 +69,11 @@ export function saveRole() {
 	if (model.value.id) {
 		// edit
 		const param = new RequestParams(data, { loading: saveloading });
-		result = firstValueFrom(service.modify(param));
+		result = firstValueFrom(service.modifyRole(param));
 	} else {
 		// add
 		const param = new RequestParams(data, { loading: saveloading });
-		result = firstValueFrom(service.add(param));
+		result = firstValueFrom(service.addRole(param));
 	}
 
 	return result
@@ -70,7 +88,7 @@ export function deleteRole(data: RoleInfo) {
 	const param = new RequestParams({
 		roleId: data.id,
 	});
-	service.delete(param).subscribe({
+	service.deleteRole(param).subscribe({
 		next: () => {
 			page.reset();
 			refreshData();

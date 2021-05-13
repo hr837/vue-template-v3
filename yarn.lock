@@ -200,20 +200,21 @@
   resolved "https://registry.nlark.com/@gopowerteam/base-style.css/download/@gopowerteam/base-style.css-0.1.3.tgz#4227b48a5556c48e99a384f15e6b512366a5c2cc"
   integrity sha1-Qie0ilVWxI6Zo4TxXmtRI2alwsw=
 
-"@gopowerteam/http-request-cli@0.1.9":
-  version "0.1.9"
-  resolved "https://registry.nlark.com/@gopowerteam/http-request-cli/download/@gopowerteam/http-request-cli-0.1.9.tgz#e09695b070d33cf4c4f7117d72270252beebecbb"
-  integrity sha1-4JaVsHDTPPTE9xF9cicCUr7r7Ls=
+"@gopowerteam/http-request-cli@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.nlark.com/@gopowerteam/http-request-cli/download/@gopowerteam/http-request-cli-0.2.0.tgz#9d52472936cadcc8cf37d8806579d3308c9a254d"
+  integrity sha1-nVJHKTbK3MjPN9iAZXnTMIyaJU0=
   dependencies:
+    chalk "^4.1.1"
     commander "^7.2.0"
     handlebars "^4.7.7"
     mkdirp "^1.0.4"
     node-fetch "^2.6.1"
 
-"@gopowerteam/http-request@0.1.5":
-  version "0.1.5"
-  resolved "https://registry.nlark.com/@gopowerteam/http-request/download/@gopowerteam/http-request-0.1.5.tgz#83a915d21ef5b6371962bd5c0bb7c08ed8f3d6fe"
-  integrity sha1-g6kV0h71tjcZYr1cC7fAjtjz1v4=
+"@gopowerteam/http-request@0.1.6":
+  version "0.1.6"
+  resolved "https://registry.nlark.com/@gopowerteam/http-request/download/@gopowerteam/http-request-0.1.6.tgz#f803df0c18c34c17c24d7fd951a897acae4bd5b2"
+  integrity sha1-+APfDBjDTBfCTX/ZUaiXrK5L1bI=
   dependencies:
     axios "^0.21.1"
     class-transformer "^0.4.0"

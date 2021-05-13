@@ -6,13 +6,17 @@ const tokenKey = "Authorization";
 export class TokenService extends ExtendService {
 	public before = (params: RequestParams) => {
 		const token = window.localStorage.getItem("token");
-		const header = params.options.header || {};
+		const options = params.getOptions();
+		const header = options.header || {};
 		if (token) {
 			header[tokenKey] = token;
 		} else {
 			delete header[tokenKey];
 		}
-		params.options.header = header;
+		params.setOptions({
+			...options,
+			header,
+		});
 	};
 
 	public after = (response: AxiosResponse, _requestParams: any) => {

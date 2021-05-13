@@ -19,14 +19,14 @@ export function setRole(_roleId: string, _userIds: string[]) {
 const service = new RoleService();
 
 export function refreshData() {
-	service.getAll(new RequestParams()).subscribe({
+	service.getAllRoles(new RequestParams()).subscribe({
 		next: (data) => (dataSet.value = data),
 	});
 }
 
 export const loading = new LoadingService();
 export function save(_roleId: string) {
-	return service.distrbuteRole(
+	return service.distributeRole(
 		new RequestParams(
 			{
 				roleId: _roleId,

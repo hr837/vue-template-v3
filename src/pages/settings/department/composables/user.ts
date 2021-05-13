@@ -67,20 +67,20 @@ export function refreshData(query?: any) {
 
 	const requestParam = new RequestParams(param, { page, loading });
 
-	service.queryUserByDeptCode(requestParam).subscribe({
+	service.findUserByDepartmentCode(requestParam).subscribe({
 		next: (list) => (dataSet.value = list),
 	});
 }
 
 export function saveUser() {
-	let result = null;
+	let result: Promise<boolean>;
 
 	if (model.value.userId) {
 		const param = new RequestParams(model.value);
-		result = firstValueFrom(service.modify(param));
+		result = firstValueFrom(service.modifyUser(param));
 	} else {
 		const param = new RequestParams(model.value);
-		result = firstValueFrom(service.add(param));
+		result = firstValueFrom(service.addUser(param));
 	}
 
 	return result

@@ -15,8 +15,8 @@ watch(
 		if (!value) {
 			WaterMark.load({ watermark_txt: " " });
 		} else {
-			const { departmentName, userName, realName } = store.state.user;
-			const markText = `${departmentName} ${userName} ${realName}`;
+			const { departmentName, username, realName } = store.state.user;
+			const markText = `${departmentName} ${username} ${realName}`;
 			WaterMark.init({
 				watermark_txt: markText,
 				watermark_fontsize: "11px",

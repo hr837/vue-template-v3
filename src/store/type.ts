@@ -1,5 +1,5 @@
 import { DepartmentInfo } from "@/types/department.interface";
-import { UserBase, UserRole } from "@/types/user.interface";
+import { UserInfo, UserRole } from "@/types/user.interface";
 
 /**
  * root state
@@ -13,10 +13,8 @@ export interface RootState {
 	dict: DictData;
 }
 
-export interface UserState extends UserBase, UserRole {
+export interface UserState extends UserInfo, UserRole {
 	token: string;
-	departmentCode: string;
-	departmentId: string;
 	departmentName: string;
 }
 

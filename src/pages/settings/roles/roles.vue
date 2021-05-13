@@ -13,6 +13,7 @@
 			<Pagination :page="page" @page-change="refreshData" />
 		</div>
 		<RoleModify />
+		<RoleResourcePick />
 	</div>
 </template>
 
@@ -27,6 +28,7 @@ import {
 	refreshLoading,
 } from "./composables/roles";
 import RoleModify from "./components/RoleModify.vue";
+import RoleResourcePick from "./components/RoleResourcePick.vue";
 
 const loadingStatus = ref(false);
 

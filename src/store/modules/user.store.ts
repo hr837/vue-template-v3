@@ -4,16 +4,18 @@ import { RootState, UserState } from "../type";
 const userModule: Module<UserState, RootState> = {
 	namespaced: true,
 	state: () => ({
-		departmentId: "",
-		departmentName: "",
-		departmentCode: "",
 		token: "",
-		roleId: [],
+		roleId: "",
 		realName: "",
-		userName: "",
+		username: "",
 		resource: [],
 		isManage: "NO",
 		userId: "",
+		status: "",
+		phone: "",
+		email: "",
+		departId: "",
+		departmentName: "",
 	}),
 	mutations: {
 		/**
@@ -22,13 +24,13 @@ const userModule: Module<UserState, RootState> = {
 		 * @param udp
 		 */
 		updateUserInfo(state, userInfo: UserState) {
-			state.departmentId = userInfo.departmentId;
-			state.departmentName = userInfo.departmentName;
-			state.departmentCode = userInfo.departmentCode;
+			// state.departmentId = userInfo.departmentId;
+			// state.departmentName = userInfo.departmentName;
+			// state.departmentCode = userInfo.departmentCode;
 			state.token = userInfo.token;
 			state.roleId = userInfo.roleId;
 			state.realName = userInfo.realName;
-			state.userName = userInfo.userName;
+			state.username = userInfo.username;
 			state.resource = userInfo.resource;
 			state.isManage = userInfo.isManage;
 			state.userId = userInfo.userId;
