@@ -1,6 +1,6 @@
 import { ref, computed } from "vue";
 import { RequestParams } from "@gopowerteam/http-request";
-import { DepartmentService } from "@/services/department.service";
+import { DepartmentService } from "@/services/manage-service/department.service";
 import { LoadingService } from "@/bootstrap/services/loading.service";
 import { DepartmentInfo } from "@/types/department.interface";
 import { firstValueFrom } from "rxjs";
@@ -66,7 +66,7 @@ export function saveDepartment() {
 			departId: editId.value,
 		});
 
-		return firstValueFrom(service.modify(requestPram))
+		return firstValueFrom(service.modifyDepartment(requestPram))
 			.then(() => {
 				refreshData();
 				return true;
@@ -75,7 +75,7 @@ export function saveDepartment() {
 	} else {
 		// add
 		const requestPram = new RequestParams(model.value);
-		return firstValueFrom(service.add(requestPram))
+		return firstValueFrom(service.addDepartment(requestPram))
 			.then(() => {
 				refreshData();
 				return true;
@@ -86,7 +86,7 @@ export function saveDepartment() {
 
 export function deleteDepartment(data: DepartmentInfo) {
 	const param = new RequestParams({ departId: data.id }, { loading });
-	service.delete(param).subscribe({
+	service.deleteDepartment(param).subscribe({
 		next: () => {
 			currentDepartment.value = {} as any;
 			refreshData();

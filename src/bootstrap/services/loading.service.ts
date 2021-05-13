@@ -21,12 +21,6 @@ export class LoadingService extends ExtendService {
 	 */
 	public before = (requestParam: RequestParams) => {
 		this.subscriber.next(true);
-
-		if (requestParam.options.loading) {
-			this.timeout = window.setTimeout(() => {
-				this.after();
-			}, appConfig.server.timeOut);
-		}
 	};
 
 	/**
@@ -34,9 +28,13 @@ export class LoadingService extends ExtendService {
 	 */
 	public after = () => {
 		this.subscriber.next(false);
+	};
 
-		if (this.timeout) {
-			clearTimeout(this.timeout);
-		}
+	/**
+	 * catch 服务请求失败的时候处理
+	 */
+	public catch = () => {
+		this.subscriber.next(false);
+		this.subscriber.complete();
 	};
 }

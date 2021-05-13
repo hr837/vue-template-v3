@@ -1,5 +1,5 @@
 import { LoadingService } from "@/bootstrap/services/loading.service";
-import { RoleService } from "@/services/role.service";
+import { RoleService } from "@/services/manage-service/role.service";
 import { RoleInfo } from "@/types/role.interface";
 import { RequestParams } from "@gopowerteam/http-request";
 

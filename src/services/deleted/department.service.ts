@@ -1,5 +1,5 @@
 import { Request, RequestParams } from "@gopowerteam/http-request";
-import DepartmentController from "@/config/controllers/department.controller";
+import DepartmentController from "@/config/controllers/deleted/department.controller";
 
 /**
  * 部门管理

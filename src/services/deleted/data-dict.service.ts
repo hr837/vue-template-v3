@@ -1,5 +1,5 @@
 import { Request, RequestParams } from "@gopowerteam/http-request";
-import DataDictController from "@/config/controllers/data-dict.controller";
+import DataDictController from "@/config/controllers/deleted/data-dict.controller";
 
 export class DataDictService {
 	/**

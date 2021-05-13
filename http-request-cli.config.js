@@ -10,6 +10,6 @@ module.exports = {
 		path: "./src/services",
 	},
 	services: {
-		"common-service": "common",
+		"manage-service": "manage",
 	},
 };

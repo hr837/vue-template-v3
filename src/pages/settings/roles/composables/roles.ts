@@ -1,6 +1,6 @@
 import { LoadingService } from "@/bootstrap/services/loading.service";
 import { PageService } from "@/bootstrap/services/page.service";
-import { RoleService } from "@/services/role.service";
+import { RoleService } from "@/services/manage-service/role.service";
 import type { RoleInfo } from "@/types/role.interface";
 import { RequestParams } from "@gopowerteam/http-request";
 import { firstValueFrom } from "rxjs";

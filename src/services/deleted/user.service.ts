@@ -1,5 +1,5 @@
 import { Request, RequestParams } from "@gopowerteam/http-request";
-import UserController from "@/config/controllers/user.controller";
+import UserController from "@/config/controllers/deleted/user.controller";
 
 /**
  * 用户服务

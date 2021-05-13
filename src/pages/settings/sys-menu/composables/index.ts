@@ -1,5 +1,5 @@
 import { LoadingService } from "@/bootstrap/services/loading.service";
-import { ResourceService } from "@/services/resource.service";
+import { ResourceService } from "@/services/manage-service/resource.service";
 import { ResourceInfo } from "@/types/resource.interface";
 import { CommonService } from "@/utils/common.service";
 import { RequestParams } from "@gopowerteam/http-request";
@@ -16,7 +16,7 @@ export const loading = new LoadingService();
 export function refreshData() {
 	tableTree.value = [];
 	const params = new RequestParams({}, { loading });
-	service.getAll(params).subscribe({
+	service.findAllResource(params).subscribe({
 		next: (data) => {
 			dataSet.value = data;
 			const menuSource = data.filter((x) => x.type !== "CONTROL");

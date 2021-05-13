@@ -6,7 +6,8 @@ import { RequestParams } from "@gopowerteam/http-request";
 import { firstValueFrom } from "rxjs";
 import { CommonService } from "@/utils/common.service";
 
-const createDepartmentService = () => import("@/services/department.service");
+const createDepartmentService = () =>
+	import("@/services/manage-service/department.service");
 
 const departmentModule: Module<DepartmentState, RootState> = {
 	namespaced: true,
@@ -31,7 +32,8 @@ const departmentModule: Module<DepartmentState, RootState> = {
 		async refreshDeptData({ commit }) {
 			const { DepartmentService } = await createDepartmentService();
 			const service = new DepartmentService();
-			return firstValueFrom(service.query(new RequestParams())).then((data) => {
+			const observable = service.findAllDepartment(new RequestParams());
+			return firstValueFrom(observable).then((data) => {
 				return true;
 			});
 		},

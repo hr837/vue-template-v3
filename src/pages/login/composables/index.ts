@@ -1,6 +1,6 @@
 import { readonly, ref } from "vue";
 import { RequestParams } from "@gopowerteam/http-request";
-import { UserService } from "@/services/user.service";
+import { UserService } from "@/services/manage-service/user.service";
 import { firstValueFrom } from "rxjs";
 import { MenuItem } from "@/types/menu.type";
 import { UserBase, UserRole } from "@/types/user.interface";

@@ -1,5 +1,5 @@
 import { Request, RequestParams } from "@gopowerteam/http-request";
-import ResourceController from "@/config/controllers/resource.controller";
+import ResourceController from "@/config/controllers/deleted/resource.controller";
 import { Observable } from "rxjs";
 import { ResourceInfo } from "@/types/resource.interface";
 

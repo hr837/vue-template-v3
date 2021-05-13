@@ -1,7 +1,8 @@
 import { StoreOptions } from "vuex";
 import type { RootState } from "./type";
 import { RequestParams } from "@gopowerteam/http-request";
-const createDataDictService = () => import("@/services/data-dict.service");
+const createDataDictService = () =>
+	import("@/services/manage-service/data-dict.service");
 
 const rootStore: StoreOptions<RootState> = {
 	state: () => ({

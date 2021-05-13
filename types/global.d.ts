@@ -24,3 +24,8 @@ interface DictItem {
 	 */
 	value: string;
 }
+
+/**
+ * 资源类型
+ */
+type ResourceType = "DIRECTORY" | "MENU" | "CONTROL";

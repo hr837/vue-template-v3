@@ -1,5 +1,5 @@
 import { Request, RequestParams } from "@gopowerteam/http-request";
-import RoleController from "@/config/controllers/role.controller";
+import RoleController from "@/config/controllers/deleted/role.controller";
 
 /**
  * 角色管理
