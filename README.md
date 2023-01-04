@@ -1,6 +1,6 @@
-# cgrzzl-platform-front-template
+# cgrzzl-platform-front-template 创格平台前端项目模板
 
-
+该项目作为前端应用的基座项目，如果需要基于当前项目模板开发请使用fork功能，创建一个仓库，然后再进行移交。
 
 ## Getting started
 
