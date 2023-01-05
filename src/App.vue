@@ -5,7 +5,8 @@
 		</div>
 		<nav>
 			<router-link to="/">Home</router-link> |
-			<router-link to="/about">About</router-link>
+			<router-link to="/about">About</router-link> |
+			<router-link to="/user">User</router-link>
 		</nav>
 		<router-view />
 		<el-button type="warning" @click="size = 'large'">按钮设为大号</el-button>
