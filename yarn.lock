@@ -999,7 +999,7 @@
   dependencies:
     "@floating-ui/core" "^1.0.5"
 
-"@gopowerteam/request@^0.1.11":
+"@gopowerteam/request@0.1.11":
   version "0.1.11"
   resolved "https://registry.npmmirror.com/@gopowerteam/request/-/request-0.1.11.tgz#368b97455dbc28d9e17281030ddc8120b88bed0a"
   integrity sha512-5hHxhn8YtfkS7MVNDvawI1yiK/kt3xeBrFbf7v5vzBg2OsVvsfLfyN1M0x9l91z/zPTsCoEgDN/eOYxdlHiAHg==
