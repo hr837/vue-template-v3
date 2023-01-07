@@ -6,11 +6,14 @@
 
 <script lang="ts" setup>
 import { ElConfigProvider } from "element-plus";
+// import { DEFAULT_ICON_CONFIGS, IconProvider } from "@icon-park/vue-next";
 import zhCn from "element-plus/lib/locale/lang/zh-cn";
 import { computed } from "vue";
 
 import { appLayouts } from "@/layout";
 import { useStore } from "./store";
+
+// IconProvider({ ...DEFAULT_ICON_CONFIGS, prefix: "icon" });
 
 const currentLayout = computed(() => {
   const key = useStore("app").layout;
@@ -18,25 +21,8 @@ const currentLayout = computed(() => {
 });
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+<style lang="less">
+.el-container {
+  @apply h-full overflow-hidden;
 }
 </style>

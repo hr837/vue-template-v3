@@ -1,6 +1,6 @@
 <template>
   <el-container class="layout basic-layout">
-    <el-header>
+    <el-header class="px-0">
       <LayoutHeader />
     </el-header>
     <el-main> <router-view /></el-main>
@@ -10,5 +10,3 @@
 <script lang="ts" setup>
 import LayoutHeader from "./components/LayoutHeader.vue";
 </script>
-
-<style lang="scss" scoped></style>

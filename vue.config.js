@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 const { defineConfig } = require("@vue/cli-service");
 const AutoImport = require("unplugin-auto-import/webpack");
 const Components = require("unplugin-vue-components/webpack");
@@ -8,14 +7,26 @@ module.exports = defineConfig({
   transpileDependencies: true,
   configureWebpack: {
     plugins: [
-      // @ts-ignore
       AutoImport({
         resolvers: [ElementPlusResolver()],
+        dts: "typings/auto-imports.d.ts",
       }),
-      // @ts-ignore
       Components({
-        resolvers: [ElementPlusResolver()],
+        dts: "typings/components.d.ts",
+        resolvers: [
+          ElementPlusResolver(),
+          (componentName) => {
+            if (componentName.startsWith("IconPark"))
+              return {
+                name: componentName,
+                from: "@icon-park/vue-next/es/all",
+              };
+          },
+        ],
       }),
     ],
+  },
+  css: {
+    sourceMap: process.env.NODE_ENV !== "production",
   },
 });

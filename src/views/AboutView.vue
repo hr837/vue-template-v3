@@ -2,7 +2,9 @@
   <div class="page about">
     <h1>This is an about page</h1>
     <el-button @click="updateUserToken">改变token</el-button>
-    <el-button type="primary" @click="setMicroEnable">显示/隐藏头部</el-button>
+    <el-button type="primary" @click="setMicroEnable"
+      >显示/隐藏头部Token</el-button
+    >
     <el-button type="warning" @click="toLogin">登录</el-button>
   </div>
 </template>

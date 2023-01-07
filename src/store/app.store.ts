@@ -1,14 +1,16 @@
 import { defineStore } from "pinia";
 
 type State = {
-  // 系统准备状态
+  /** 系统准备状态 */
   ready: boolean;
-  // 页面标题
+  /** 页面标题 */
   title: string;
-  // 是否微应用
+  /** 是否微应用 */
   microApp: boolean;
-  // 当前布局
+  /** 当前布局 */
   layout: PageLayout;
+  /** 是否显示左侧菜单 */
+  showAside: boolean;
 };
 
 const initialState: State = {
@@ -16,6 +18,7 @@ const initialState: State = {
   title: "",
   microApp: false,
   layout: "WorkSpace",
+  showAside: true,
 };
 
 export const useAppStore = defineStore("app", {
@@ -42,5 +45,12 @@ export const useAppStore = defineStore("app", {
       if (this.layout === layout) return;
       this.layout = layout;
     },
+    /** 设置左侧菜单可见性 */
+    setAsideVisible(visible: boolean) {
+      this.showAside = visible;
+    },
+  },
+  persist: {
+    storage: sessionStorage,
   },
 });

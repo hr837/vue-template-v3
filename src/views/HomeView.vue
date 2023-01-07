@@ -1,5 +1,5 @@
 <template>
-  <div class="page home">
+  <div class="page home flex flex-col items-center">
     <img alt="Vue logo" src="../assets/logo.png" />
 
     <router-link to="/about">About</router-link>

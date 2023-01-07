@@ -13,5 +13,3 @@ function login() {
   router.push("/");
 }
 </script>
-
-<style lang="scss" scoped></style>

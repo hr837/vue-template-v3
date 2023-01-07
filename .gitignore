@@ -23,4 +23,5 @@ pnpm-debug.log*
 *.sw?
 
 # auto generated
-.components.d.ts
+/typings/auto-imports.d.ts
+/typings/components.d.ts
