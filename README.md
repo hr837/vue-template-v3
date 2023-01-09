@@ -1,11 +1,11 @@
-# vue-template-v3
+# cgrzzl-platform-front-template 创格平台前端项目模板
 
 使用Vue3+Typescript的模板项目
+
 <br>
 
 ## 项目使用说明
 
-该项目作为团队共有源项目，定义为模板项目。  
 推荐使用fork方式维护中心仓库使用branch创建提交PR的代码版本。  
 [这里](./docs/GIT.README.md)有一份简单的说明文档也许能可以帮助你理解fork的管理的流程。
 
