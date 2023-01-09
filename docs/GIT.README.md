@@ -26,7 +26,7 @@ git branch -a
 
 # 2.2 创建一个分支，用来开发自己的代码，main分支始终用来merge和同步。
 #     因为在你还没有push之前，也许源仓库已经更新了
-git branch -b dev
+git checkout -b dev
 
 # 2.3 添加代码到暂存区域
 git add .
@@ -82,7 +82,7 @@ git branch -D dev
 
 # 现在你可以从main分支创建一个新的分支继续coding
 # 现在这个新的分支你还可以叫dev
-git branch -b task-1
+git checkout -b task-1
 ```
 
 6、在自己的仓库Pull之后从同步的主分支创建一个分支用来下一个功能的编辑。  
