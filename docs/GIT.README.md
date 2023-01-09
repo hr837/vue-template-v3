@@ -102,7 +102,7 @@
     # gitlab用户执行此命令更新自己本地main仓库代码，以便操作。
     git checkout main
     git pull upstream main # fast merge mode
-    git puush origin main
+    git push origin main
     ```
  * github用户可以web端同步
     ```bash
