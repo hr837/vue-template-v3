@@ -62,17 +62,12 @@
 
 3. 切到自己的main分支，先更新源仓库代码，指不定已经有更新。
    
-   > github控制面板有sync fork按钮，直接更新，然后pull自己的main分支进行merge
    
     ```bash
-    # gitlab用户
     git checkout main
     git fetch upstream
     git merge upstream/main
-    ```
-
-    ```bash
-    # github用户
+    # 上面两行命令可以直接使用下面一行命令代替
     git pull origin main
     ```
 4. 如果有冲突就进行更改，然后执行第二步骤
@@ -105,13 +100,14 @@
 
     ```bash
     # gitlab用户执行此命令更新自己本地main仓库代码，以便操作。
-    git fetch upstream
-    git merge upstream/main
-    git push origin main
+    git checkout main
+    git pull upstream main # fast merge mode
+    git puush origin main
     ```
-  * github可以点击sycn fork,同步远程仓库
+ * github用户可以web端同步
     ```bash
-    # github用户还需要自行更新本地代码
+    git checkout main
+    # 点击sync fork进行同步源仓库代码到自己的main分支。
     git pull origin main
     ```
 ### 再接再厉
