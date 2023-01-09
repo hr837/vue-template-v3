@@ -92,9 +92,9 @@
 
     提交PR示意图.  
     ```mermaid
-    graph RL
+    graph LR
 
-      group/main <-- userIsMe/main
+      userIsMe/main --> group/main  
     ```
 
 ### 更新自己fork的仓库代码
