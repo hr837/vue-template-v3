@@ -6,8 +6,8 @@ import type {
 import { ref, Ref } from "vue";
 
 export class PageService implements RequestPlugin {
-	pageIndex = ref(1);
-	pageSize = ref(20);
+	pageIndex = 1;
+	pageSize = 20;
 	pageSizeOpts: number[] = [10, 20, 30, 40, 50];
 	pageLayouts: (
 		| "PrevJump"
@@ -19,16 +19,16 @@ export class PageService implements RequestPlugin {
 		| "FullJump"
 		| "Total"
 	)[] = [
-		"PrevJump",
-		"PrevPage",
-		"JumpNumber",
-		"NextPage",
-		"NextJump",
-		"Sizes",
-		"FullJump",
-		"Total",
-	];
-	total: Ref<number> = ref(0);
+			"PrevJump",
+			"PrevPage",
+			"JumpNumber",
+			"NextPage",
+			"NextJump",
+			"Sizes",
+			"FullJump",
+			"Total",
+		];
+	total: Ref<number> = ref(100);
 
 	/**
 	 * 构造函数
@@ -36,15 +36,15 @@ export class PageService implements RequestPlugin {
 	 * @param size
 	 */
 	constructor(index = 1, size = 20) {
-		this.pageIndex.value = index;
-		this.pageSize.value = size;
+		this.pageIndex = index;
+		this.pageSize = size;
 	}
 
 	/**
 	 * 重置操作
 	 */
 	reset(): void {
-		this.pageIndex.value = 1;
+		this.pageIndex = 1;
 	}
 
 	/**
@@ -54,8 +54,8 @@ export class PageService implements RequestPlugin {
 	before(options: RequestSendOptions) {
 		options.paramsQuery = {
 			...options.paramsQuery,
-			page: this.pageIndex.value - 1,
-			size: this.pageSize.value,
+			page: this.pageIndex - 1,
+			size: this.pageSize,
 		};
 	}
 
@@ -65,5 +65,21 @@ export class PageService implements RequestPlugin {
 	 */
 	after(response: AdapterResponse) {
 		this.total.value = response.data?.totalElements;
+	}
+
+	/**
+	 * 更新PageSize
+	 * @param val 
+	 */
+	updatePageSize(val: number) {
+		this.pageSize = val;
+	}
+
+	/**
+	 * 更新PageIndex
+	 * @param val 
+	 */
+	updatePageIndex(val: number) {
+		this.pageIndex = val;
 	}
 }
