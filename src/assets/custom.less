@@ -1,0 +1,39 @@
+// 样式自定义
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+.page {
+  @apply h-full overflow-auto;
+}
+
+// 滚动条样式
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(@color-primary, 0.2);
+  background: rgba(@color-primary, 0.6);
+}
+
+*::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: #eee;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: #fff;
+}
+.el-scrollbar{
+    --el-scrollbar-bg-color: var(-el-color-primary)!important;
+    --el-scrollbar-hover-bg-color: var(-el-color-primary) !important;
+}

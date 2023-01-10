@@ -11,7 +11,15 @@
         </div>
       </el-aside>
       <el-main class="pl-0">
-        <router-view />
+        <router-view v-slot="{ Component, route }">
+            <transition
+                name="fade-transform"
+                mode="out-in" >
+                      <component
+                        :is="Component"
+                        :key="route.path" />
+            </transition>
+        </router-view>
       </el-main>
     </el-container>
   </el-container>
@@ -27,7 +35,6 @@ const showAside = computed(() => useStore("app").showAside);
 const actionTransform = computed(
   () => `rotate(${showAside.value ? 0 : 180}deg)`
 );
-
 function onActionClick() {
   useStore("app").setAsideVisible(!showAside.value);
 }
