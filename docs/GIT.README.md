@@ -59,11 +59,24 @@
     git add .
     git commit -m 'feature:description your added feature infomation'
     ```
-3.  推送代码到自己的仓库
-    
+
+3. 切到自己的main分支，先更新源仓库代码，指不定已经有更新。
+   
+   
     ```bash
-    git push origin dev
+    git checkout main
+    git fetch upstream
+    git merge upstream/main
+    # 上面两行命令可以直接使用下面一行命令代替
+    git pull origin main
     ```
+4. 如果有冲突就进行更改，然后执行第二步骤
+5. 推送到自己的仓库
+
+    ```bash
+    git push origin main
+    ```
+
 ### 提交PR到源仓库
   
 1. 登录Gitlab/Github(公司git地址)在自己的仓库左侧点击Merge requests. 创建PR，选择自己的仓库分支提交到fork源仓库的目标分支。  
@@ -76,45 +89,8 @@
     ```mermaid
     graph LR
 
-      userIsMe/dev --> group/main  
+      userIsMe/main --> group/main  
     ```
-
-3. 合并成功后你的dev分支需要删除。
-
-### 例外情况
-
-如果你创建PR之后，经过版本自动检测发现你的代码落后于源仓库代码版本，此时你需要同步自己的代码再重新创建PR
-
-1. 切到自己的main分支，先更新源仓库代码后合并
-     
-    ```bash
-    git checkout main
-    git fetch upstream
-    git merge upstream/main
-    # 上面两行命令可以直接使用下面一行命令代替
-    git pull origin main
-    git checkout dev
-    git merge main
-    ```
-    > 你也可以直接在dev分支下进行如下操作
-    ```bash
-    git checkout dev
-    git pull upstream main
-    ```
-
-2. 此时会用冲突，修改完冲突之后提交
-
-    ```bash
-    git add .
-    git commit -m 'fix:merge source codes'
-    ```
-
-3. 推送到自己的仓库
-
-    ```bash
-    git push origin dev
-    ```
-4. 回到上一步骤，[重新提交PR](#提交pr到源仓库)
 
 ### 更新自己fork的仓库代码
 
@@ -135,14 +111,7 @@
     git pull origin main
     ```
 ### 再接再厉
- 
-  开启新的分支，准备下一次的功能迭代。
-
-    ```bash
-    git branch -D dev
-    git checkout -b task-1
-    # 你也让新分支使用之前的名称，但你得记得删除、创建
-    ```
+ 开启新的分支，准备下一次的功能迭代。
 
 
 ## 疑惑点：为什么要删除提交PR的分支？
@@ -153,6 +122,10 @@
 
 此时你的提交PR的分支不能代表最新的版本了, 因为源仓库不存在你已经合并过的commitId 。  
 所以你需要在同步之后创建一个新分支用来提交，以保证你的提交信息都在源仓库提交之后。  
+
+## 流程示意图
+
+    ![提交PR流程图](./git.png,'team work flow description')
 
 
 
