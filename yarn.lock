@@ -6590,6 +6590,11 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npmmirror.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
+vue3-puzzle-vcode@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.npmmirror.com/vue3-puzzle-vcode/-/vue3-puzzle-vcode-1.0.7.tgz#dc99c68d3497bc33dbe52615534729584f3cc450"
+  integrity sha512-zaTO2Dj5N3izmEazNaoQKY4tn3aoJRpoCRckayrQgtJ6q/GKBgVeVtOcMCALh2+QC47/NJHqbjizu9wt2joGjw==
+
 vue@^3.2.13:
   version "3.2.45"
   resolved "https://registry.npmmirror.com/vue/-/vue-3.2.45.tgz#94a116784447eb7dbd892167784619fef379b3c8"

@@ -16,6 +16,7 @@ module.exports = {
     'no-console': 'off',
     'no-debugger': 'off',
     "prettier/prettier": "off",
+    "@typescript-eslint/no-explicit-any": ["off"]
   },
 
 };
