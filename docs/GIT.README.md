@@ -125,7 +125,7 @@
 
 ## 流程示意图
 
-    ![提交PR流程图](./git.png,'team work flow description')
+![PR工作流程图](git.png 'team work flow description')
 
 
 
