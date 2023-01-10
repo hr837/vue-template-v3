@@ -6,6 +6,7 @@
       >显示/隐藏头部Token</el-button
     >
     <el-button type="warning" @click="toLogin">登录</el-button>
+    <el-button @click="toUser">机构与用户</el-button>
   </div>
 </template>
 
@@ -28,5 +29,9 @@ const router = useRouter();
 
 function toLogin() {
   router.replace("/login");
+}
+
+function toUser() {
+  router.push("/system/organize/users");
 }
 </script>
