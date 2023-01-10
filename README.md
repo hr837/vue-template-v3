@@ -27,6 +27,11 @@ src
  - views              项目的页面系统
     - [groupA]
       - [xxxx]View.vue 页面单文件
+    - [groupB]        
+      - [xxxx]                    页面比较复杂，需要抽取组件
+        - [xxxx]View.vue          页面文件
+        - components              页面文件所需的组件目录
+          - [xxxx][module].vue    当前页面特有的组件模块，公共组件可以放置在 /src/components/ 目录下面
 typings               项目的ts类型定义系统，全局类型定义在此
 ```
 
@@ -277,3 +282,50 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
   ```
 
   在使用的时候，根据产品设计的业务实际情况设定即可。
+
+  > 大多数业务系统的菜单都是按照模块进行分类的，所以可以创建以模块为单位的路由配置
+
+  ```
+  src
+    - router
+      - routes
+        index.ts
+        [module].routes.ts  // 路由模块
+      index.ts
+  ```
+
+  ``` ts
+  // /src/router/routes/system.routes.ts
+  import { RouteRecordRaw } from "vue-router";
+  export const SystemRoutes: Array<RouteRecordRaw> = [
+    {
+      path: "/system/organize/users",
+      name: "users",
+      component: () => import("@/views/system/organizational-management/OrganizationUsersView.vue"),
+    },
+  ]
+
+  // /src/router/routes/index.ts
+
+  import HomeView from "../../views/HomeView.vue";
+  import { RouteRecordRaw } from "vue-router";
+  import { SystemRoutes } from './system.routes';
+
+  const routesConfig: Array<RouteRecordRaw> = [
+    {
+      path: "/",
+      name: "home",
+      component: HomeView,
+      meta: {
+        ignoreAuth: true,
+        layout: "Basic",
+      },
+    },
+    // ... others modules
+    ...SystemRoutes,
+    // ...
+  ]
+
+  export default routesConfig;
+  ```
+
