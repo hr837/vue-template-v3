@@ -16,6 +16,6 @@ const showToken = computed(() => !store.app.microApp);
 
 <style lang="less" scoped>
 .layout-header {
-  @apply bg-gray-300 h-full flex justify-between items-center;
+  @apply bg-white h-full flex justify-between items-center;
 }
 </style>

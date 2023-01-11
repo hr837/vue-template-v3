@@ -7,8 +7,8 @@ import { ref, Ref } from "vue";
 
 export class PageService implements RequestPlugin {
 	pageIndex = 1;
-	pageSize = 20;
-	pageSizeOpts: number[] = [10, 20, 30, 40, 50];
+	pageSize = 10;
+	pageSizeOpts: number[] = [5, 10, 20, 30];
 	pageLayouts: (
 		| "PrevJump"
 		| "PrevPage"
@@ -35,7 +35,7 @@ export class PageService implements RequestPlugin {
 	 * @param index
 	 * @param size
 	 */
-	constructor(index = 1, size = 20) {
+	constructor(index = 1, size = 10) {
 		this.pageIndex = index;
 		this.pageSize = size;
 	}

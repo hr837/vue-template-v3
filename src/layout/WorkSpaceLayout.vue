@@ -4,14 +4,14 @@
       <LayoutHeader />
     </el-header>
     <el-container>
-      <el-aside class="work-space-layout-aside">
+      <div class="work-space-layout-aside">
         <LayoutWorkMenu :collapse="!showAside" />
         <div class="work-space-layout-aside-action" @click="onActionClick">
-          <icon-park type="left-one" />
+          <icon-park-outline-left-one  class="i-icon"/>
         </div>
-      </el-aside>
-      <el-main class="pl-0 overflow-x-hidden" >
-        <router-view v-slot="{ Component, route }">
+      </div>
+      <el-main class="work-space-layout-main overflow-x-hidden " >
+        <router-view v-slot="{ Component, route }" class="work-space-layout-main-content bg-white">
             <transition
                 name="fade-transform"
                 mode="out-in" >
@@ -43,9 +43,9 @@ function onActionClick() {
 <style lang="less" scoped>
 .work-space-layout {
   &-aside {
-    @apply w-auto relative pr-5;
+    @apply w-auto relative;
     &-action {
-      @apply absolute top-1/2 right-2.5 h-24 w-3 -translate-y-3/4 flex flex-col justify-center items-center text-white rounded-br-2xl rounded-tr-2xl;
+      @apply absolute top-1/2 -right-2.5 h-24 w-3 -translate-y-3/4 flex flex-col justify-center items-center text-white rounded-br-2xl rounded-tr-2xl;
       background-color: var(--el-color-primary);
       .i-icon {
         transform: v-bind(actionTransform);
@@ -53,6 +53,15 @@ function onActionClick() {
       }
     }
   }
+  &-main {
+    background-color: #f5f5f5;
+    padding: 15px;
+    &-content{
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+  }
+
 
 }
 </style>
