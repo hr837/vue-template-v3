@@ -51,18 +51,19 @@ typings               项目的ts类型定义系统，全局类型定义在此
 * Router-[VueRouter 4](https://router.vuejs.org/zh/guide/)
 * UI-- [Element-plus 2](https://element-plus.gitee.io/zh-CN/guide/changelog.html) 写法基本不变
 * CSS--[Tailwind.css 2](https://www.tailwindcss.cn/docs)
-* Icon--[IconPark](http://iconpark.oceanengine.com/official) 字节跳动图标库，上千图标
+* Icon--[Iconify](https://iconify.design) 
   
 <br>
 
 ### 开发所用的插件
 
-| 插件名称                                                                                                   | 插件ID                    | 说明                                         |
-| ---------------------------------------------------------------------------------------------------------- | ------------------------- | -------------------------------------------- |
-| [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)                                     | Vue.volar                 | Language support for Vue  3                  |
-| [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) | bradlc.vscode-tailwindcss | Intelligent Tailwind CSS tooling for VS Code |
-| [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)                       | dbaeumer.vscode-eslint    | Integrates ESLint JavaScript into VS Code.   |
-| [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)    | esbenp.prettier-vscode    | Code formatter using prettier                |
+| 插件名称                                                                                                   | 插件ID                    | 说明                                                     |
+| ---------------------------------------------------------------------------------------------------------- | ------------------------- | -------------------------------------------------------- |
+| [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)                                     | Vue.volar                 | Language support for Vue  3                              |
+| [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) | bradlc.vscode-tailwindcss | Intelligent Tailwind CSS tooling for VS Code             |
+| [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)                       | dbaeumer.vscode-eslint    | Integrates ESLint JavaScript into VS Code.               |
+| [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)    | esbenp.prettier-vscode    | Code formatter using prettier                            |
+| [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify)                  | antfu.iconify             | Intelligent Iconify previewing and searching for VS Code |
 
 <br>
 
@@ -82,19 +83,9 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
 
 ### 组件开发
 
-* 组件属性声明，推荐使用`type`定义该组件的属性，记得写好属性字段的备注，有[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)插件的支持,在父组件调用的时候将具有属性字段文档提示。
-    
-  ``` ts
-  // ./components/WorkSpaceMenu.vue
-  import { defineProps } from "vue";
-  type PropType = {
-    /** 是否折叠菜单 */
-    collapse: boolean;
-  };
-  defineProps<PropType>();
-  ```
-
-* 组件的使用,在script setup书写模式下，不需要注册组件即可使用。
+* #### 组件的使用
+  
+  在script setup书写模式下，不需要注册组件即可使用。
 
   ``` html
   <template>
@@ -112,8 +103,9 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
   const showAside = ref(true);
   </script>
   ```
+<br>
 
-* 组件的使用,在defineCompoent 模式，需要注册组件。
+  在defineCompoent 模式，需要注册组件。
 
   ``` html
   <template>
@@ -140,6 +132,55 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
   </script>
   ```
 
+<br>
+
+* #### 使用Icon
+
+  当前项目已经集成了[Iconify](https://iconify.design)图标库，已安装的图标集合有[@iconify-json/icon-park-outline](https://www.npmjs.com/package/@iconify-json/icon-park-outline)
+
+  ```html
+  <template>
+    <!-- icon-park-outline 图标库中的 config 图标-->
+    <icon-park-outline-config class="text-red-400" />
+    <!-- 本地svg图标库中的 bankcard svg-->
+    <icon-local-bankcard class="text-green-400" /></li>
+  </template>
+  ```
+
+  > 已经配置自动引入，使用图标需要标签以`icon`开始
+
+  如果需要使用`icon-park`的图标，你可以参照[IconPark官方图标文档](http://iconpark.oceanengine.com/official)，复制其名称使用。  
+  如果需要使用本地svg图标，你需要将你的图标放在 `/src/assets/icons/` 目录下面。 tips:下载的svg图标最好删除width,height属性。
+
+
+
+<br>
+
+* 组件属性声明，推荐使用`type`定义该组件的属性，记得写好属性字段的备注，有[unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)插件的支持,在父组件调用的时候将具有属性字段文档提示。
+    
+  ``` ts
+  // ./components/WorkSpaceMenu.vue
+  import { defineProps } from "vue";
+  type PropType = {
+    /** 是否折叠菜单 */
+    collapse: boolean;
+  };
+  defineProps<PropType>();
+  ```
+
+  如果你的属性定义需要设置默认值，那你需要引入`withDefaults`结合`defineProps`使用
+  ```ts 
+  import { defineProps, withDefaults } from "vue";
+
+  // ...
+  withDefaults(defineProps<PropType>(), {
+    collapse: false,
+  });
+
+  ```
+
+<br>
+
 * 给父组件发送事件（Emitter),事件的注册方式还随之前写法一样使用`v-on`或者`@`指令
   
   > 后续示例都将使用`setup`语法，`defineComponent`方式请查阅[Vue](https://cn.vuejs.org/)官方文档。
@@ -154,6 +195,7 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
     emitter("onMenuClick", { data: "xxx" });
   }
   ```
+<br>
 
 * 组件内请求后端接口数据
   
@@ -182,6 +224,7 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
   // send a http request on component mounted
   onMounted(queryHandle);
   ```
+<br>
 
 * 使用store
 
@@ -265,6 +308,8 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
       useStore().app.setAsideVisible(!showAside.value);
     }
     ```
+
+<br>
 
 * 路由注册
   

@@ -1,5 +1,5 @@
 import { App } from "vue";
-import { IconPark, install } from "@icon-park/vue-next/es/all";
+// import { IconPark, install } from "@icon-park/vue-next/es/all";
 import "@icon-park/vue-next/styles/index.css";
 
 /**
@@ -11,6 +11,6 @@ import "@icon-park/vue-next/styles/index.css";
  * @link Doc https://github.com/bytedance/IconPark/tree/master/packages/vue-next
  */
 export function installIconPark(vueApp: App) {
-  install(vueApp);
-  vueApp.component("icon-park", IconPark);
+  // install(vueApp);
+  // vueApp.component("icon-park", IconPark);
 }
