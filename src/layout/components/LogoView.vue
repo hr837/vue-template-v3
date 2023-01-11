@@ -1,17 +1,12 @@
 <template>
-  <div class="sidebar-logo-container"
-       style="background-color: white;">
-    <router-link class="sidebar-logo-link"
-                 to="/">
-      <img :src="logo"
-           class="sidebar-logo">
+  <div class="sidebar-logo-container" style="background-color: white">
+    <router-link class="sidebar-logo-link" to="/">
+      <img src="~@/assets/images/logo.png" class="sidebar-logo" />
     </router-link>
   </div>
 </template>
 
-<script setup>
-import logo from '@/assets/logo/logo.png';
-</script>
+<script lang="ts" setup></script>
 
 <style lang="less" scoped>
 .sidebar-logo-container {

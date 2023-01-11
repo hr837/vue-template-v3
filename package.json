@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@gopowerteam/request": "0.1.11",
-    "@icon-park/vue-next": "^1.4.2",
     "autoprefixer": "^10",
     "core-js": "^3.8.3",
     "element-plus": "^2.2.28",
@@ -22,6 +21,7 @@
     "vue3-puzzle-vcode": "^1.0.7"
   },
   "devDependencies": {
+    "@iconify-json/icon-park-outline": "^1.1.9",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-babel": "~5.0.0",
@@ -29,6 +29,7 @@
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "@vue/compiler-sfc": "^3.2.45",
     "@vue/eslint-config-typescript": "^9.1.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
@@ -39,6 +40,7 @@
     "prettier": "^2.4.1",
     "typescript": "~4.5.5",
     "unplugin-auto-import": "^0.12.1",
+    "unplugin-icons": "^0.15.1",
     "unplugin-vue-components": "^0.22.12",
     "vue-cli-plugin-tailwind": "^3.0.0"
   }

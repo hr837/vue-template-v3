@@ -12,7 +12,7 @@
     "useDefineForClassFields": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env", "element-plus/global"],
+    "types": ["webpack-env", "element-plus/global", "unplugin-icons/types/vue"],
     "paths": {
       "@/*": ["src/*"]
     },
@@ -26,5 +26,5 @@
     "tests/**/*.tsx",
     "typings/*.d.ts"
   ],
-  "exclude": ["node_modules", "vue.config.js"]
+  "exclude": ["node_modules"]
 }

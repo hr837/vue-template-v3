@@ -29,12 +29,15 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from "vue";
+import { defineProps, withDefaults } from "vue";
 type PropType = {
   /** 是否折叠菜单 */
   collapse: boolean;
 };
-defineProps<PropType>();
+
+withDefaults(defineProps<PropType>(), {
+  collapse: false,
+});
 </script>
 
 <style lang="less" scoped>
