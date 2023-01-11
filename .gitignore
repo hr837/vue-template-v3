@@ -14,7 +14,7 @@ yarn-error.log*
 pnpm-debug.log*
 
 # lock files
-yarn.local
+yarn.lock
 package-lock.json
 
 # Editor directories and files

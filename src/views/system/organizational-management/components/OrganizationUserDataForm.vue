@@ -19,8 +19,17 @@
         />
       </el-select>
     </el-form-item>
+    <el-form-item label="日期" prop="title">
+      <DateRange v-model="modelData.date" />
+    </el-form-item>
     <el-form-item label="客户姓名" prop="name">
       <el-input v-model="modelData.name"></el-input>
+    </el-form-item>
+    <el-form-item label="地址" prop="address">
+      <el-input v-model="modelData.address"></el-input>
+    </el-form-item>
+    <el-form-item label="名称" prop="title">
+      <el-input v-model="modelData.title"></el-input>
     </el-form-item>
   </DataForm>
 </template>
@@ -32,7 +41,11 @@ const modelData = ref({
   name: "",
   status: "",
   info: "",
+  address: "",
+  title: "",
+  date: ["2023-01-02", "2023-01-02"],
 });
+
 const options = ref([
   {
     value: 1,
