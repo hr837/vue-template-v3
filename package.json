@@ -11,6 +11,7 @@
     "@gopowerteam/request": "0.1.11",
     "autoprefixer": "^10",
     "core-js": "^3.8.3",
+    "dayjs": "^1.11.7",
     "element-plus": "^2.2.28",
     "pinia": "^2.0.28",
     "pinia-plugin-persistedstate": "^3.0.2",

@@ -16,6 +16,7 @@
       @refresh="refreshData"
       :data="data"
     />
+    <DataPagination :page="page" @page-change="refreshData" />
   </div>
 </template>
 <script lang="ts" setup>
@@ -23,10 +24,12 @@ import { ref, onMounted } from "vue";
 import OrganizationUserDataForm from "./components/OrganizationUserDataForm.vue";
 import OrganizationUserDataBox from "./components/OrganizationUserDataBox.vue";
 import { DataType } from "./composable";
+import { PageService } from "@/http/extends/page.service";
 
 const queryData = ref({});
 const data = ref<DataType[]>([]);
 const dataBox = ref();
+const page = new PageService();
 
 function batchDelet() {
   if (!dataBox.value.selectionData.length) return;
@@ -50,7 +53,7 @@ function refreshData() {
     },
   ];
 
-  const params = { ...queryData.value };
+  const params = { ...queryData.value, page };
   console.log(params, "params");
 
   data.value = result;
