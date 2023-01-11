@@ -1,11 +1,11 @@
 <template>
-  <div class="login">
+  <div class="login bg-center bg-no-repeat">
     <div class="header-box">
       <div class="grid-box">
-        <div class="grid1" />
-        <div class="grid2" />
-        <div class="gridLine" />
-        <div class="grid3" />
+        <div class="grid1 bg-center bg-no-repeat" />
+        <div class="grid2 bg-center bg-no-repeat" />
+        <div class="gridLine " />
+        <div class="grid3 bg-center bg-no-repeat" />
       </div>
     </div>
     <el-form ref="loginRef"
@@ -23,7 +23,7 @@
                   auto-complete="off"
                   placeholder="请输入用户名/手机号码">
           <template #prefix>
-            <icon-park type="User" />
+            <icon-park-outline-user />
           </template>
         </el-input>
       </el-form-item>
@@ -35,8 +35,7 @@
                   placeholder="请输入密码"
                   maxlength="20">
           <template #prefix>
-            <icon-park type="User" />
-            <!-- <svg-icon icon-class="password" class="el-input__icon input-icon" /> -->
+            <icon-park-outline-lock />
           </template>
         </el-input>
       </el-form-item>
@@ -55,7 +54,6 @@
         </el-button>
       </el-form-item>
     </el-form>
-    <img src="/images/login/bg_login.jpg" alt="" width="100px"> 
   </div>
 </template>
 
@@ -65,12 +63,12 @@ import { useRouter } from 'vue-router'
 import { ref,reactive } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
 const router = useRouter();
-const appTitle = '创格平台'
+const appTitle = process.env.VUE_APP_TITLE;
 const loginForm = ref({
   username: '',
   password: '',
 });
-const loginRef = ref<FormInstance>()
+const loginRef = ref<FormInstance>();
 const loginRules = reactive<FormRules>({
   username: [
     {
@@ -88,9 +86,9 @@ const loginRules = reactive<FormRules>({
   ],
 });
 const loading = ref(false);
-const isShow = ref<boolean>(false)
-const msg_onSuccess = ref('')
-const passInfr = ref('点击完成验证')
+const isShow = ref<boolean>(false);
+const msg_onSuccess = ref('');
+const passInfr = ref('点击完成验证');
 function onSuccess(msg: string) {
   isShow.value = false; // 通过验证后，需要手动隐藏模态框
   msg_onSuccess.value = msg
@@ -131,7 +129,7 @@ async function handleLogin(formEl: FormInstance | undefined) {
 .login {
   height: 100%;
   min-width: 780px;
-  background: url("../../public/images/login/bg_login.jpg") center center no-repeat;
+  background-image: url("/public/images/login/bg_login.jpg");
   background-size: 100% 100%;
   position: relative;
 
@@ -151,7 +149,7 @@ async function handleLogin(formEl: FormInstance | undefined) {
       .grid1 {
         width: 208px;
         height: 56px;
-        // background: url("./images/login/login_logo_df.png") center no-repeat;
+        background-image: url("/public/images/login/login_logo_df.png");
         background-size: 80% 80%;
         // background-size:cover;
         float: left;
@@ -161,7 +159,7 @@ async function handleLogin(formEl: FormInstance | undefined) {
       .grid2 {
         width: 210px;
         height: 52px;
-        // background: url("./images/login/login_logo_cg2.png") center no-repeat;
+        background-image: url("/public/images/login/login_logo_cg2.png");
         background-size: 80% 80%;
         float: left;
         margin-top: 3px;
@@ -180,7 +178,7 @@ async function handleLogin(formEl: FormInstance | undefined) {
       .grid3 {
         width: 170px;
         height: 56px;
-        // background: url("./images/login/car.png") center no-repeat;
+        background-image: url("/public/images/login/car.png") ;
         background-size: 80% 80%;
         float: left;
       }
@@ -193,7 +191,7 @@ async function handleLogin(formEl: FormInstance | undefined) {
     width: 352px;
     padding: 25px 25px 5px 25px;
     position: absolute;
-    top: 50%;
+    top: 42%;
     left: 65%;
     transform: translate(-30%, -40%);
 
