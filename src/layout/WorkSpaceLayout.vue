@@ -10,7 +10,7 @@
           <icon-park type="left-one" />
         </div>
       </el-aside>
-      <el-main class="pl-0">
+      <el-main class="pl-0 overflow-x-hidden" >
         <router-view v-slot="{ Component, route }">
             <transition
                 name="fade-transform"
@@ -53,5 +53,6 @@ function onActionClick() {
       }
     }
   }
+
 }
 </style>
