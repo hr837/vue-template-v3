@@ -1,0 +1,87 @@
+
+import type {
+  AdapterResponse,
+  RequestPlugin,
+  RequestSendOptions,
+} from "@gopowerteam/request";
+import { ref } from "vue"
+/**
+ * 排序方式
+ */
+export const SortType = {
+  ascending: "asc",
+  descending: "desc",
+};
+
+export class SortService implements RequestPlugin {
+  sort: any = {};
+
+  constructor(data?: any) {
+    if (data) this.sort = data;
+  }
+
+  /**
+   * 更新排序
+   * @param key 排序关键字
+   * @param value 排序方式
+   */
+  update(key: string, value: keyof typeof SortType) {
+    this.sort = {};
+    if (key && value) {
+      this.sort[key] = SortType[value];
+    }
+  }
+
+  /**
+   * 移除排序项
+   * @param key 排序关键字
+   */
+  remove(key: string) {
+    // 过滤
+    const items: any[] = Object.entries(this.sort).filter(
+      ([k, v]) => k !== key
+    ) as any[];
+
+    this.sort = {};
+
+    // 判断排序项是否存在
+    if (items) {
+      items.forEach(([k, v]) => {
+        this.sort[k] = v;
+      });
+    }
+  }
+
+  before(params: RequestSendOptions) {
+    params.paramsQuery = {
+      ...params.paramsQuery,
+      sort: JSON.stringify(this.sort),
+    };
+  };
+
+  after(response: AdapterResponse) {
+    //
+  };
+
+  /**
+   * 重置分页数据
+   */
+  reset() {
+    this.sort = {};
+  }
+
+  /**
+   * 转换排序对象为字符串
+   */
+  stringify(value: SortService | any): string[] {
+    if (typeof value !== "object") {
+      return [];
+    }
+
+    if (value instanceof SortService) {
+      value = value.sort;
+    }
+
+    return Object.entries(value).map(([k, v]) => `${k}.${v}`);
+  }
+}

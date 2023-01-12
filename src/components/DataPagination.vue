@@ -1,31 +1,33 @@
 <template>
   <div class="component data-pagination">
-    <el-pagination v-model:current-page="pageIndex"
-                   v-model:page-size="pageSize"
-                   :page-sizes="page.pageSizeOpts"
-                   :layout="'total, sizes, prev, pager, next, jumper'"
-                   :total="page.total.value"
-                   @size-change="handleSizeChange"
-                   @current-change="handleCurrentChange" />
+    <el-pagination
+      v-model:current-page="pageIndex"
+      v-model:page-size="pageSize"
+      :page-sizes="page.pageSizeOpts"
+      :layout="layout"
+      :total="page.total.value"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+    />
   </div>
 </template>
 <script lang="ts" setup>
 import { PageService } from "@/http/extends/page.service";
-import { defineProps, defineEmits, watch, ref } from "vue";
+import { defineProps, defineEmits, computed, withDefaults } from "vue";
 
 type PropType = {
   page: PageService;
+  layout?: string;
 };
-const props = defineProps<PropType>();
+
+const props = withDefaults(defineProps<PropType>(), {
+  layout: "total, sizes, prev, pager, next, jumper",
+});
+
 const emits = defineEmits(["page-change"]);
 
-const pageIndex = ref(props.page.pageIndex);
-const pageSize = ref(props.page.pageSize);
-
-watch(() => props.page, (newval) => {
-  pageIndex.value = newval.pageIndex;
-  pageSize.value = newval.pageSize;
-})
+const pageIndex = computed(() => props.page.pageIndex.value);
+const pageSize = computed(() => props.page.pageSize.value);
 
 function handleSizeChange(val: number) {
   props.page.updatePageSize(val);
@@ -33,8 +35,6 @@ function handleSizeChange(val: number) {
 }
 
 function handleCurrentChange(val: number) {
-  console.log(val);
-
   props.page.updatePageIndex(val);
   emits("page-change");
 }

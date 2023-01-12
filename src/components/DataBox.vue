@@ -16,6 +16,7 @@
 </template>
 <script lang="ts" setup>
 import { defineProps, computed, defineEmits } from "vue";
+import { SortService } from "@/http/extends/sort.service";
 type PropType = {
   /** 表格数据 */
   data: Array<any>;
@@ -25,8 +26,8 @@ type PropType = {
   currentRow?: object;
   /** 点击当前行是否高亮 */
   highlightRowShow?: boolean;
-  //表头样式
-  headerCellStyle?: object;
+  /** sort */
+  sort?: SortService;
 };
 const props = defineProps<PropType>();
 
@@ -43,13 +44,13 @@ const highlightCurrentRow = computed(
 const selection = computed(() => props.selectionData !== undefined);
 
 // { row, column, rowIndex, columnIndex } 回调参数
-const headerCellStyle = ()=>{
+const headerCellStyle = () => {
   return {
-    'color':'#262626',
-    'background-color': '#fafafa',
-    'font-size': '12px',
-  }
-}
+    color: "#262626",
+    "background-color": "#fafafa",
+    "font-size": "12px",
+  };
+};
 function emitSelectionChange(val: any) {
   emits("update:selectionData", val);
 }
@@ -63,7 +64,7 @@ function sortChange({
   prop: any;
   order: any;
 }) {
-  console.log(column, prop, order);
+  props.sort?.update(prop, order);
   emits("refreshData");
 }
 
@@ -72,11 +73,10 @@ function onCurrentRowChange<T = any>(currentRow: T) {
 }
 </script>
 <style lang="less" scoped>
-.data-box{
+.data-box {
   margin-top: 15px;
-  .el-table{
+  .el-table {
     font-size: 12px;
   }
 }
-
 </style>

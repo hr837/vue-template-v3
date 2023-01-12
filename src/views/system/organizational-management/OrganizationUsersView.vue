@@ -15,8 +15,22 @@
       ref="dataBox"
       @refresh="refreshData"
       :data="data"
+      :sort="sort"
     />
     <DataPagination :page="page" @page-change="refreshData" />
+
+    <el-dialog v-model="dialogFlag" title="导出">
+      <div>内容</div>
+      <template #footer>
+        <DialogAction
+          :is-show-cancel="false"
+          @save="onSave"
+          @cancel="onCancel"
+          :loading="loading"
+          button-text="关闭"
+        />
+      </template>
+    </el-dialog>
   </div>
 </template>
 <script lang="ts" setup>
@@ -25,11 +39,17 @@ import OrganizationUserDataForm from "./components/OrganizationUserDataForm.vue"
 import OrganizationUserDataBox from "./components/OrganizationUserDataBox.vue";
 import { DataType } from "./composable";
 import { PageService } from "@/http/extends/page.service";
+import { SortService } from "@/http/extends/sort.service";
+import { UserService } from "@/http/services/manage-service/UserService";
 
 const queryData = ref({});
 const data = ref<DataType[]>([]);
 const dataBox = ref();
 const page = new PageService();
+const dialogFlag = ref(false);
+const loading = ref(false);
+const sort = new SortService();
+const service = new UserService();
 
 function batchDelet() {
   if (!dataBox.value.selectionData.length) return;
@@ -38,25 +58,40 @@ function batchDelet() {
 }
 
 function onExport() {
-  console.log(data.value, "导出成功");
+  dialogFlag.value = true;
+}
+
+async function onSave() {
+  loading.value = true;
+  setTimeout(() => {
+    loading.value = false;
+    dialogFlag.value = false;
+    console.log(data.value, "导出成功");
+  }, 500);
+}
+
+function onCancel() {
+  dialogFlag.value = false;
 }
 
 function refreshData() {
   const result = [
     {
-      date: "2022-09-01",
+      createTime: "2022-09-01",
       name: "上海",
+      date: "",
     },
     {
-      date: "2022-09-02",
+      createTime: "2022-09-02",
       name: "北京",
+      date: "",
     },
   ];
 
-  const params = { ...queryData.value, page };
-  console.log(params, "params");
+  const params = { ...queryData.value };
 
   data.value = result;
+  getRoleList();
   console.log("更新");
 }
 
@@ -64,8 +99,25 @@ function queryHandler(data: any) {
   queryData.value = data;
   refreshData();
 }
+/**
+ * 获取用户信息
+ */
+function getUserInfoHandler() {
+  service.getUserInfo("1450034652778135553").then((data) => {
+    console.log(data, "useInfo");
+  });
+}
+/**
+ * 获取角色列表数据带请求参数，page，sort
+ */
+function getRoleList() {
+  service.getRoleList({ roleName: "刘" }, [page, sort]).then((data) => {
+    console.log(data, "roleList");
+  });
+}
 
 onMounted(() => {
   refreshData();
+  getUserInfoHandler();
 });
 </script>
