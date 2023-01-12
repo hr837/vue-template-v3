@@ -26,7 +26,7 @@
 
 <script lang="ts" setup>
 import type { UserModel } from "@/http/models/user.model";
-import { type QueryUserInput } from "@/http/services/UserService";
+import { type QueryUserInput } from "@/http/models/user.model";
 import { onMounted, reactive, ref } from "vue";
 
 const queryModel = reactive<QueryUserInput>({
