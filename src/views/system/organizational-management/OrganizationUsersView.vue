@@ -19,6 +19,8 @@
     />
     <DataPagination :page="page" @page-change="refreshData" />
 
+    <OrganizationUserInfo />
+
     <el-dialog v-model="dialogFlag" title="导出">
       <div>内容</div>
       <template #footer>
@@ -37,6 +39,7 @@
 import { ref, onMounted } from "vue";
 import OrganizationUserDataForm from "./components/OrganizationUserForm.vue";
 import OrganizationUserDataBox from "./components/OrganizationUserTable.vue";
+import OrganizationUserInfo from "./components/OrganizationUserInfo.vue";
 import type { DataType } from "@/http/models/user.model";
 import { PageService } from "@/http/extends/page.service";
 import { SortService } from "@/http/extends/sort.service";
