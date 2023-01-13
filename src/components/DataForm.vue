@@ -3,7 +3,7 @@
     <el-form
       ref="form"
       :model="model"
-      :label-width="LabelWidth"
+      :label-width="labelWidth"
       label-suffix="："
       class="flex form-style"
     >
@@ -38,14 +38,16 @@ type PropType = {
   /** 表单数据 */
   model: object;
   /** label的宽度 */
-  LabelWidth?: number;
+  labelWidth?: number;
+  /** 折叠功能 */
+  hiddenFlag?: boolean;
 };
 
-withDefaults(defineProps<PropType>(), {
-  LabelWidth: 120,
+const props = withDefaults(defineProps<PropType>(), {
+  labelWidth: 120,
+  hiddenFlag: false,
 });
 const form = ref<FormInstance>();
-const hiddenFlag = ref(false);
 
 const formItems = computed(() => {
   if (!formDom.value) return undefined;
@@ -67,7 +69,7 @@ const isShowExtend = computed(() => {
   else return false;
 });
 
-const emits = defineEmits(["reset", "search"]);
+const emits = defineEmits(["reset", "search", "update:hiddenFlag"]);
 
 /** 收起多余项 */
 function onCollapse() {
@@ -88,7 +90,7 @@ function onCollapse() {
       item.classList.remove("el-form-item");
     }
   }
-  hiddenFlag.value = false;
+  emits("update:hiddenFlag", false);
 }
 
 /** 展开所有项 */
@@ -98,7 +100,7 @@ function onExpand() {
     item.classList.remove("hidden");
     item.classList.add("el-form-item");
   });
-  hiddenFlag.value = true;
+  emits("update:hiddenFlag", true);
 }
 
 function emitSet() {
@@ -111,7 +113,8 @@ function emitSearch() {
 }
 
 onMounted(() => {
-  if (isShowExtend.value) onCollapse();
+  if (isShowExtend.value && props.hiddenFlag) onExpand();
+  else if (isShowExtend.value && !props.hiddenFlag) onCollapse();
 });
 </script>
 <style lang="less" scoped>

@@ -1,6 +1,4 @@
 
-export type DataType = {
-  date: string;
-  name: string;
-  createTime?: string;
-};
+/**
+ * 逻辑代码
+ */

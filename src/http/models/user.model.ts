@@ -41,3 +41,18 @@ export type RoleModel = {
 }
 
 export type QueryRoleInput = Omit<RoleModel, 'remark' | 'createTime'>
+
+export type DataType = {
+	/**
+	 * 时间
+	 */
+	date: string;
+	/**
+	 * 名称
+	 */
+	name: string;
+	/**
+	 * 创建时间
+	 */
+	createTime?: string;
+};

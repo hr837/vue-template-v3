@@ -3,7 +3,8 @@
     <el-table
       :data="data"
       :highlight-current-row="highlightCurrentRow"
-      border
+      :border="tableBorder"
+      :size="tableSize"
       @selection-change="emitSelectionChange"
       @sort-change="sortChange"
       @current-change="onCurrentRowChange"
@@ -15,7 +16,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { defineProps, computed, defineEmits } from "vue";
+import { defineProps, computed, defineEmits, withDefaults } from "vue";
 import { SortService } from "@/http/extends/sort.service";
 type PropType = {
   /** 表格数据 */
@@ -28,8 +29,15 @@ type PropType = {
   highlightRowShow?: boolean;
   /** sort */
   sort?: SortService;
+  /** 表格尺寸 */
+  tableSize?: "large" | "default" | "small";
+  /** 表格边框 */
+  tableBorder?: boolean;
 };
-const props = defineProps<PropType>();
+const props = withDefaults(defineProps<PropType>(), {
+  tableSize: "small",
+  tableBorder: false,
+});
 
 const emits = defineEmits([
   "update:selectionData",

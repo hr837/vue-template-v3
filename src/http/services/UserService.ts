@@ -1,4 +1,4 @@
-import type { QueryUserInput, UserModel, RoleModel, QueryRoleInput } from "../../models/user.model";
+import type { QueryUserInput, UserModel, RoleModel, QueryRoleInput } from "../models/user.model";
 import { RequestMethod, RequestService, type RequestPlugin } from "@gopowerteam/request"
 export class UserService {
 	// 请求实例

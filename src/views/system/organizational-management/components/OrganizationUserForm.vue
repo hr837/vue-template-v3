@@ -2,6 +2,7 @@
   <DataForm
     :model="modelData"
     :label-width="130"
+    v-model:hidden-flag="hiddenFlag"
     inline
     @search="onSearch"
     @reset="onReset"
@@ -37,6 +38,7 @@
 <script lang="ts" setup>
 import { ref, defineEmits } from "vue";
 
+const hiddenFlag = ref(true);
 const modelData = ref({
   name: "",
   status: "",
