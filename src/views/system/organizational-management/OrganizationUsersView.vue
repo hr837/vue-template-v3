@@ -35,12 +35,12 @@
 </template>
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
-import OrganizationUserDataForm from "./components/OrganizationUserDataForm.vue";
-import OrganizationUserDataBox from "./components/OrganizationUserDataBox.vue";
-import { DataType } from "./composable";
+import OrganizationUserDataForm from "./components/OrganizationUserForm.vue";
+import OrganizationUserDataBox from "./components/OrganizationUserTable.vue";
+import type { DataType } from "@/http/models/user.model";
 import { PageService } from "@/http/extends/page.service";
 import { SortService } from "@/http/extends/sort.service";
-import { UserService } from "@/http/services/manage-service/UserService";
+import { UserService } from "@/http/services/UserService";
 
 const queryData = ref({});
 const data = ref<DataType[]>([]);
