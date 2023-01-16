@@ -35,6 +35,8 @@ function handleSizeChange(val: number) {
 }
 
 function handleCurrentChange(val: number) {
+  console.log(val);
+
   props.page.updatePageIndex(val);
   emits("page-change");
 }

@@ -9,16 +9,19 @@
     >
       <slot>el-from-item others</slot>
 
-      <el-form-item label-width="20">
-        <el-button type="primary" @click="emitSearch">查询</el-button>
-        <el-button @click="emitSet">重置</el-button>
+      <el-form-item label-width="20" class="operationBtn">
+        <el-button type="primary"
+                   @click="emitSearch"><icon-park-outline-search class="mr-1"/>查询</el-button>
+        <el-button @click="emitSet"><icon-park-outline-refresh class="mr-1"/>重置</el-button>
         <template v-if="isShowExtend">
-          <el-button v-if="hiddenFlag" link type="primary" @click="onCollapse"
-            >收起</el-button
-          >
-          <el-button v-else link type="primary" @click="onExpand"
-            >展开</el-button
-          >
+          <el-button v-if="hiddenFlag"
+                     link
+                     type="primary"
+                     @click="onCollapse">收起</el-button>
+          <el-button v-else
+                     link
+                     type="primary"
+                     @click="onExpand">展开</el-button>
         </template>
       </el-form-item>
     </el-form>
@@ -41,11 +44,14 @@ type PropType = {
   labelWidth?: number;
   /** 折叠功能 */
   hiddenFlag?: boolean;
+  /** 一行多少个formitem*/
+  rowNums?:number;
 };
 
 const props = withDefaults(defineProps<PropType>(), {
   labelWidth: 120,
   hiddenFlag: false,
+  rowNums:3,
 });
 const form = ref<FormInstance>();
 
@@ -120,7 +126,35 @@ onMounted(() => {
 <style lang="less" scoped>
 .data-form {
   .form-style {
-    flex-wrap: wrap;
+    display: grid;
+    gap: 0px 10px;
+    grid-template-columns: repeat(v-bind(rowNums), minmax(0px, 1fr));
+    :deep {
+      .el-form-item {
+        grid-column: span 1 / span 1;
+        margin-left: unset;
+
+        .el-form-item__content>*{
+          width: 100%;
+        }
+        //日期选择范围
+        .date-range{
+            .el-date-editor{
+              width: 100%;
+            }
+        }
+        // el-select 为多选时不换行显示
+        .el-select__tags {
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        &.operationBtn{
+          .el-form-item__content>*{
+            width: auto;
+          }
+        }
+      }
+    }
     .el-form-item.hidden {
       display: none !important;
     }
