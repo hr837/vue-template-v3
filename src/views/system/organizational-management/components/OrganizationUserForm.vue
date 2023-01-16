@@ -21,7 +21,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="日期" prop="title">
+      <el-form-item label="日期" prop="date">
         <DateRange v-model="modelData.date" />
       </el-form-item>
       <el-form-item label="客户姓名" prop="name">
