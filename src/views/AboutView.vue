@@ -13,10 +13,24 @@
 <script lang="ts" setup>
 import { useStore } from "@/store";
 import { useRouter } from "vue-router";
+import { UserService } from "@/http/services/UserService";
+import { onMounted } from "vue";
 
 const store = useStore();
+const service = new UserService();
 
 function updateUserToken() {
+  service
+    .getToken({
+      loginName: "superadmin",
+      password:
+        "ZYkoT63IzXigaADXZms3cAl3/OMnwQPHnuEDLcn8Kaa+H1psEUobCe8xBf0MNfgJHOkdxthVIXLhwfzJMia7wSMz+4PZrAlTlmnuwMmFCXGkpGzOjOjnlvhy2rkpE+y/GuTB4xFX+LNgIdCLXR2kkhr2axFt4veV0vMcqg7f7h8=",
+    })
+    .then((data) => {
+      const result = JSON.parse(data.datas.tokens);
+      console.log(result);
+      store.user.updateToken(result.access_token);
+    });
   const randomStr = (Math.random() * 10000000).toString();
   store.user.updateToken(randomStr);
 }
@@ -34,4 +48,6 @@ function toLogin() {
 function toUser() {
   router.push("/system/organize/users");
 }
+
+onMounted(updateUserToken);
 </script>

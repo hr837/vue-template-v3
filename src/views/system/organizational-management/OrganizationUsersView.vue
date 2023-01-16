@@ -20,6 +20,7 @@
     <DataPagination :page="page" @page-change="refreshData" />
 
     <OrganizationUserInfo />
+    <OrganizationUserUpload />
 
     <el-dialog v-model="dialogFlag" title="导出">
       <div>内容</div>
@@ -40,6 +41,7 @@ import { ref, onMounted } from "vue";
 import OrganizationUserDataForm from "./components/OrganizationUserForm.vue";
 import OrganizationUserDataBox from "./components/OrganizationUserTable.vue";
 import OrganizationUserInfo from "./components/OrganizationUserInfo.vue";
+import OrganizationUserUpload from "./components/OrganizationUserUpload.vue";
 import type { DataType } from "@/http/models/user.model";
 import { PageService } from "@/http/extends/page.service";
 import { SortService } from "@/http/extends/sort.service";
@@ -114,7 +116,7 @@ function getUserInfoHandler() {
  * 获取角色列表数据带请求参数，page，sort
  */
 function getRoleList() {
-  service.getRoleList({ roleName: "刘" }, [page, sort]).then((data) => {
+  service.getRoleList({}, [page, sort]).then((data) => {
     console.log(data, "roleList");
   });
 }

@@ -1,4 +1,4 @@
-import type { QueryUserInput, UserModel, RoleModel, QueryRoleInput } from "../models/user.model";
+import type { QueryUserInput, UserModel, RoleModel, QueryRoleInput, LoginInput } from "../models/user.model";
 import { RequestMethod, RequestService, type RequestPlugin } from "@gopowerteam/request"
 export class UserService {
 	// 请求实例
@@ -15,7 +15,7 @@ export class UserService {
 		return this.request.send(
 			{
 				path: "/api/manage-service/system/user",
-				method: RequestMethod.Get,
+				method: RequestMethod.Post,
 				paramsBody: requestBody,
 			},
 			requestPlugins
@@ -53,6 +53,24 @@ export class UserService {
 				path: "manage-service/system/role/list",
 				method: RequestMethod.Get,
 				paramsQuery: requestBody,
+			},
+			requestPlugins
+		);
+	}
+
+	/**
+	 * 获取token
+	 */
+	public getToken(
+		requestBody: LoginInput,
+		requestPlugins: RequestPlugin[] = []
+	): Promise<any> {
+		// 请求数据
+		return this.request.send(
+			{
+				path: "cgrzzl-oauth/auth/getToken",
+				method: RequestMethod.Post,
+				paramsBody: requestBody,
 			},
 			requestPlugins
 		);

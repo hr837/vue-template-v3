@@ -35,7 +35,7 @@ export class PageService implements RequestPlugin {
 	 * @param index
 	 * @param size
 	 */
-	constructor(index = 1, size = 20) {
+	constructor(index = 1, size = 10) {
 		this.pageIndex.value = index;
 		this.pageSize.value = size;
 	}

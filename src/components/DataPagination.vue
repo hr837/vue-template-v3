@@ -13,7 +13,14 @@
 </template>
 <script lang="ts" setup>
 import { PageService } from "@/http/extends/page.service";
-import { defineProps, defineEmits, computed, withDefaults } from "vue";
+import {
+  defineProps,
+  defineEmits,
+  computed,
+  withDefaults,
+  watch,
+  ref,
+} from "vue";
 
 type PropType = {
   page: PageService;
@@ -26,8 +33,28 @@ const props = withDefaults(defineProps<PropType>(), {
 
 const emits = defineEmits(["page-change"]);
 
-const pageIndex = computed(() => props.page.pageIndex.value);
-const pageSize = computed(() => props.page.pageSize.value);
+const pageIndex = ref(0);
+const pageSize = ref(10);
+
+watch(
+  () => props.page.pageIndex.value,
+  (index, oldIndex) => {
+    pageIndex.value = index;
+  },
+  {
+    immediate: true,
+  }
+);
+
+watch(
+  () => props.page.pageSize.value,
+  (size, oldSize) => {
+    pageSize.value = size ? size : 10;
+  },
+  {
+    immediate: true,
+  }
+);
 
 function handleSizeChange(val: number) {
   props.page.updatePageSize(val);
