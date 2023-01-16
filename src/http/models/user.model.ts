@@ -56,3 +56,15 @@ export type DataType = {
 	 */
 	createTime?: string;
 };
+
+export type LoginInput = {
+	/**
+	 * 用户名
+	 */
+	loginName: string
+	/**
+	 * 密码
+	 */
+	password: string
+
+}
