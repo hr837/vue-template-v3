@@ -1,5 +1,10 @@
 <template>
   <div class="organization-user-info">
+    <ContainerHeader title="用户信息" tip-text="（包括名称姓名）">
+      <template #icon>
+        <icon-park-outline-bookmark-one theme="outline" size="24" fill="#fff" />
+      </template>
+    </ContainerHeader>
     <DataGrid
       :row-span="12"
       border-width="0px"
@@ -33,3 +38,4 @@
   </div>
 </template>
 <script lang="ts" setup></script>
+<style lang="less" scoped></style>
