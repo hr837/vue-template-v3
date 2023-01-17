@@ -6,7 +6,7 @@ export class LoadingService implements RequestPlugin {
    * Http loading
    * @param loadingStatus
    */
-  constructor(private loadingStatus: Ref<boolean>) {}
+  constructor(private loadingStatus: Ref<boolean>) { }
 
   /**
    * 请求前置操作

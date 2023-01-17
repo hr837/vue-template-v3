@@ -33,6 +33,9 @@
       <el-form-item label="名称" prop="title">
         <el-input v-model="modelData.title"></el-input>
       </el-form-item>
+      <el-form-item label="数字" prop="title">
+        <NumberRange v-model="modelData.number" />
+      </el-form-item>
     </DataForm>
   </div>
 </template>
@@ -48,6 +51,7 @@ const modelData = ref({
   address: "",
   title: "",
   date: ["2023-01-02", "2023-01-02"],
+  number: ["", ""],
 });
 
 const options = ref([
@@ -64,11 +68,10 @@ const options = ref([
 const emits = defineEmits(["queryHandler"]);
 
 function onSearch() {
-  console.log("查询");
   emits("queryHandler", modelData.value);
 }
 
 function onReset() {
-  console.log("重置");
+  // console.log("重置");
 }
 </script>
