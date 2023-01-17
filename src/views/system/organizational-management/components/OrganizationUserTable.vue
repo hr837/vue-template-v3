@@ -39,7 +39,7 @@ function refreshData() {
 }
 
 function edit(row: DataType) {
-  console.log(row, "编辑成功");
+  // console.log(row, "编辑成功");
 }
 
 defineExpose({

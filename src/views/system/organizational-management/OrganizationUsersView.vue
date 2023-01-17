@@ -1,5 +1,5 @@
 <template>
-  <div class="organization-users">
+  <div class="organization-users" v-loading="loadingFlag">
     <OrganizationUserDataForm @queryHandler="queryHandler" />
 
     <DataBoxAction>
@@ -46,6 +46,7 @@ import type { DataType } from "@/http/models/user.model";
 import { PageService } from "@/http/extends/page.service";
 import { SortService } from "@/http/extends/sort.service";
 import { UserService } from "@/http/services/UserService";
+import { LoadingService } from "@/http/extends/loading.service";
 
 const queryData = ref({});
 const data = ref<DataType[]>([]);
@@ -55,11 +56,11 @@ const dialogFlag = ref(false);
 const loading = ref(false);
 const sort = new SortService();
 const service = new UserService();
+const loadingFlag = ref(false);
+const loadingStatus = new LoadingService(loadingFlag);
 
 function batchDelet() {
   if (!dataBox.value.selectionData.length) return;
-  console.log(dataBox.value.selectionData);
-  console.log("删除成功");
 }
 
 function onExport() {
@@ -71,7 +72,6 @@ async function onSave() {
   setTimeout(() => {
     loading.value = false;
     dialogFlag.value = false;
-    console.log(data.value, "导出成功");
   }, 500);
 }
 
@@ -97,7 +97,6 @@ function refreshData() {
 
   data.value = result;
   getRoleList();
-  console.log("更新");
 }
 
 function queryHandler(data: any) {
@@ -109,15 +108,15 @@ function queryHandler(data: any) {
  */
 function getUserInfoHandler() {
   service.getUserInfo("1450034652778135553").then((data) => {
-    console.log(data, "useInfo");
+    // console.log(data, "useInfo");
   });
 }
 /**
- * 获取角色列表数据带请求参数，page，sort
+ * 获取角色列表数据带请求参数，page，sort，loading
  */
 function getRoleList() {
-  service.getRoleList({}, [page, sort]).then((data) => {
-    console.log(data, "roleList");
+  service.getRoleList({}, [page, sort, loadingStatus]).then((data) => {
+    // console.log(data, "roleList");
   });
 }
 

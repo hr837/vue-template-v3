@@ -28,7 +28,6 @@ function updateUserToken() {
     })
     .then((data) => {
       const result = JSON.parse(data.datas.tokens);
-      console.log(result);
       store.user.updateToken(result.access_token);
     });
   const randomStr = (Math.random() * 10000000).toString();
