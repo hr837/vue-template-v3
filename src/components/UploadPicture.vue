@@ -1,18 +1,8 @@
 <template>
   <div class="component upload-picture flex">
-    <el-upload
-      ref="uploadRef"
-      list-type="picture-card"
-      v-model:file-list="fileListData"
-      :action="actionUrl"
-      :headers="headers"
-      :limit="limitNumber"
-      :on-change="handleChange"
-      :before-upload="beforeUploadHandler"
-      :on-error="errorHandler"
-      :on-success="successHandler"
-      :on-exceed="handleExceed"
-    >
+    <el-upload ref="uploadRef" list-type="picture-card" v-model:file-list="fileListData" :action="actionUrl"
+      :headers="headers" :limit="limitNumber" :on-change="handleChange" :before-upload="beforeUploadHandler"
+      :on-error="errorHandler" :on-success="successHandler" :on-exceed="handleExceed">
       <icon-park-outline-plus theme="outline" size="24" fill="#333" />
       <template #tip>
         <div class="el-upload__tip">
@@ -22,34 +12,15 @@
     </el-upload>
 
     <ul class="upload-items flex flex-wrap">
-      <li
-        v-for="(file, index) in fileListData"
-        :key="file.uid"
-        class="upload-item"
-      >
-        <el-image
-          style="width: 146px; height: 146px"
-          :src="file.url"
-          :zoom-rate="1.2"
-          :preview-src-list="imageList"
-          :initial-index="index"
-          fit="fill"
-        />
+      <li v-for="(file, index) in fileListData" :key="file.uid" class="upload-item">
+        <el-image style="width: 146px; height: 146px" :src="file.url" :zoom-rate="1.2" :preview-src-list="imageList"
+          :initial-index="index" fit="fill" />
         <div class="upload-back">
           <div class="upload-success"></div>
-          <icon-park-outline-check-small
-            theme="outline"
-            size="24"
-            fill="#fff"
-          />
+          <icon-park-outline-check-small theme="outline" size="24" fill="#fff" />
 
-          <icon-park-outline-close
-            class="upload-delete"
-            theme="outline"
-            size="15"
-            fill="#fff"
-            @click="handleRemove(file as UploadFile)"
-          />
+          <icon-park-outline-close class="upload-delete" theme="outline" size="15" fill="#fff"
+            @click="handleRemove(file as UploadFile)" />
         </div>
       </li>
     </ul>
@@ -178,8 +149,12 @@ const handleExceed: UploadProps["onExceed"] = (files, uploadFiles) => {
 
 <style lang="less" scoped>
 .component.upload-picture {
-  .el-upload-list--picture-card .el-upload-list__item {
-    display: none !important;
+  :deep(.el-upload-list--picture-card) {
+    margin-right: 5px;
+
+    .el-upload-list__item {
+      display: none !important;
+    }
   }
 
   .upload-items {
@@ -191,6 +166,7 @@ const handleExceed: UploadProps["onExceed"] = (files, uploadFiles) => {
       width: 148px;
       height: 148px;
       overflow: hidden;
+
       .el-image {
         display: block;
         border-radius: 6px;
@@ -215,6 +191,7 @@ const handleExceed: UploadProps["onExceed"] = (files, uploadFiles) => {
         display: none;
         color: #909399;
       }
+
       .upload-success {
         position: absolute;
         right: -15px;
@@ -226,9 +203,11 @@ const handleExceed: UploadProps["onExceed"] = (files, uploadFiles) => {
         transform: rotate(45deg);
       }
     }
+
     .upload-item:hover .upload-delete {
       display: block;
     }
+
     .upload-item:hover .upload-success {
       display: none;
     }

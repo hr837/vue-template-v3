@@ -1,4 +1,5 @@
-import { defineStore } from "pinia";
+import { defineStore, createPinia } from "pinia";
+import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
 import { useAppStore } from "./app.store";
 import { useUserStore } from "./user.store";
 
@@ -24,3 +25,8 @@ export function useStore<T extends keyof typeof stores>(
 		return store();
 	}
 }
+
+// store
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
+export default pinia
