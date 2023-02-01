@@ -24,6 +24,9 @@
       <el-form-item label="日期" prop="date">
         <DateRange v-model="modelData.date" />
       </el-form-item>
+      <el-form-item label="时间" prop="time">
+        <DateTimeRange v-model="modelData.time" />
+      </el-form-item>
       <el-form-item label="客户姓名" prop="name">
         <el-input v-model="modelData.name"></el-input>
       </el-form-item>
@@ -33,7 +36,7 @@
       <el-form-item label="名称" prop="title">
         <el-input v-model="modelData.title"></el-input>
       </el-form-item>
-      <el-form-item label="数字" prop="title">
+      <el-form-item label="数字" prop="number">
         <NumberRange v-model="modelData.number" />
       </el-form-item>
     </DataForm>
@@ -52,6 +55,7 @@ const modelData = ref({
   title: "",
   date: ["2023-01-02", "2023-01-02"],
   number: ["", ""],
+  time: ["", ""]
 });
 
 const options = ref([
