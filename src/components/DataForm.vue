@@ -143,6 +143,12 @@ onMounted(() => {
               width: 100%;
             }
         }
+        .number-range{
+          display: flex;
+          .number-range-separator{
+            padding: 0 5px;
+          }
+        }
         // el-select 为多选时不换行显示
         .el-select__tags {
           overflow: hidden;

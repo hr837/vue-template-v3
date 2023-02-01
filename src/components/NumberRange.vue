@@ -10,7 +10,7 @@
       @keydown="minChangeInput"
       @mousewheel.prevent
     ></el-input>
-    <span>~</span>
+    <span class="number-range-separator">~</span>
     <el-input
       v-model.number="max"
       type="tel"
