@@ -2,8 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 // style
-import "./assets/styles/index.less";
-import "@/config/element-plus.config";
+import "@/config/style.config";
 // store
 import store from "@/store";
 // http request 

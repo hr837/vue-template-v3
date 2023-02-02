@@ -1,10 +1,8 @@
 <template>
   <div class="page about">
-    <h1>This is an about page</h1>
+    <h1 class="about-title">This is an about page</h1>
     <el-button @click="updateUserToken">改变token</el-button>
-    <el-button type="primary" @click="setMicroEnable"
-      >显示/隐藏头部Token</el-button
-    >
+    <el-button type="primary" @click="setMicroEnable">显示/隐藏头部Token</el-button>
     <el-button type="warning" @click="toLogin">登录</el-button>
     <el-button @click="toUser">机构与用户</el-button>
   </div>
@@ -50,3 +48,9 @@ function toUser() {
 
 onMounted(updateUserToken);
 </script>
+
+<style lang="less" scoped>
+.about-title {
+  color: @color-primary;
+}
+</style>
