@@ -47,5 +47,14 @@ export default defineConfig({
   },
   css: {
     sourceMap: process.env.NODE_ENV !== "production",
+    loaderOptions: {
+      less: {
+        lessOptions: {
+          globalVars: {
+            'color-primary': '#e30120'
+          }
+        }
+      }
+    }
   },
 });
