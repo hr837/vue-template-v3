@@ -1,23 +1,24 @@
-
 import type {
   AdapterResponse,
   RequestPlugin,
   RequestSendOptions,
-} from "@gopowerteam/request";
-import { ref } from "vue"
+} from '@gopowerteam/request'
 /**
  * 排序方式
  */
-export const SortType = {
-  ascending: "asc",
-  descending: "desc",
-};
+export const OrderSetting = {
+  ascending: 'asc',
+  descending: 'desc',
+}
+
+export type OrderType = keyof typeof OrderSetting
 
 export class SortService implements RequestPlugin {
-  sort: any = {};
+  sort: any = {}
 
   constructor(data?: any) {
-    if (data) this.sort = data;
+    if (data)
+      this.sort = data
   }
 
   /**
@@ -25,11 +26,10 @@ export class SortService implements RequestPlugin {
    * @param key 排序关键字
    * @param value 排序方式
    */
-  update(key: string, value: keyof typeof SortType) {
-    this.sort = {};
-    if (key && value) {
-      this.sort[key] = SortType[value];
-    }
+  update(key: string, value: OrderType) {
+    this.sort = {}
+    if (key && value)
+      this.sort[key] = OrderSetting[value]
   }
 
   /**
@@ -39,16 +39,16 @@ export class SortService implements RequestPlugin {
   remove(key: string) {
     // 过滤
     const items: any[] = Object.entries(this.sort).filter(
-      ([k, v]) => k !== key
-    ) as any[];
+      ([k, v]) => k !== key,
+    ) as any[]
 
-    this.sort = {};
+    this.sort = {}
 
     // 判断排序项是否存在
     if (items) {
       items.forEach(([k, v]) => {
-        this.sort[k] = v;
-      });
+        this.sort[k] = v
+      })
     }
   }
 
@@ -56,32 +56,30 @@ export class SortService implements RequestPlugin {
     params.paramsQuery = {
       ...params.paramsQuery,
       sort: JSON.stringify(this.sort),
-    };
-  };
+    }
+  }
 
   after(response: AdapterResponse) {
     //
-  };
+  }
 
   /**
    * 重置分页数据
    */
   reset() {
-    this.sort = {};
+    this.sort = {}
   }
 
   /**
    * 转换排序对象为字符串
    */
   stringify(value: SortService | any): string[] {
-    if (typeof value !== "object") {
-      return [];
-    }
+    if (typeof value !== 'object')
+      return []
 
-    if (value instanceof SortService) {
-      value = value.sort;
-    }
+    if (value instanceof SortService)
+      value = value.sort
 
-    return Object.entries(value).map(([k, v]) => `${k}.${v}`);
+    return Object.entries(value).map(([k, v]) => `${k}.${v}`)
   }
 }

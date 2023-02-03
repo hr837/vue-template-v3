@@ -1,6 +1,6 @@
-import { App } from "vue";
+import type { App } from 'vue'
 // import { IconPark, install } from "@icon-park/vue-next/es/all";
-import "@icon-park/vue-next/styles/index.css";
+import '@icon-park/vue-next/styles/index.css'
 
 /**
  * 安装icon-park,全局模式

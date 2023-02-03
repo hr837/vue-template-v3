@@ -1,15 +1,14 @@
-import { useStore } from "@/store";
-import { createRouter, createWebHistory } from "vue-router";
-import routesConfig from "./routes"
-
+import { createRouter, createWebHistory } from 'vue-router'
+import routes from './routes'
+import { useStore } from '@/store'
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes: routesConfig,
-});
+  routes,
+})
 
 router.beforeResolve((to) => {
-  useStore("app").updateLayout(to.meta.layout);
-});
+  useStore('app').updateLayout(to.meta.layout)
+})
 
-export default router;
+export default router

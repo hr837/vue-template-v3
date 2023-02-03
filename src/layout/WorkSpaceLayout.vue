@@ -1,3 +1,18 @@
+<script lang="ts" setup>
+import { computed } from 'vue'
+import LayoutHeader from './components/LayoutHeader.vue'
+import LayoutWorkMenu from './components/LayoutWorkMenu.vue'
+import { useStore } from '@/store'
+
+const showAside = computed(() => useStore('app').showAside)
+const actionTransform = computed(
+  () => `rotate(${showAside.value ? 0 : 180}deg)`,
+)
+function onActionClick() {
+  useStore('app').setAsideVisible(!showAside.value)
+}
+</script>
+
 <template>
   <el-container class="layout work-space-layout">
     <el-header class="px-0">
@@ -7,38 +22,25 @@
       <div class="work-space-layout-aside">
         <LayoutWorkMenu :collapse="!showAside" />
         <div class="work-space-layout-aside-action" @click="onActionClick">
-          <icon-park-outline-left-one  class="i-icon"/>
+          <icon-park-outline-left-one class="i-icon" />
         </div>
       </div>
-      <el-main class="work-space-layout-main overflow-x-hidden " >
+      <el-main class="work-space-layout-main overflow-x-hidden ">
         <router-view v-slot="{ Component, route }" class="work-space-layout-main-content bg-white">
-            <transition
-                name="fade-transform"
-                mode="out-in" >
-                      <component
-                        :is="Component"
-                        :key="route.path" />
-            </transition>
+          <transition
+            name="fade-transform"
+            mode="out-in"
+          >
+            <component
+              :is="Component"
+              :key="route.path"
+            />
+          </transition>
         </router-view>
       </el-main>
     </el-container>
   </el-container>
 </template>
-
-<script lang="ts" setup>
-import { useStore } from "@/store";
-import { computed } from "vue";
-import LayoutHeader from "./components/LayoutHeader.vue";
-import LayoutWorkMenu from "./components/LayoutWorkMenu.vue";
-
-const showAside = computed(() => useStore("app").showAside);
-const actionTransform = computed(
-  () => `rotate(${showAside.value ? 0 : 180}deg)`
-);
-function onActionClick() {
-  useStore("app").setAsideVisible(!showAside.value);
-}
-</script>
 
 <style lang="less" scoped>
 .work-space-layout {
@@ -61,7 +63,6 @@ function onActionClick() {
       border-radius: 10px;
     }
   }
-
 
 }
 </style>

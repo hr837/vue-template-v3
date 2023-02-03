@@ -1,74 +1,15 @@
-<template>
-  <div class="login bg-center bg-no-repeat">
-    <div class="header-box">
-      <div class="grid-box">
-        <div class="grid1 bg-center bg-no-repeat" />
-        <div class="grid2 bg-center bg-no-repeat" />
-        <div class="gridLine " />
-        <div class="grid3 bg-center bg-no-repeat" />
-      </div>
-    </div>
-    <el-form ref="loginRef"
-             :model="loginForm"
-             :rules="loginRules"
-             class="login-form">
-      <div class="login-form-header">
-        <span class="title">{{ appTitle }}</span>
-        <span class="title-sub">欢迎登录</span>
-      </div>
-      <el-form-item prop="username">
-        <el-input v-model="loginForm.username"
-                  type="text"
-                  size="large"
-                  auto-complete="off"
-                  placeholder="请输入用户名/手机号码">
-          <template #prefix>
-            <icon-park-outline-user />
-          </template>
-        </el-input>
-      </el-form-item>
-      <el-form-item prop="password">
-        <el-input v-model="loginForm.password"
-                  type="password"
-                  size="large"
-                  auto-complete="off"
-                  placeholder="请输入密码"
-                  maxlength="20">
-          <template #prefix>
-            <icon-park-outline-lock />
-          </template>
-        </el-input>
-      </el-form-item>
-      <verify-code :show="isShow"
-             @success="onSuccess"
-             @close="onClose"
-             @fail="onFail" />
-      <el-form-item style="width: 100%">
-        <el-button :loading="loading"
-                   size="large"
-                   type="primary"
-                   style="width: 100%"
-                   @click="handleLogin(loginRef)">
-          <span v-if="!loading">登 录</span>
-          <span v-else>登 录 中...</span>
-        </el-button>
-      </el-form-item>
-    </el-form>
-  </div>
-</template>
-
-<script lang="ts" setup  >
-import VerifyCode from "vue3-puzzle-vcode";
+<script lang="ts" setup>
+import VerifyCode from 'vue3-puzzle-vcode'
 import { useRouter } from 'vue-router'
-import { ref,reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import type { FormInstance, FormRules } from 'element-plus'
-const router = useRouter();
-const appTitle = process.env.VUE_APP_TITLE;
+const router = useRouter()
+const appTitle = process.env.VUE_APP_TITLE
 const loginForm = ref({
   username: '',
   password: '',
-});
-const loginRef = ref<FormInstance>();
+})
+const loginRef = ref<FormInstance>()
 const loginRules = reactive<FormRules>({
   username: [
     {
@@ -84,46 +25,115 @@ const loginRules = reactive<FormRules>({
       message: '请输入密码',
     },
   ],
-});
-const loading = ref(false);
-const isShow = ref<boolean>(false);
-const msg_onSuccess = ref('');
-const passInfr = ref('点击完成验证');
+})
+const loading = ref(false)
+const isShow = ref<boolean>(false)
+const msg_onSuccess = ref('')
+const passInfr = ref('点击完成验证')
 function onSuccess(msg: string) {
-  isShow.value = false; // 通过验证后，需要手动隐藏模态框
+  isShow.value = false // 通过验证后，需要手动隐藏模态框
   msg_onSuccess.value = msg
   if (msg_onSuccess.value) {
-    passInfr.value = "验证通过"
+    passInfr.value = '验证通过'
     handleLogin(loginRef.value)
   }
 }
 function onClose() {
-  isShow.value = false;
+  isShow.value = false
 }
 function onFail() {
-  isShow.value = true;
+  isShow.value = true
 }
 /**
  * 登陆
  */
 async function handleLogin(formEl: FormInstance | undefined) {
-  
-  if (!formEl) return
+  if (!formEl)
+    return
   await formEl.validate((valid, fields) => {
     if (valid) {
       if (!msg_onSuccess.value) {
-        isShow.value = true;
+        isShow.value = true
         return
       }
-      loading.value = true;
-      router.push('/');
-    } else {
+      loading.value = true
+      router.push('/')
+    }
+    else {
       console.log('error submit!', fields)
     }
   })
 }
-
 </script>
+
+<template>
+  <div class="login bg-center bg-no-repeat">
+    <div class="header-box">
+      <div class="grid-box">
+        <div class="grid1 bg-center bg-no-repeat" />
+        <div class="grid2 bg-center bg-no-repeat" />
+        <div class="gridLine" />
+        <div class="grid3 bg-center bg-no-repeat" />
+      </div>
+    </div>
+    <el-form
+      ref="loginRef"
+      :model="loginForm"
+      :rules="loginRules"
+      class="login-form"
+    >
+      <div class="login-form-header">
+        <span class="title">{{ appTitle }}</span>
+        <span class="title-sub">欢迎登录</span>
+      </div>
+      <el-form-item prop="username">
+        <el-input
+          v-model="loginForm.username"
+          type="text"
+          size="large"
+          auto-complete="off"
+          placeholder="请输入用户名/手机号码"
+        >
+          <template #prefix>
+            <icon-park-outline-user />
+          </template>
+        </el-input>
+      </el-form-item>
+      <el-form-item prop="password">
+        <el-input
+          v-model="loginForm.password"
+          type="password"
+          size="large"
+          auto-complete="off"
+          placeholder="请输入密码"
+          maxlength="20"
+        >
+          <template #prefix>
+            <icon-park-outline-lock />
+          </template>
+        </el-input>
+      </el-form-item>
+      <VerifyCode
+        :show="isShow"
+        @success="onSuccess"
+        @close="onClose"
+        @fail="onFail"
+      />
+      <el-form-item style="width: 100%">
+        <el-button
+          :loading="loading"
+          size="large"
+          type="primary"
+          style="width: 100%"
+          @click="handleLogin(loginRef)"
+        >
+          <span v-if="!loading">登 录</span>
+          <span v-else>登 录 中...</span>
+        </el-button>
+      </el-form-item>
+    </el-form>
+  </div>
+</template>
 
 <style lang="less" scoped>
 .login {
