@@ -8,7 +8,6 @@
       @selection-change="emitSelectionChange"
       @sort-change="sortChange"
       @current-change="onCurrentRowChange"
-      :header-cell-style="headerCellStyle"
     >
       <el-table-column v-if="selection" type="selection" width="45" />
       <slot></slot>
@@ -35,7 +34,7 @@ type PropType = {
   tableBorder?: boolean;
 };
 const props = withDefaults(defineProps<PropType>(), {
-  tableSize: "small",
+  tableSize: "default",
   tableBorder: false,
 });
 
@@ -51,14 +50,7 @@ const highlightCurrentRow = computed(
 
 const selection = computed(() => props.selectionData !== undefined);
 
-// { row, column, rowIndex, columnIndex } 回调参数
-const headerCellStyle = () => {
-  return {
-    color: "#262626",
-    "background-color": "#fafafa",
-    "font-size": "12px",
-  };
-};
+
 function emitSelectionChange(val: any) {
   emits("update:selectionData", val);
 }
@@ -83,8 +75,5 @@ function onCurrentRowChange<T = any>(currentRow: T) {
 <style lang="less" scoped>
 .data-box {
   margin-top: 15px;
-  .el-table {
-    font-size: 12px;
-  }
 }
 </style>
