@@ -1,3 +1,5 @@
+<script lang="ts" setup></script>
+
 <template>
   <div class="organization-user-info">
     <ContainerHeader title="用户信息" tip-text="（包括名称姓名）">
@@ -21,21 +23,32 @@
         content-align="center"
         required
         font-size="12px"
-        >北京</DataGridItem
       >
-      <DataGridItem :label="'姓名：'" :col-span="4">上海</DataGridItem>
-      <DataGridItem :label="'名称：'" :col-span="4">深圳</DataGridItem>
-      <DataGridItem :label="'名称：'" :col-span="4">广州</DataGridItem>
-      <DataGridItem label="名称：" :col-span="4">北京</DataGridItem>
-      <DataGridItem :label="'详情地址：'" :col-span="4"
-        >上海市浦东区上海市浦东区</DataGridItem
-      >
-      <DataGridItem :label="'联系电话：'" :col-span="4"
-        >18734444444</DataGridItem
-      >
-      <DataGridItem :label="'名称：'" :col-span="4">广州</DataGridItem>
+        北京
+      </DataGridItem>
+      <DataGridItem label="姓名：" :col-span="4">
+        上海
+      </DataGridItem>
+      <DataGridItem label="名称：" :col-span="4">
+        深圳
+      </DataGridItem>
+      <DataGridItem label="名称：" :col-span="4">
+        广州
+      </DataGridItem>
+      <DataGridItem label="名称：" :col-span="4">
+        北京
+      </DataGridItem>
+      <DataGridItem label="详情地址：" :col-span="4">
+        上海市浦东区上海市浦东区
+      </DataGridItem>
+      <DataGridItem label="联系电话：" :col-span="4">
+        18734444444
+      </DataGridItem>
+      <DataGridItem label="名称：" :col-span="4">
+        广州
+      </DataGridItem>
     </DataGrid>
   </div>
 </template>
-<script lang="ts" setup></script>
+
 <style lang="less" scoped></style>

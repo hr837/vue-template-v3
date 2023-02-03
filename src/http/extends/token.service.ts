@@ -11,7 +11,7 @@ export class TokenService implements RequestPlugin {
     if (store.user.token) {
       options.headers = {
         ...options.headers,
-        ['X-UserToken']: `bearer ${store.user.token}`,
+        'X-UserToken': `bearer ${store.user.token}`,
       }
     }
   }

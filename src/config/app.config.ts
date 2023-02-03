@@ -4,19 +4,19 @@ export const appConfig: AppConfig = {
     gateway: process.env.VUE_APP_HTTP_GETWAY,
     timeout: 3000,
   },
-};
+}
 
-export type AppConfig = {
+export interface AppConfig {
   /** 应用名称 */
-  title: string;
+  title: string
   http: {
     /**
      * 网关地址配置
      */
-    gateway: string;
+    gateway: string
     /**
      * 超时时间配置(毫秒)
      */
-    timeout?: number;
-  };
-};
+    timeout?: number
+  }
+}

@@ -1,3 +1,15 @@
+<script lang="ts" setup>
+import { defineProps, withDefaults } from 'vue'
+interface PropType {
+  /** 是否折叠菜单 */
+  collapse: boolean
+}
+
+withDefaults(defineProps<PropType>(), {
+  collapse: false,
+})
+</script>
+
 <template>
   <el-menu
     default-active="2"
@@ -9,11 +21,17 @@
       <template #title>
         <span>设置</span>
       </template>
-      <el-menu-item index="/about">个人中心</el-menu-item>
+      <el-menu-item index="/about">
+        个人中心
+      </el-menu-item>
 
       <el-sub-menu index="1-4">
-        <template #title>其他</template>
-        <el-menu-item index="1-4-1">item one</el-menu-item>
+        <template #title>
+          其他
+        </template>
+        <el-menu-item index="1-4-1">
+          item one
+        </el-menu-item>
       </el-sub-menu>
     </el-sub-menu>
     <el-menu-item index="2">
@@ -22,23 +40,11 @@
     <el-menu-item index="3" disabled>
       <span>Navigator Three</span>
     </el-menu-item>
-    <el-menu-item :index="`page-${index}`" v-for="index in 10" :key="index">
+    <el-menu-item v-for="index in 10" :key="index" :index="`page-${index}`">
       <span>Navigator {{ index }}</span>
     </el-menu-item>
   </el-menu>
 </template>
-
-<script lang="ts" setup>
-import { defineProps, withDefaults } from "vue";
-type PropType = {
-  /** 是否折叠菜单 */
-  collapse: boolean;
-};
-
-withDefaults(defineProps<PropType>(), {
-  collapse: false,
-});
-</script>
 
 <style lang="less" scoped>
 .layout-work-menu {

@@ -1,6 +1,15 @@
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'HomeView',
+  components: {},
+})
+</script>
+
 <template>
   <div class="page home flex flex-col items-center">
-    <img alt="Vue logo" src="../assets/images/logo.png" />
+    <img alt="Vue logo" src="../assets/images/logo.png">
 
     <h3>图标示例</h3>
     <ul>
@@ -9,15 +18,8 @@
     </ul>
 
     <h3>link</h3>
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">
+      About
+    </router-link>
   </div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "HomeView",
-  components: {},
-});
-</script>

@@ -1,47 +1,47 @@
-import HomeView from "../../views/HomeView.vue";
-import { RouteRecordRaw } from "vue-router";
-import { SystemRoutes } from './system.routes';
+import type { RouteRecordRaw } from 'vue-router'
+import HomeView from '../../views/HomeView.vue'
+import { SystemRoutes } from './system.routes'
 
 const routesConfig: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "home",
+    path: '/',
+    name: 'home',
     component: HomeView,
     meta: {
       ignoreAuth: true,
-      layout: "Basic",
+      layout: 'Basic',
     },
   },
   {
-    path: "/login",
-    name: "login",
-    component: () => import("@/views/LoginView.vue"),
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/LoginView.vue'),
     meta: {
       ignoreAuth: true,
-      layout: "Blank",
+      layout: 'Blank',
     },
   },
   {
-    path: "/user",
-    name: "user",
+    path: '/user',
+    name: 'user',
     meta: {
       ignoreAuth: true,
-      layout: "WorkSpace",
+      layout: 'WorkSpace',
     },
-    component: () => import("@/views/UserView.vue"),
+    component: () => import('@/views/UserView.vue'),
   },
   {
-    path: "/about",
-    name: "about",
+    path: '/about',
+    name: 'about',
     meta: {
       ignoreAuth: true,
-      layout: "WorkSpace",
+      layout: 'WorkSpace',
     },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../../views/AboutView.vue"),
+      import(/* webpackChunkName: "about" */ '../../views/AboutView.vue'),
   },
   // {
   //   path: "/system",
@@ -51,14 +51,14 @@ const routesConfig: Array<RouteRecordRaw> = [
   // },
   ...SystemRoutes,
   {
-    path: "/:pathMatch(.*)*",
-    name: "NotFound",
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
     meta: {
       ignoreAuth: false,
-      layout: "Blank"
+      layout: 'Blank',
     },
-    component: () => import("@/views/NotFoundView.vue"),
+    component: () => import('@/views/NotFoundView.vue'),
   },
 ]
 
-export default routesConfig;
+export default routesConfig

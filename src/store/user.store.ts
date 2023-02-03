@@ -1,29 +1,29 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia'
 
-type State = {
+interface State {
   // 用户token
-  token: string;
+  token: string
   // UserId
-  id: string;
-};
+  id: string
+}
 
 const initialState: State = {
-  id: "",
-  token: "",
-};
+  id: '',
+  token: '',
+}
 
-export const useUserStore = defineStore("user", {
+export const useUserStore = defineStore('user', {
   state: () => initialState,
   actions: {
     /**
      * 更新系统状态
      */
     updateToken(token: string) {
-      this.token = token;
+      this.token = token
     },
     updateUserInfo(user: { id: string; name: string }) {
-      this.id = user.id;
+      this.id = user.id
     },
   },
   persist: true,
-});
+})
