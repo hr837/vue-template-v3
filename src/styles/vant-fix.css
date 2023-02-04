@@ -1,0 +1,23 @@
+button.van-button.van-button--default {
+  background-color: var(--van-background-2);
+}
+
+button.van-button.van-button--primary {
+  background-color: var((--van-primary-color));
+}
+
+button.van-button.van-button--success {
+  background-color: var(--van-success-color);
+}
+
+button.van-button.van-button--danger {
+  background-color: var(--van-danger-color);
+}
+
+button.van-button.van-button--warning {
+  background-color: var(--van-warning-color);
+}
+
+button.van-button.van-button--plain {
+  background-color: var(--van-white)
+}

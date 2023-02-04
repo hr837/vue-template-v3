@@ -1,0 +1,5 @@
+// import '@unocss/reset/normalize.css'
+import '@unocss/reset/tailwind.css'
+import 'uno.css'
+import './main.css'
+import './vant-fix.css'
