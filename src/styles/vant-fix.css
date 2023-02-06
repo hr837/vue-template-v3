@@ -21,3 +21,23 @@ button.van-button.van-button--warning {
 button.van-button.van-button--plain {
   background-color: var(--van-white)
 }
+
+/* 输入框增加下框线 */
+.van-cell.van-field input.van-field__control{
+  box-shadow: 0 -1px 0 0 var(--van-gray-5) inset;
+
+}
+
+.van-cell.van-field input:focus.van-field__control{
+  box-shadow: 0 -1px 0 0 var(--van-primary-color) inset;
+}
+
+
+/* 单选框默认设置flex布局 */
+.van-checkbox .van-checkbox__label,
+.van-radio .van-radio__label{
+  display: inline-flex;
+  flex-wrap: nowrap;
+}
+
+

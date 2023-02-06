@@ -1,0 +1,46 @@
+  /* input 显示下边框 */
+  .el-input .el-input__wrapper {
+    --el-input-border-radius:0px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    box-shadow: 0 -1px 0 0 var(--el-input-border-color) inset;
+  }
+  .el-input .el-input__wrapper:hover{
+    box-shadow: 0 -1px 0 0 var(--el-input-border-color) inset;
+  }
+  .el-input .el-input__wrapper.is-focus {
+    box-shadow: 0 -1px 0 0 var(--el-input-focus-border-color) inset;
+  }
+
+  .el-input .el-input-group__append {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0 10px;
+  }
+
+  /* radio 修改为方框 */
+  .el-radio .el-radio__inner{
+    border-radius: 0;
+  }
+  .el-radio__input.is-checked .el-radio__inner{
+    background-color: transparent;
+  }
+
+  .el-radio__input.is-checked .el-radio__inner::after{
+    content: "✓";
+    height: 12px;
+    width: 12px;
+    line-height: 12px;
+    text-align: center;
+    left: 0;
+    top: 0;
+    background-color: unset;
+    color: #fff;
+    font-weight: bold;
+    transform: unset !important;
+  }
+
+  .el-radio .el-radio__label{
+    display: inherit;
+  }

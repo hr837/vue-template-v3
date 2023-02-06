@@ -1,44 +1,27 @@
 <script setup lang="ts" generic="T extends any, O extends any">
+import { useWindowSize } from '@vant/use'
+
 defineOptions({
   name: 'IndexPage',
 })
 
-const name = $ref('')
+const { width } = useWindowSize()
+let colCoumnt = $ref(3)
 
-const router = useRouter()
-const go = () => {
-  if (name)
-    router.push(`/hi/${encodeURIComponent(name)}`)
-}
+watch(width, (val) => {
+  if (val < 450)
+    colCoumnt = 3
+  else if (val >= 450 && val < 1024)
+    colCoumnt = 5
+  else
+    colCoumnt = 8
+}, { immediate: true })
 </script>
 
 <template>
-  <div>
-    <div i-carbon-campsite text-4xl inline-block />
-    <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
-        Vitesse Lite
-      </a>
-    </p>
-    <p>
-      <em text-sm op75>Opinionated Vite Starter Template</em>
-    </p>
-
-    <div py-4 />
-
-    <TheInput v-model="name" placeholder="What's your name?" autocomplete="false" @keydown.enter="go" />
-
-    <div>
-      <!-- <button
-        class="m-3 text-sm btn"
-        :disabled="!name"
-        @click="go"
-      >
-        Go
-      </button> -->
-      <van-button type="success">
-        go
-      </van-button>
-    </div>
-  </div>
+  <van-grid square :column-num="colCoumnt">
+    <van-grid-item icon="description" text="知情书" to="/comfort-cure/comfort-cure-escape-clause" />
+    <van-grid-item icon="description" text="术前记录" to="/comfort-cure/comfort-cure-preoperative-record" />
+    <van-grid-item icon="description" text="术前记录Element" to="/comfort-cure/comfort-cure-preoperative-record-element" />
+  </van-grid>
 </template>

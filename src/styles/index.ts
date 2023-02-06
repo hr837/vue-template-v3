@@ -1,5 +1,6 @@
 // import '@unocss/reset/normalize.css'
 import '@unocss/reset/tailwind.css'
 import 'uno.css'
-import './main.css'
+import './app-base.css'
 import './vant-fix.css'
+import './element-plus-fix.css'
