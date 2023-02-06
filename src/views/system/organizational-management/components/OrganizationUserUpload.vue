@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import type { UploadUserFile } from 'element-plus'
-import DataUpload from '@/components/DataUpload.vue'
 
 const fileList = ref<UploadUserFile[]>([
   {
