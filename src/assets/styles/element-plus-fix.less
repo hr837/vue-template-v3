@@ -1,14 +1,15 @@
 // element-plus theme
+@color-white:#ffffff;
 :root {
   color-scheme: light;
-  --el-color-white: #ffffff;
+  --el-color-white: @color-white;
   --el-color-black: #000000;
   --el-color-primary: @color-primary;
-  --el-color-primary-light-3: #eb4d63;
-  --el-color-primary-light-5: #f18090;
-  --el-color-primary-light-7: #f7b3bc;
-  --el-color-primary-light-8: #f9ccd2;
-  --el-color-primary-light-9: #fce6e9;
+  --el-color-primary-light-3: mix(@color-primary,@color-white,70%);
+  --el-color-primary-light-5: mix(@color-primary,@color-white,50%);
+  --el-color-primary-light-7: mix(@color-primary,@color-white,30%);
+  --el-color-primary-light-8: mix(@color-primary,@color-white,20%);
+  --el-color-primary-light-9: mix(@color-primary,@color-white,10%);
   --el-color-primary-dark-2: #b6011a;
   --el-color-success: #21ba45;
   --el-color-success-light-3: #64cf7d;
