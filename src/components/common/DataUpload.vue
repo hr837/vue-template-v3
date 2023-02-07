@@ -32,7 +32,7 @@ const fileListData = ref<UploadUserFile[]>([])
 
 watch(
   () => fileListData.value,
-  (val, old) => {
+  (val, _) => {
     if (val && val.length)
       emits('update:modelValue', val)
   },
@@ -43,7 +43,7 @@ watch(
 
 watch(
   () => props.modelValue,
-  (val, old) => {
+  (val, _) => {
     if (val && val.length)
       fileListData.value = val
   },

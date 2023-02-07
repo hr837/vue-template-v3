@@ -1,8 +1,4 @@
-import type {
-  AdapterResponse,
-  RequestPlugin,
-  RequestSendOptions,
-} from '@gopowerteam/request'
+import type { RequestPlugin, RequestSendOptions } from '@gopowerteam/request'
 /**
  * 排序方式
  */
@@ -38,9 +34,7 @@ export class SortService implements RequestPlugin {
    */
   remove(key: string) {
     // 过滤
-    const items: any[] = Object.entries(this.sort).filter(
-      ([k, v]) => k !== key,
-    ) as any[]
+    const items: any[] = Object.keys(this.sort).filter(k => k !== key) as any[]
 
     this.sort = {}
 
@@ -59,9 +53,9 @@ export class SortService implements RequestPlugin {
     }
   }
 
-  after(response: AdapterResponse) {
-    //
-  }
+  // after(response: AdapterResponse) {
+  //   //
+  // }
 
   /**
    * 重置分页数据

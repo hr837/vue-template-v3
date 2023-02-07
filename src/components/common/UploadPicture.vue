@@ -50,7 +50,7 @@ const imageList = computed(() => fileListData.value.map(file => file.url!))
 
 watch(
   () => props.modelValue,
-  (val, old) => {
+  (val, _) => {
     if (val && val.length === 0 && uploadRef.value)
       uploadRef.value.clearFiles()
     else
@@ -111,7 +111,7 @@ const handleRemove = (file: UploadFile) => {
 /**
  * 文件超出数量
  */
-const handleExceed: UploadProps['onExceed'] = (files, uploadFiles) => {
+const handleExceed: UploadProps['onExceed'] = (_, __) => {
   ElMessage.warning(`上传的文件已超出限定的数量${props.limitNumber}！`)
 }
 </script>

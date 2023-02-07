@@ -22,8 +22,7 @@ const loadingFlag = ref(false)
 const loadingStatus = new LoadingService(loadingFlag)
 
 function batchDelet() {
-  if (!dataBox.value.selectionData.length)
-    return
+  // if (!dataBox.value.selectionData.length)
 }
 
 function onExport() {
@@ -106,12 +105,7 @@ onMounted(() => {
       </template>
     </DataBoxAction>
 
-    <OrganizationUserDataBox
-      ref="dataBox"
-      :data="data"
-      :sort="sort"
-      @refresh="refreshData"
-    />
+    <OrganizationUserDataBox ref="dataBox" :data="data" :sort="sort" @refresh="refreshData" />
     <DataPagination :page="page" @page-change="refreshData" />
 
     <OrganizationUserInfo />
@@ -120,13 +114,7 @@ onMounted(() => {
     <el-dialog v-model="dialogFlag" title="导出">
       <div>内容</div>
       <template #footer>
-        <DialogAction
-          :is-show-cancel="false"
-          :loading="loading"
-          button-text="关闭"
-          @save="onSave"
-          @cancel="onCancel"
-        />
+        <DialogAction :is-show-cancel="false" :loading="loading" button-text="关闭" @save="onSave" @cancel="onCancel" />
       </template>
     </el-dialog>
   </div>

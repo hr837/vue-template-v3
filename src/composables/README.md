@@ -7,8 +7,8 @@
  * 时间格式化 -- 示例
  * @param val 要格式化的日期数据
  */
-export function dateFormat(val:string|number|Date){
-  //...
+export function dateFormat(val: string | number | Date) {
+  // ...
   return 'balabala'
 }
 ```

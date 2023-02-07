@@ -37,8 +37,7 @@ class ExceptionInterceptors implements ResponseInterceptor {
     }
     if (response) {
       const responseMessage = (response.data || {}).message
-      const errorMessage
-				= responseMessage || messageList[response.status] || defaultError
+      const errorMessage = responseMessage || messageList[response.status] || defaultError
       ElNotification.error(errorMessage)
     }
     switch (response.status) {

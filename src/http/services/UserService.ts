@@ -5,11 +5,11 @@ export class UserService {
   private request = RequestService.getInstance()
 
   /**
-	 * 创建管理员
-	 */
+   * 创建管理员
+   */
   public findUser(
     requestBody: QueryUserInput,
-		requestPlugins: RequestPlugin[] = [],
+    requestPlugins: RequestPlugin[] = [],
   ): Promise<UserModel[]> {
     // 请求数据
     return this.request.send(
@@ -23,11 +23,11 @@ export class UserService {
   }
 
   /**
-	 * 获取用户信息
-	 */
+   * 获取用户信息
+   */
   public getUserInfo(
     userId: string,
-		requestPlugins: RequestPlugin[] = [],
+    requestPlugins: RequestPlugin[] = [],
   ): Promise<any> {
     // 请求数据
     return this.request.send(
@@ -41,11 +41,11 @@ export class UserService {
   }
 
   /**
-	 * 角色列表数据
-	 */
+   * 角色列表数据
+   */
   public getRoleList(
     requestBody: QueryRoleInput,
-		requestPlugins: RequestPlugin[] = [],
+    requestPlugins: RequestPlugin[] = [],
   ): Promise<RoleModel> {
     // 请求数据
     return this.request.send(
@@ -59,11 +59,11 @@ export class UserService {
   }
 
   /**
-	 * 获取token
-	 */
+   * 获取token
+   */
   public getToken(
     requestBody: LoginInput,
-		requestPlugins: RequestPlugin[] = [],
+    requestPlugins: RequestPlugin[] = [],
   ): Promise<any> {
     // 请求数据
     return this.request.send(

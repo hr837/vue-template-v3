@@ -48,7 +48,7 @@ const headers = computed(() => {
 
 watch(
   () => props.modelValue,
-  (val, old) => {
+  (val, _) => {
     if (val && val.length === 0 && uploadRef.value)
       uploadRef.value.clearFiles()
     else

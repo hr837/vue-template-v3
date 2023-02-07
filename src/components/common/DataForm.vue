@@ -27,13 +27,13 @@ const props = withDefaults(defineProps<PropType>(), {
 const emits = defineEmits(['reset', 'search', 'update:hiddenFlag'])
 
 const form = ref<FormInstance>()
+const formDom = computed(() => form.value?.$el)
 
 const formItems = computed(() => {
   if (!formDom.value)
     return undefined
   return formDom.value?.children
 })
-const formDom = computed(() => form.value?.$el)
 const isShowExtend = computed(() => {
   if (!formDom.value)
     return false

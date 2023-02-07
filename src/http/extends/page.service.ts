@@ -33,26 +33,26 @@ export class PageService implements RequestPlugin {
   total: Ref<number> = ref(100)
 
   /**
-	 * 构造函数
-	 * @param index
-	 * @param size
-	 */
+ * 构造函数
+ * @param index
+ * @param size
+ */
   constructor(index = 1, size = 10) {
     this.pageIndex.value = index
     this.pageSize.value = size
   }
 
   /**
-	 * 重置操作
-	 */
+ * 重置操作
+ */
   reset(): void {
     this.pageIndex.value = 1
   }
 
   /**
-	 * 前置操作
-	 * @param options
-	 */
+ * 前置操作
+ * @param options
+ */
   before(options: RequestSendOptions) {
     options.paramsQuery = {
       ...options.paramsQuery,
@@ -62,25 +62,25 @@ export class PageService implements RequestPlugin {
   }
 
   /**
-	 * 后置操作
-	 * @param response
-	 */
+ * 后置操作
+ * @param response
+ */
   after(response: AdapterResponse) {
     this.total.value = Number(response.data?.data?.total)
   }
 
   /**
-	 * 更新PageSize
-	 * @param val
-	 */
+ * 更新PageSize
+ * @param val
+ */
   updatePageSize(val: number) {
     this.pageSize.value = val
   }
 
   /**
-	 * 更新PageIndex
-	 * @param val
-	 */
+ * 更新PageIndex
+ * @param val
+ */
   updatePageIndex(val: number) {
     this.pageIndex.value = val
   }

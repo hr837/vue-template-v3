@@ -49,9 +49,6 @@ function queryHandle() {
       updatedAt: '2023-01-05 16:33:22',
     },
   ]
-  // service.findUser(queryModel).then((data) => {
-  // 	// dataList.value = data
-  // });
 }
 
 onMounted(queryHandle)
@@ -64,10 +61,7 @@ onMounted(queryHandle)
         <el-input v-model.trim="queryModel.username" />
       </el-form-item>
       <el-form-item label="创建时间" prop="createdAt">
-        <el-date-picker
-          v-model.trim="queryModel.createdAt"
-          type="date"
-        />
+        <el-date-picker v-model.trim="queryModel.createdAt" type="date" />
       </el-form-item>
       <el-form-item>
         <el-button type="info" @click="queryHandle">
@@ -84,5 +78,3 @@ onMounted(queryHandle)
     </el-table>
   </div>
 </template>
-
-<style lang="less" scoped></style>

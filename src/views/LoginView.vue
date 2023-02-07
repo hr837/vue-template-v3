@@ -27,7 +27,7 @@ const loginRules = reactive<FormRules>({
   ],
 })
 const loading = ref(false)
-const isShow = ref<boolean>(false)
+const isShow = ref(false)
 const msg_onSuccess = ref('')
 const passInfr = ref('点击完成验证')
 function onSuccess(msg: string) {
@@ -50,7 +50,7 @@ function onFail() {
 async function handleLogin(formEl: FormInstance | undefined) {
   if (!formEl)
     return
-  await formEl.validate((valid, fields) => {
+  await formEl.validate((valid, _) => {
     if (valid) {
       if (!msg_onSuccess.value) {
         isShow.value = true
@@ -60,7 +60,7 @@ async function handleLogin(formEl: FormInstance | undefined) {
       router.push('/')
     }
     else {
-      console.log('error submit!', fields)
+      // console.log('error submit!', fields)
     }
   })
 }
@@ -76,24 +76,13 @@ async function handleLogin(formEl: FormInstance | undefined) {
         <div class="grid3 bg-center bg-no-repeat" />
       </div>
     </div>
-    <el-form
-      ref="loginRef"
-      :model="loginForm"
-      :rules="loginRules"
-      class="login-form"
-    >
+    <el-form ref="loginRef" :model="loginForm" :rules="loginRules" class="login-form">
       <div class="login-form-header">
         <span class="title">{{ appTitle }}</span>
         <span class="title-sub">欢迎登录</span>
       </div>
       <el-form-item prop="username">
-        <el-input
-          v-model="loginForm.username"
-          type="text"
-          size="large"
-          auto-complete="off"
-          placeholder="请输入用户名/手机号码"
-        >
+        <el-input v-model="loginForm.username" type="text" size="large" auto-complete="off" placeholder="请输入用户名/手机号码">
           <template #prefix>
             <icon-park-outline-user />
           </template>
@@ -101,11 +90,7 @@ async function handleLogin(formEl: FormInstance | undefined) {
       </el-form-item>
       <el-form-item prop="password">
         <el-input
-          v-model="loginForm.password"
-          type="password"
-          size="large"
-          auto-complete="off"
-          placeholder="请输入密码"
+          v-model="loginForm.password" type="password" size="large" auto-complete="off" placeholder="请输入密码"
           maxlength="20"
         >
           <template #prefix>
@@ -113,20 +98,9 @@ async function handleLogin(formEl: FormInstance | undefined) {
           </template>
         </el-input>
       </el-form-item>
-      <VerifyCode
-        :show="isShow"
-        @success="onSuccess"
-        @close="onClose"
-        @fail="onFail"
-      />
+      <VerifyCode v-bind="{ show: isShow } as any" @success="onSuccess" @close="onClose" @fail="onFail" />
       <el-form-item style="width: 100%">
-        <el-button
-          :loading="loading"
-          size="large"
-          type="primary"
-          style="width: 100%"
-          @click="handleLogin(loginRef)"
-        >
+        <el-button :loading="loading" size="large" type="primary" style="width: 100%" @click="handleLogin(loginRef)">
           <span v-if="!loading">登 录</span>
           <span v-else>登 录 中...</span>
         </el-button>
@@ -188,7 +162,7 @@ async function handleLogin(formEl: FormInstance | undefined) {
       .grid3 {
         width: 170px;
         height: 56px;
-        background-image: url("/public/images/login/car.png") ;
+        background-image: url("/public/images/login/car.png");
         background-size: 80% 80%;
         float: left;
       }

@@ -16,7 +16,7 @@ const min = computed({
   set: (value) => {
     const [, max] = props.modelValue
     let val = value === undefined ? '' : value
-    const reg = RegExp(/(^\d*\.(\d*)$)|(^[1-9]*$)/)
+    const reg = /(^\d*\.(\d*)$)|(^[1-9]*$)/
     if (isNaN(parseFloat(String(value))))
       val = ''
 
@@ -35,7 +35,7 @@ const max = computed({
   set: (value) => {
     const [min] = props.modelValue
     let val = value === undefined ? '' : value
-    const reg = RegExp(/(^\d*\.(\d*)$)|(^[1-9]*$)/)
+    const reg = /(^\d*\.(\d*)$)|(^[1-9]*$)/
     if (isNaN(parseFloat(String(value))))
       val = ''
 
@@ -47,7 +47,7 @@ const max = computed({
 })
 
 function minChangeInput(e: any) {
-  const reg = RegExp(/\.|(^[0-9]*$)/)
+  const reg = /\.|(^[0-9]*$)/
   if (e.key === 'Backspace') {
     e.returnValue = true
     return true

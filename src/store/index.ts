@@ -21,7 +21,7 @@ export function useStore<T extends keyof typeof stores>(
 ): ReturnType<typeof store> | ReturnType<typeof store>[T] {
   if (name)
     return store()[name]
-	 else
+  else
     return store()
 }
 
