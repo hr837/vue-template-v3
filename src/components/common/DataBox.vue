@@ -34,15 +34,6 @@ const highlightCurrentRow = computed(
 
 const selection = computed(() => props.selectionData !== undefined)
 
-const headerCellStyle = () => {
-  // { row, column, rowIndex, columnIndex } 回调参数
-  return {
-    'color': '#262626',
-    'background-color': '#fafafa',
-    'font-size': '12px',
-  }
-}
-
 function emitSelectionChange(val: any) {
   emits('update:selectionData', val)
 }
