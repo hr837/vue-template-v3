@@ -7,7 +7,7 @@
 
 ```ts
 /** 数字输入格式 */
-export type NumberInputType = Number | String | ""
+export type NumberInputType = Number | String | ''
 
 export interface QueryForm {
   /** 用户名 */
@@ -15,7 +15,6 @@ export interface QueryForm {
   /** 创建时间 */
   time: string
 }
-
 ```
 
 > 以上内容代表示例，并非实际使用代码。

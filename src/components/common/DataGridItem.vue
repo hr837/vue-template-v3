@@ -80,24 +80,6 @@ const itemStyle = computed(() => {
   }
 })
 
-/**
- * 获取label样式
- */
-const labelStyle = computed(() => {
-  const width = (props.labelWidth || grid.value?.props.labelWidth) as string
-  return {
-    flexBasis: width,
-    width,
-    color: labelColor.value,
-    background: labelBackground.value,
-    justifyContent: {
-      left: 'flex-start',
-      center: 'center',
-      right: 'flex-end',
-    }[itemLabelAlign.value],
-  }
-})
-
 const separateStyle = computed(() => {
   return {
     background: borderColor.value,
@@ -120,6 +102,24 @@ const labelColor = computed(() => {
 const contentStyle = computed(() => {
   return {
     textAlign: itemContentAlign.value,
+  }
+})
+
+/**
+ * 获取label样式
+ */
+const labelStyle = computed(() => {
+  const width = (props.labelWidth || grid.value?.props.labelWidth) as string
+  return {
+    flexBasis: width,
+    width,
+    color: labelColor.value,
+    background: labelBackground.value,
+    justifyContent: {
+      left: 'flex-start',
+      center: 'center',
+      right: 'flex-end',
+    }[itemLabelAlign.value],
   }
 })
 </script>

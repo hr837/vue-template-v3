@@ -17,7 +17,7 @@ const props = withDefaults(defineProps<PropType>(), {
   layout: 'total, sizes, prev, pager, next, jumper',
 })
 
-const emits = defineEmits(['page-change'])
+const emits = defineEmits(['pageChange'])
 
 const pageIndex = ref(0)
 const pageSize = ref(10)
@@ -44,14 +44,12 @@ watch(
 
 function handleSizeChange(val: number) {
   props.page.updatePageSize(val)
-  emits('page-change')
+  emits('pageChange')
 }
 
 function handleCurrentChange(val: number) {
-  console.log(val)
-
   props.page.updatePageIndex(val)
-  emits('page-change')
+  emits('pageChange')
 }
 </script>
 
