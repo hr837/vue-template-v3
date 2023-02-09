@@ -1,43 +1,53 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useStore } from '@/store'
 
 import LayoutHeaderSysLogo from './components/LayoutHeaderSysLogo.vue'
 import LayoutWorkTree from './components/LayoutWorkTree.vue'
-import LayoutWorkAction from './components/LayoutWorkAction.vue';
-import LayoutWorkTitle from './components/LayoutWorkTitle.vue';
-const appStore = useStore('app');
+import LayoutWorkAction from './components/LayoutWorkAction.vue'
+import LayoutWorkTitle from './components/LayoutWorkTitle.vue'
+import { useStore } from '@/store'
+const appStore = useStore('app')
 const collapse2 = computed(() => appStore.showWorkMenuTree)
 </script>
 
 <template>
   <el-container class="layout basic-layout">
-    <el-aside class="layout-work-aside"
-              width="258px"
-              :class="{ 'layout-work-aside-hide': collapse2 }">
+    <el-aside
+      class="layout-work-aside"
+      width="258px"
+      :class="{ 'layout-work-aside-hide': collapse2 }"
+    >
       <div>
         <LayoutHeaderSysLogo :collapse="collapse2" />
-        <LayoutWorkTree ></LayoutWorkTree>
+        <LayoutWorkTree />
       </div>
     </el-aside>
-    <el-container class="layout-work-container"
-                  direction="vertical">
-      <LayoutWorkTitle></LayoutWorkTitle>
+    <el-container
+      class="layout-work-container"
+      direction="vertical"
+    >
+      <LayoutWorkTitle />
       <el-main class="layout-work-container-main">
-        <router-view v-slot="{ Component, route }"
-                     class="layout-work-container-main-content">
-          <transition name="fade-transform"
-                      mode="out-in">
-            <component :is="Component"
-                       :key="route.path" />
+        <router-view
+          v-slot="{ Component, route }"
+          class="layout-work-container-main-content"
+        >
+          <transition
+            name="fade-transform"
+            mode="out-in"
+          >
+            <component
+              :is="Component"
+              :key="route.path"
+            />
           </transition>
         </router-view>
       </el-main>
     </el-container>
-    <LayoutWorkAction></LayoutWorkAction>
-    
+    <LayoutWorkAction />
   </el-container>
 </template>
+
 <style lang="less" scoped>
 .basic-layout {
   position: relative;

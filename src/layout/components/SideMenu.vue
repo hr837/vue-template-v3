@@ -2,65 +2,61 @@
 import { defineProps, withDefaults } from 'vue'
 
 interface Menu {
-  path: string,
-  icon?: string,
+  path: string
+  icon?: string
   title: string
   children?: Menu[]
 }
 interface PropType {
   /** 是否折叠菜单 */
-  collapse: boolean,
-  datas: Menu[],
+  collapse: boolean
+  datas: Menu[]
 }
 withDefaults(defineProps<PropType>(), {
   collapse: false,
   datas: () => {
     return []
-  }
+  },
 })
-
 </script>
+
 <template>
   <ul class="component">
-    <li v-for="(item, index) in datas"
-        class="layout-basic-menu-item"
-        :class="[{ 'layout-basic-menu-item--collapse': collapse }, { active: index === 0 }]">
-      <el-popover v-if="item.children && item.children.length > 0"
-                  placement="right"
-                  :title="item.title"
-                  :width="200"
-                  trigger="hover"
-                  :offset="15"
-                  popper-class="popver-menu-container">
+    <li
+      v-for="(item, index) in datas" :key="`layout-basic-menu-item-${index}`" class="layout-basic-menu-item"
+      :class="[{ 'layout-basic-menu-item--collapse': collapse }, { active: index === 0 }]"
+    >
+      <el-popover
+        v-if="item.children && item.children.length > 0" placement="right" :title="item.title" :width="200"
+        trigger="hover" :offset="15" popper-class="popver-menu-container"
+      >
         <template #reference>
           <div class="flex items-center h-full">
-            <icon-park-outline-home-two
-                                        :class="[{ 'menu-item-icon--collapse': collapse }, { 'menu-item-icon': true }]" />
+            <icon-park-outline-home-two class="menu-item-icon" :class="[{ 'menu-item-icon--collapse': collapse }]" />
             <span>{{ item.title }}</span>
           </div>
-
         </template>
-        <div class="popver-menu"
-             v-for="(child) in item.children">
-          <icon-park-outline-user :class="[{ 'menu-item-icon': true }]" />
+        <div
+          v-for="(child, childIndex) in item.children" :key="`layout-basic-menu-item-${index}-child-${childIndex}`"
+          class="popver-menu"
+        >
+          <icon-park-outline-user class="menu-item-icon" :class="[]" />
           <span>{{ child.title }}</span>
         </div>
       </el-popover>
-      <el-tooltip v-else
-                  placement="right"
-                  title="Title"
-                  :width="200"
-                  trigger="hover"
-                  :disabled="!collapse"
-                  content="Navigator2">
+      <el-tooltip
+        v-else placement="right" title="Title" :width="200" trigger="hover" :disabled="!collapse"
+        content="Navigator2"
+      >
         <div class="flex items-center h-full">
-          <icon-park-outline-home-two :class="[{ 'menu-item-icon--collapse': collapse }, { 'menu-item-icon': true }]" />
+          <icon-park-outline-home-two class="menu-item-icon" :class="[{ 'menu-item-icon--collapse': collapse }]" />
           <span>{{ item.title }}</span>
         </div>
       </el-tooltip>
     </li>
   </ul>
 </template>
+
 <style lang="less" scoped>
 .layout-basic-menu-item {
   @apply cursor-pointer text-left w-full;
@@ -68,12 +64,15 @@ withDefaults(defineProps<PropType>(), {
   color: #fff;
   position: relative;
   font-size: 14px;
+
   span {
     @apply overflow-hidden whitespace-nowrap;
   }
+
   &--collapse {
     >div {
       @apply justify-center;
+
       span {
         height: 0;
         width: 0;
@@ -105,6 +104,7 @@ withDefaults(defineProps<PropType>(), {
   }
 }
 </style>
+
 <style lang="less">
 //悬浮的菜单列表样式
 .el-popover.popver-menu-container {

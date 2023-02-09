@@ -4,19 +4,26 @@ import LayoutHeader from './components/LayoutHeader.vue'
 
 <template>
   <el-container class="layout basic-layout" direction="vertical">
-    <LayoutHeader></LayoutHeader>
+    <LayoutHeader />
     <el-main class="layout-work-container-main">
-      <router-view v-slot="{ Component, route }"
-                    class="layout-work-container-main-content">
-        <transition name="fade-transform"
-                    mode="out-in">
-          <component :is="Component"
-                      :key="route.path" />
+      <router-view
+        v-slot="{ Component, route }"
+        class="layout-work-container-main-content"
+      >
+        <transition
+          name="fade-transform"
+          mode="out-in"
+        >
+          <component
+            :is="Component"
+            :key="route.path"
+          />
         </transition>
       </router-view>
     </el-main>
   </el-container>
 </template>
+
 <style lang="less" scoped>
 .layout-work-container-main{
   @apply overflow-x-hidden;

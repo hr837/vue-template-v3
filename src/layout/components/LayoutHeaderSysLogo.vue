@@ -10,8 +10,8 @@ withDefaults(defineProps<PropType>(), {
 </script>
 
 <template>
-  <div class="layout-header-logo" :class="{'layout-header-logo--collapse':collapse}">
-    <icon-park-outline-application-menu></icon-park-outline-application-menu>
+  <div class="layout-header-logo" :class="{ 'layout-header-logo--collapse': collapse }">
+    <icon-park-outline-application-menu />
     <span>租赁系统</span>
   </div>
 </template>

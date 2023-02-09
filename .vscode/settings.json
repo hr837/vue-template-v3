@@ -1,0 +1,8 @@
+{
+  "less.lint.unknownAtRules": "ignore",
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}

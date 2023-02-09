@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import {computed} from 'vue'
+import { computed } from 'vue'
 import { useStore } from '@/store'
 const showWorkMenuTree = computed(() => useStore('app').showWorkMenuTree)
 function onActionClick() {
@@ -8,9 +8,12 @@ function onActionClick() {
 </script>
 
 <template>
-      <img src="@/assets/images/workAction.png" alt="" @click="onActionClick" class="layout-work-action"
-       :class="showWorkMenuTree ? 'layout-work-action--collapse' : ''">
+  <img
+    src="@/assets/images/workAction.png" alt="" class="layout-work-action" :class="showWorkMenuTree ? 'layout-work-action--collapse' : ''"
+    @click="onActionClick"
+  >
 </template>
+
 <style lang="less" scoped>
 img.layout-work-action{
   width: 21px;

@@ -106,7 +106,7 @@ onMounted(() => {
     </DataBoxAction>
 
     <OrganizationUserDataBox ref="dataBox" :data="data" :sort="sort" @refresh="refreshData" />
-    <DataPagination :page="page" @page-change="refreshData" :background="true"/>
+    <DataPagination :page="page" :background="true" @page-change="refreshData" />
 
     <OrganizationUserInfo />
     <OrganizationUserUpload />
