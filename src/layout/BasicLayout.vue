@@ -3,12 +3,26 @@ import LayoutHeader from './components/LayoutHeader.vue'
 </script>
 
 <template>
-  <el-container class="layout basic-layout">
-    <el-header class="px-0">
-      <LayoutHeader />
-    </el-header>
-    <el-main>
-      <router-view />
+  <el-container class="layout basic-layout" direction="vertical">
+    <LayoutHeader></LayoutHeader>
+    <el-main class="layout-work-container-main">
+      <router-view v-slot="{ Component, route }"
+                    class="layout-work-container-main-content">
+        <transition name="fade-transform"
+                    mode="out-in">
+          <component :is="Component"
+                      :key="route.path" />
+        </transition>
+      </router-view>
     </el-main>
   </el-container>
 </template>
+<style lang="less" scoped>
+.layout-work-container-main{
+  @apply overflow-x-hidden;
+  position: relative;
+  background-color: #EFF3F6;
+  padding: 15px;
+  height: calc(100% - 50px);
+}
+</style>
