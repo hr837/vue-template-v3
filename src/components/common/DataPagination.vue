@@ -10,15 +10,15 @@ import type { PageService } from '@/http/extends/page.service'
 
 interface PropType {
   page: PageService
-  layout?: string,
-  background?:boolean
-  pageCount?:number
+  layout?: string
+  background?: boolean
+  pageCount?: number
 }
 
 const props = withDefaults(defineProps<PropType>(), {
   layout: 'total, sizes, prev, pager, next, jumper',
   background: true,
-  pageCount: 4
+  pageCount: 4,
 })
 
 const emits = defineEmits(['pageChange'])
@@ -65,10 +65,10 @@ function handleCurrentChange(val: number) {
       :page-sizes="page.pageSizeOpts"
       :layout="layout"
       :total="page.total.value"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
       :background="background"
       :page-count="pageCount"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
     />
   </div>
 </template>

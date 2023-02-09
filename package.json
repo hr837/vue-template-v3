@@ -65,6 +65,9 @@
     ]
   },
   "eslintConfig": {
-    "extends": "@antfu"
+    "extends": "@antfu",
+    "rules": {
+      "no-console": "warn"
+    }
   }
 }

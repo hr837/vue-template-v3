@@ -1,14 +1,16 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router'
 const currentRoute = useRoute()
 const title = computed(() => {
   return (currentRoute.meta && currentRoute.meta.title) || '标题'
 })
 </script>
+
 <template>
   <el-header>{{ title }}</el-header>
 </template>
+
 <style lang="less" scoped>
 header {
   font-size: 16px;

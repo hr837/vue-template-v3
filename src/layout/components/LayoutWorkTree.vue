@@ -1,41 +1,41 @@
 <script lang="ts" setup>
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 const router = useRouter()
 interface Tree {
-  name: string,
-  path?: string,
+  name: string
+  path?: string
   children?: Tree[]
 }
 const workMenus: Tree[] = [
-{
-    name: "Menu",
+  {
+    name: 'Menu',
     children: [
       {
-        name: "menuItem",
-        path: "/system/organize/users",
+        name: 'menuItem',
+        path: '/system/organize/users',
       },
     ],
   },
 ]
-function handleNodeClick(data:Tree){
-  if(data.path){
+function handleNodeClick(data: Tree) {
+  if (data.path)
     router.push(data.path)
     // router.push('/system/organize/users')
-  }
 }
-
 </script>
 
 <template>
-  <el-tree :data="workMenus"
-           default-expand-all
-           highlight-current
-           class="layout-work-menu noScrollbar" 
-           @node-click="handleNodeClick"
-           >
+  <el-tree
+    :data="workMenus"
+    default-expand-all
+    highlight-current
+    class="layout-work-menu noScrollbar"
+    @node-click="handleNodeClick"
+  >
     <template #default="{ data }">
       <icon-park-outline-all-application
-                                          v-if="!data.children || (data.children && data.children.length === 0)" class="mr-1"></icon-park-outline-all-application>
+        v-if="!data.children || (data.children && data.children.length === 0)" class="mr-1"
+      />
       <span>{{ data.name }}</span>
     </template>
   </el-tree>
