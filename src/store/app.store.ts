@@ -10,7 +10,9 @@ interface State {
   /** 当前布局 */
   layout: PageLayout
   /** 是否显示左侧菜单 */
-  showAside: boolean
+  showAside: boolean,
+  //是否显示 二级菜单树
+  showWorkMenuTree: boolean,
 }
 
 const initialState: State = {
@@ -18,7 +20,8 @@ const initialState: State = {
   title: '',
   microApp: false,
   layout: 'WorkSpace',
-  showAside: true,
+  showAside: false,
+  showWorkMenuTree:false
 }
 
 export const useAppStore = defineStore('app', {
@@ -49,6 +52,10 @@ export const useAppStore = defineStore('app', {
     /** 设置左侧菜单可见性 */
     setAsideVisible(visible: boolean) {
       this.showAside = visible
+    },
+    /** 设置左侧菜单可见性 */
+    setWorkMenuVisible(visible: boolean) {
+      this.showWorkMenuTree = visible
     },
   },
   persist: {

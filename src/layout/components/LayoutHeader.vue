@@ -1,23 +1,17 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
 import LayoutHeaderSysLogo from './LayoutHeaderSysLogo.vue'
-import { useStore } from '@/store'
-const store = useStore()
-
-const showToken = computed(() => !store.app.microApp)
+import LayoutWorkTitle from './LayoutWorkTitle.vue';
 </script>
 
 <template>
-  <div class="component layout-header">
-    <LayoutHeaderSysLogo />
-    <div v-if="showToken">
-      token:{{ store.user.token }}
-    </div>
-  </div>
+    <el-header class="layout-header" height="50px">
+      <LayoutHeaderSysLogo :collapse="false"/>
+      <LayoutWorkTitle></LayoutWorkTitle>
+    </el-header>
 </template>
 
 <style lang="less" scoped>
 .layout-header {
-  @apply bg-white h-full flex justify-between items-center;
+  @apply flex items-start p-0;
 }
 </style>
