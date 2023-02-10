@@ -34,10 +34,11 @@ defineExpose({
       :data="data"
       :sort="sort"
       highlight-row-show
+      row-key="idx"
       @refreshData="refreshData"
     >
       <el-table-column prop="createTime" sortable label="时间" />
-      <el-table-column prop="name" label="名称" />
+      <el-table-column prop="roleName" label="名称" />
       <el-table-column label="操作">
         <template #default="{ row }">
           <el-button link type="primary" @click="edit(row)">
