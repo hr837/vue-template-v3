@@ -16,10 +16,16 @@ interface PropType {
   tableSize?: 'large' | 'default' | 'small'
   /** 表格边框 */
   tableBorder?: boolean
+  /** 表格row-key */
+  rowKey?: string
+  /** 保存选中列数据状态 需指定row-key */
+  reserveSelection?: boolean
 }
 const props = withDefaults(defineProps<PropType>(), {
   tableSize: 'default',
   tableBorder: false,
+  rowKey: 'id',
+  reserveSelection: true,
 })
 
 const emits = defineEmits([
@@ -52,9 +58,10 @@ function onCurrentRowChange<T = any>(currentRow: T) {
   <div class="component data-box">
     <el-table
       :data="data" :highlight-current-row="highlightCurrentRow" :border="tableBorder" :size="tableSize"
-      @selection-change="emitSelectionChange" @sort-change="sortChange" @current-change="onCurrentRowChange"
+      :row-key="rowKey" @selection-change="emitSelectionChange" @sort-change="sortChange"
+      @current-change="onCurrentRowChange"
     >
-      <el-table-column v-if="selection" type="selection" width="45" />
+      <el-table-column v-if="selection" type="selection" width="45" :reserve-selection="reserveSelection" />
       <slot />
     </el-table>
   </div>

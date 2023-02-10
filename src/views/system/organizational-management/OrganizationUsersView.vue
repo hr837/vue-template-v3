@@ -42,22 +42,6 @@ function onCancel() {
 }
 
 function refreshData() {
-  const result = [
-    {
-      createTime: '2022-09-01',
-      name: '上海',
-      date: '',
-    },
-    {
-      createTime: '2022-09-02',
-      name: '北京',
-      date: '',
-    },
-  ]
-
-  const params = { ...queryData.value }
-
-  data.value = result
   getRoleList()
 }
 
@@ -77,8 +61,8 @@ function getUserInfoHandler() {
  * 获取角色列表数据带请求参数，page，sort，loading
  */
 function getRoleList() {
-  service.getRoleList({}, [page, sort, loadingStatus]).then((data) => {
-    // console.log(data, "roleList");
+  service.getRoleList({}, [page, sort, loadingStatus]).then((res: any) => {
+    data.value = res.data.rows
   })
 }
 
