@@ -12,13 +12,16 @@ interface PropType {
   page: PageService
   layout?: string
   background?: boolean
-  pageCount?: number
+  pagerCount?: number
 }
 
 const props = withDefaults(defineProps<PropType>(), {
   layout: 'total, sizes, prev, pager, next, jumper',
   background: true,
-  pageCount: 4,
+  // 可点击的页码数量
+  pagerCount: () => {
+    return document.body.clientWidth < 992 ? 3 : 5
+  },
 })
 
 const emits = defineEmits(['pageChange'])
@@ -66,7 +69,7 @@ function handleCurrentChange(val: number) {
       :layout="layout"
       :total="page.total.value"
       :background="background"
-      :page-count="pageCount"
+      :pager-count="pagerCount"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     />
