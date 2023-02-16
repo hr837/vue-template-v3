@@ -6,9 +6,11 @@ import '@/config/style.config'
 // store
 import store from '@/store'
 // http request
-import useHttp from '@/config/http.config'
-useHttp()
+import httpRequest from '@/config/http.config'
 
-// app instance
-const app = createApp(App).use(store).use(router)
-app.mount('#app')
+// 初始化APP
+createApp(App)
+  .use(store)
+  .use(router)
+  .use(httpRequest)
+  .mount('#app')
