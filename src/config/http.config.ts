@@ -2,10 +2,12 @@
 import { ElNotification } from 'element-plus'
 import {
   type AdapterResponse,
+  RequestService,
   type ResponseInterceptor,
   setup,
 } from '@gopowerteam/request'
 import { AxiosAdapter } from '@gopowerteam/request/adapters'
+import type { App } from 'vue'
 import { TokenService } from '@/http/extends/token.service'
 import { appConfig } from '@/config/app.config'
 class StatusInterceptors implements ResponseInterceptor {
@@ -55,8 +57,8 @@ function onResponse401() {
   // location.href = "/";
 }
 
-export default function () {
-  // 配置服务端信息
+/** 配置服务端信息 */
+const setupHttp = () =>
   setup({
     gateway: appConfig.http.gateway,
     adapter: new AxiosAdapter(),
@@ -75,4 +77,10 @@ export default function () {
     },
     plugins: [new TokenService()],
   })
+
+export default {
+  install(app: App) {
+    setupHttp()
+    app.config.globalProperties.$http = RequestService.getInstance()
+  },
 }
