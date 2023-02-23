@@ -10,7 +10,7 @@ import {
 import { ElMessage } from 'element-plus'
 import type { UploadInstance, UploadProps, UploadUserFile } from 'element-plus'
 import { appConfig } from '@/config/app.config'
-import { useStore } from '@/store'
+import { getAuthorization } from '@/composables/http-header'
 interface PropType {
   modelValue: UploadUserFile[]
   /** 允许文件上传的最大数量 */
@@ -30,7 +30,6 @@ const props = withDefaults(defineProps<PropType>(), {
 })
 
 const emits = defineEmits(['update:modelValue'])
-const store = useStore()
 const fileListData = ref<UploadUserFile[]>([])
 const uploadRef = ref<UploadInstance>()
 
@@ -40,11 +39,7 @@ const actionUrl = computed(() => {
   return `${baseUrl}${path}`
 })
 
-const headers = computed(() => {
-  return {
-    'X-UserToken': store.user.token,
-  }
-})
+const headers = getAuthorization()
 
 watch(
   () => props.modelValue,
@@ -115,17 +110,9 @@ const handleExceed: UploadProps['onExceed'] = () => {
 <template>
   <div class="component upload-file">
     <el-upload
-      ref="uploadRef"
-      v-model:file-list="fileListData"
-      :action="actionUrl"
-      :headers="headers"
-      :limit="limitNumber"
-      :on-change="handleChange"
-      :before-upload="beforeUploadHandler"
-      :on-error="errorHandler"
-      :on-remove="removeHandler"
-      :on-success="successHandler"
-      :on-exceed="handleExceed"
+      ref="uploadRef" v-model:file-list="fileListData" :action="actionUrl" :headers="headers"
+      :limit="limitNumber" :on-change="handleChange" :before-upload="beforeUploadHandler" :on-error="errorHandler"
+      :on-remove="removeHandler" :on-success="successHandler" :on-exceed="handleExceed"
     >
       <el-button type="primary">
         上传文件

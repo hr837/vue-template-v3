@@ -311,6 +311,7 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
        const showAside = computed(() => useStore().app.showAside);
      </script>
      ```
+     > 如果只是明确的使用某个store,就应该只导入当前使用的store，而不是使用根store
 
  1. 修改store的值
 
