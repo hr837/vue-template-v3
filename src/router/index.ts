@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import routes from './routes'
-import { useStore } from '@/store'
+import { useAppStore } from '@/store/app.store'
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -8,7 +8,8 @@ const router = createRouter({
 })
 
 router.beforeResolve((to) => {
-  useStore('app').updateLayout(to.meta.layout)
+  const appStore = useAppStore()
+  appStore.updateLayout(to.meta.layout)
 })
 
 export default router

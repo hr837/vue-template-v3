@@ -5,8 +5,8 @@ import LayoutHeaderSysLogo from './components/LayoutHeaderSysLogo.vue'
 import LayoutWorkTree from './components/LayoutWorkTree.vue'
 import LayoutWorkAction from './components/LayoutWorkAction.vue'
 import LayoutWorkTitle from './components/LayoutWorkTitle.vue'
-import { useStore } from '@/store'
-const appStore = useStore('app')
+import { useAppStore } from '@/store/app.store'
+const appStore = useAppStore()
 const collapse2 = computed(() => appStore.showWorkMenuTree)
 </script>
 

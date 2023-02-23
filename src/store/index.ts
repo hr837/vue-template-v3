@@ -8,22 +8,12 @@ const stores = {
   user: () => useUserStore(),
 }
 
-const store = defineStore('main', {
+/** store 根实例
+ * @description 如果页面只使用单个store，应该只导入某个store文件。而不是导入根store
+ */
+export const useStore = defineStore('main', {
   getters: stores,
 })
-
-export function useStore(): ReturnType<typeof store>
-export function useStore<T extends keyof typeof stores>(
-  name: T
-): ReturnType<typeof store>[T]
-export function useStore<T extends keyof typeof stores>(
-  name?: T,
-): ReturnType<typeof store> | ReturnType<typeof store>[T] {
-  if (name)
-    return store()[name]
-  else
-    return store()
-}
 
 // store
 const pinia = createPinia()

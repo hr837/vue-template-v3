@@ -1,21 +1,23 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useStore } from '@/store'
-const showWorkMenuTree = computed(() => useStore('app').showWorkMenuTree)
+import { useAppStore } from '@/store/app.store'
+
+const appStore = useAppStore()
+const showWorkMenuTree = computed(() => appStore.showWorkMenuTree)
 function onActionClick() {
-  useStore('app').setWorkMenuVisible(!showWorkMenuTree.value)
+  appStore.setWorkMenuVisible(!showWorkMenuTree.value)
 }
 </script>
 
 <template>
   <img
-    src="@/assets/images/workAction.png" alt="" class="layout-work-action" :class="showWorkMenuTree ? 'layout-work-action--collapse' : ''"
-    @click="onActionClick"
+    src="@/assets/images/workAction.png" alt="" class="layout-work-action"
+    :class="showWorkMenuTree ? 'layout-work-action--collapse' : ''" @click="onActionClick"
   >
 </template>
 
 <style lang="less" scoped>
-img.layout-work-action{
+img.layout-work-action {
   width: 21px;
   position: absolute;
   top: 140px;
@@ -24,7 +26,8 @@ img.layout-work-action{
   cursor: pointer;
   transform: rotate(180deg);
   transition: left .5s;
-  &--collapse{
+
+  &--collapse {
     transform: rotate(0);
     left: 0;
   }

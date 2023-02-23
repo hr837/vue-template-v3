@@ -10,7 +10,7 @@ import {
 import type { UploadInstance, UploadProps, UploadUserFile } from 'element-plus'
 import { ElMessage, UploadFile } from 'element-plus'
 import { appConfig } from '@/config/app.config'
-import { useStore } from '@/store'
+import { getAuthorization } from '@/composables/http-header'
 interface PropType {
   modelValue: UploadUserFile[]
   /** 允许文件上传的最大数量 */
@@ -30,7 +30,6 @@ const props = withDefaults(defineProps<PropType>(), {
 })
 
 const emits = defineEmits(['update:modelValue'])
-const store = useStore()
 const fileListData = ref<UploadUserFile[]>([])
 const uploadRef = ref<UploadInstance>()
 
@@ -40,11 +39,7 @@ const actionUrl = computed(() => {
   return `${baseUrl}${path}`
 })
 
-const headers = computed(() => {
-  return {
-    'X-UserToken': store.user.token,
-  }
-})
+const headers = getAuthorization()
 
 const imageList = computed(() => fileListData.value.map(file => file.url!))
 
