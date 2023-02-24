@@ -293,7 +293,7 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
       就像使用普通第三方库一样，导入一个`useStore`方法就能使用了。
 
      ```html
-     // /src/layout/WorkSpaceLayout.vue
+     <!-- /src/layout/WorkSpaceLayout.vue -->
      <template>
        <!-- ... -->
          <LayoutWorkMenu :collapse="!showAside" />
@@ -301,15 +301,18 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
      </template>
 
      <script lang="ts" setup>
-       import { useStore } from "@/store";
+       import { useAppStore } from "@/store/app.store";
        import { computed } from "vue";
        import LayoutWorkMenu from "./components/LayoutWorkMenu.vue";
+
+       const appStore = useAppStore()
 
        // store的数据并不是一定是响应式的(除非你定义的时候就具有reactive特性)
        // 因此你需要对其进行reactive处理
        // 使用computed是一个好办法,有时候还能使用toRef
-       const showAside = computed(() => useStore().app.showAside);
+       const showAside = computed(() => appStore.showAside);
      </script>
+
      ```
      > 如果只是明确的使用某个store,就应该只导入当前使用的store，而不是使用根store
 
@@ -320,7 +323,7 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
     ```ts
     // /src/layout/WorkSpaceLayout.vue
     function onActionClick() {
-      useStore().app.setAsideVisible(!showAside.value)
+      appStore.setAsideVisible(!showAside.value)
     }
     ```
 
@@ -334,8 +337,8 @@ compoents:  HomeReport.vue,   HomeReportLineChart.vue
 
   ```ts
   interface RouteMeta {
-    /** 是否忽略身份权限 */
-    ignoreAuth: boolean
+    /** 是否忽略身份权限,默认为不忽略 */
+    ignoreAuth?: boolean
     /** 布局模式，默认为WorkSpace */
     layout?: PageLayout
   }
