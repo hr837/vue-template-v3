@@ -17,7 +17,7 @@ function refreshData() {
   emits('refresh')
 }
 
-function edit(row: DataType) {
+function edit(_: DataType) {
   // console.log(row, "编辑成功");
 }
 
@@ -35,7 +35,7 @@ defineExpose({
       :sort="sort"
       highlight-row-show
       row-key="idx"
-      @refreshData="refreshData"
+      @refresh-data="refreshData"
     >
       <el-table-column prop="createTime" sortable label="时间" />
       <el-table-column prop="roleName" label="名称" />

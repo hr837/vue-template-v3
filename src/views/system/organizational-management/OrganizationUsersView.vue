@@ -53,7 +53,7 @@ function queryHandler(data: any) {
  * 获取用户信息
  */
 function getUserInfoHandler() {
-  service.getUserInfo('1450034652778135553').then((data) => {
+  service.getUserInfo('1450034652778135553').then((_) => {
     // console.log(data, "useInfo");
   })
 }
@@ -74,7 +74,7 @@ onMounted(() => {
 
 <template>
   <div v-loading="loadingFlag" class="organization-users">
-    <OrganizationUserDataForm @queryHandler="queryHandler" />
+    <OrganizationUserDataForm @query-handler="queryHandler" />
 
     <DataBoxAction>
       <template #buttons>

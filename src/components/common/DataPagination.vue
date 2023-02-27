@@ -31,7 +31,7 @@ const pageSize = ref(10)
 
 watch(
   () => props.page.pageIndex.value,
-  (index, oldIndex) => {
+  (index) => {
     pageIndex.value = index
   },
   {
@@ -41,7 +41,7 @@ watch(
 
 watch(
   () => props.page.pageSize.value,
-  (size, oldSize) => {
+  (size) => {
     pageSize.value = size || 10
   },
   {

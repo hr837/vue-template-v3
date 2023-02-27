@@ -8,9 +8,10 @@ import store from '@/store'
 // http request
 import httpRequest from '@/config/http.config'
 
-// 初始化APP
-createApp(App)
+// app instance
+const appInstance = createApp(App)
   .use(store)
   .use(router)
   .use(httpRequest)
-  .mount('#app')
+// await router resolved then mount app
+router.isReady().then(() => appInstance.mount('#app'))
