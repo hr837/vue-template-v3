@@ -2,44 +2,29 @@
 import { computed } from 'vue'
 
 import LayoutHeaderSysLogo from './components/LayoutHeaderSysLogo.vue'
-import LayoutWorkTree from './components/LayoutWorkTree.vue'
 import LayoutWorkAction from './components/LayoutWorkAction.vue'
 import LayoutWorkTitle from './components/LayoutWorkTitle.vue'
+import LayoutWorkMenu from './components/LayoutWorkMenu.vue'
 import { useAppStore } from '@/store/app.store'
 const appStore = useAppStore()
-const collapse2 = computed(() => appStore.showWorkMenuTree)
+const collapse2 = computed(() => false)
 </script>
 
 <template>
   <el-container class="layout basic-layout">
-    <el-aside
-      class="layout-work-aside"
-      width="258px"
-      :class="{ 'layout-work-aside-hide': collapse2 }"
-    >
+    <el-aside class="layout-work-aside" width="258px" :class="{ 'layout-work-aside-hide': collapse2 }">
       <div>
         <LayoutHeaderSysLogo :collapse="collapse2" />
-        <LayoutWorkTree />
+        <!-- <LayoutWorkTree /> -->
+        <LayoutWorkMenu :collapse="false" />
       </div>
     </el-aside>
-    <el-container
-      class="layout-work-container"
-      direction="vertical"
-    >
+    <el-container class="layout-work-container" direction="vertical">
       <LayoutWorkTitle />
       <el-main class="layout-work-container-main">
-        <router-view
-          v-slot="{ Component, route }"
-          class="layout-work-container-main-content"
-        >
-          <transition
-            name="fade-transform"
-            mode="out-in"
-          >
-            <component
-              :is="Component"
-              :key="route.path"
-            />
+        <router-view v-slot="{ Component, route }" class="layout-work-container-main-content">
+          <transition name="fade-transform" mode="out-in">
+            <component :is="Component" :key="route.path" />
           </transition>
         </router-view>
       </el-main>
