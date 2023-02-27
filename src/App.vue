@@ -6,7 +6,6 @@ import { computed } from 'vue'
 import { useAppStore } from './store/app.store'
 import { appLayouts } from '@/layout'
 
-
 const appStore = useAppStore()
 const currentLayout = computed(() => {
   const key = appStore.layout
