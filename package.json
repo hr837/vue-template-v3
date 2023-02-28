@@ -1,6 +1,7 @@
 {
   "name": "vue-template-v3",
-  "version": "0.2.2",
+  "version": "0.2.3",
+  "description": "vue3+typescript+webpack模板项目",
   "private": true,
   "author": {
     "name": "黄瑞",
@@ -13,7 +14,7 @@
     "lint:fix": "eslint . --fix",
     "prepare": "husky install",
     "commit": "cz",
-    "changelog": "conventional-changelog -p gitmoji-config -i CHANGELOG.md -s -r 0",
+    "changelog": "gitmoji-changelog",
     "release": "standard-version"
   },
   "dependencies": {
@@ -47,11 +48,11 @@
     "eslint": "^8.33.0",
     "eslint-formatter-table": "^7.32.1",
     "git-cz": "^4.9.0",
+    "gitmoji-changelog": "^2.3.0",
     "husky": "^8.0.3",
     "less": "^4.1.3",
     "less-loader": "^11.1.0",
     "lint-staged": "13.0.3",
-    "standard-version": "^9.5.0",
     "typescript": "~4.5.5",
     "unplugin-auto-import": "^0.12.1",
     "unplugin-icons": "^0.15.1",

@@ -2,6 +2,7 @@
 import { defineProps, withDefaults } from 'vue'
 import LayoutMenuIcon from './LayoutMenuIcon.vue'
 import LayoutMenuIconTwo from './LayoutMenuIconTwo.vue'
+import LayoutMenuIconLocal from './LayoutMenuIconLocal.vue'
 interface PropType {
   /** 是否折叠菜单 */
   collapse: boolean
@@ -35,7 +36,10 @@ withDefaults(defineProps<PropType>(), {
       </el-sub-menu>
     </el-sub-menu>
     <el-menu-item index="2">
-      <span>Navigator Two</span>
+      <template #title>
+        <LayoutMenuIconLocal type="bankcard" />
+        <span>Navigator Two</span>
+      </template>
     </el-menu-item>
     <el-menu-item index="3" disabled>
       <span>Navigator Three</span>

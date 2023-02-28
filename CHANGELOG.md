@@ -1,58 +1,120 @@
-## <small>0.2.2 (2023-02-24)</small>
+# Changelog
 
-* :art:  切换eslint规则集，添加扩展引导 ([3fda6e0](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/3fda6e0))
-* :bug:  分页组件page-count更改为pager-count ([cdfb56b](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/cdfb56b))
-* :bug:  修改route-meta 定义，身份验证设置为可选配置 ([00fc0b9](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/00fc0b9))
-* :bug:  修改store使用方式和tailwind对el-button的修复 ([e1f20fb](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/e1f20fb))
-* :pencil2:  修改git使用文档 ([f27e3e1](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/f27e3e1))
-* :wrench:  修改commitlint emoji code ([412a069](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/412a069))
-* :wrench: (config) 修改lint-staged插件版本 ([40fb2ca](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/40fb2ca))
-* :zap:  完善databox属性增加示例 ([2e298fc](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/2e298fc))
-* ⚡ (http-request) 修改http-request使用方式为插件模式 ([22c8dda](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/22c8dda))
-* 🔧 (config) 修改husky文件格式 ([8d93873](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/8d93873))
-* 🔧 修改pre-commit 终端判断 ([010d1c9](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/010d1c9))
-* 表单样式优化 loading等组件样式添加 ([ef86543](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/ef86543))
-* 表格，主体布局，分页样式优化   分页逻辑修改 ([aa0f6b4](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/aa0f6b4))
-* 创建DataBox,DataFrom组件及组件示例 ([a7d1efd](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/a7d1efd))
-* 动态设置主题色渐变 滚动条增加类名 ([fab84c8](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/fab84c8))
-* 路由实例 ([63418b8](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/63418b8))
-* 添加页面布局控制 ([567c9bc](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/567c9bc))
-* 添加CommitLint ([9d68057](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/9d68057))
-* 修改文件名称 ([7e69592](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/7e69592))
-* 修改icon使用方式 ([b15c07f](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/b15c07f))
-* 修改main文件导入 ([6e69c25](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/6e69c25))
-* 修改main文件style模块 ([cf21093](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/cf21093))
-* 修改numberRange样式 增加时间区域查询组件 ([25b0ffa](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/25b0ffa))
-* 页面布局修改 分页组件增加参数 表格样式修改 ([b86056e](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/b86056e))
-* 优化表格和滚动条样式 ([07c2161](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/07c2161))
-* 优化登录页背景图，logo代码优化 ([7f4ee75](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/7f4ee75))
-* 增加接口请求配置，sortService及请求示例，pageService警告解除 ([af928da](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/af928da))
-* 增加DataGrid,DataGridItem组件及示例 ([d4fc723](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/d4fc723))
-* add development documents ([1c9ec41](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/1c9ec41))
-* add http-request ([6a39edb](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/6a39edb))
-* add tailwind.css element-plus ([766438d](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/766438d))
-* ContainerHeader组件及示例 ([3ede793](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/3ede793))
-* DataBox增加可配置项：size,border;调整文件名，文件路径；DataForm增加折叠功能默认值，修改DataForm的属性为labelWidth ([8b69db6](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/8b69db6))
-* DataFrom增加折叠功能、增加DataPagination组件及示例（目前有警告，暂未解决）、增加DateRange组件及示例、增加dayjs。 ([f7945dc](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/f7945dc))
-* DataUpload组件及示例 ([7b6ea52](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/7b6ea52))
-* Dev ([34e0723](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/34e0723))
-* fix:更新git规范 ([a4125be](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/a4125be))
-* fix:修改自动导入配置，只自动导入common目录下的vue组件 ([93bca53](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/93bca53))
-* fix:增加eslint ([2484aa2](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/2484aa2))
-* init ([08dc1b3](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/08dc1b3))
-* Initial commit ([7599d22](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/7599d22))
-* NumberRange组件及示例，接口请求增加loading处理。 ([dcc1497](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/dcc1497))
-* NumberRange组件支持小数点输入 ([113b99a](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/113b99a))
-* Update docs/GIT.README.md ([d67443d](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/d67443d))
-* Update GIT.README.md ([77377c7](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/77377c7))
-* Update GIT.README.md ([0d5a4d9](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/0d5a4d9))
-* Update GIT.README.md ([da9b0c9](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/da9b0c9))
-* update readme doc ([ca1c7c7](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/ca1c7c7))
-* fix: 修改仓库同步流程说明 ([13e406d](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/13e406d))
-* fix: git operate description ([bedf1b7](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/bedf1b7))
-* fix: git operate example ([6a79d33](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/6a79d33))
-* fix: git operate example ([b381b30](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/b381b30))
-* feat: 添加store持久化 ([57bccbe](http://10.8.7.136/huangrui/cgrzzl-platform-front-template/commits/57bccbe))
+<a name="0.2.3"></a>
+## 0.2.3 (2023-02-27)
 
+### Added
+
+- ✨ 自定义图标文件 [[1f2d643](https://github.com/hr837/vue-template-v3/commit/1f2d64338c9277e6b0019f0a1a924ba574c3902d)]
+
+### Changed
+
+- 🔧 修改commitlint emoji code [[cd77492](https://github.com/hr837/vue-template-v3/commit/cd77492a3a7de706cb30932553a41878b861c854)]
+- ⚡ (http-request) 修改http-request使用方式为插件模式 [[22c8dda](https://github.com/hr837/vue-template-v3/commit/22c8dda57fd87470f274e156def83214eb81ccb4)]
+- 🔧 修改pre-commit 终端判断 [[010d1c9](https://github.com/hr837/vue-template-v3/commit/010d1c9533f34e981defc51f6255d3915bfe46ff)]
+- ⚡ 完善databox属性增加示例 [[2e298fc](https://github.com/hr837/vue-template-v3/commit/2e298fcebdcb4994f5851261ffe58b8152720cc6)]
+- 🔧 (config) 修改lint-staged插件版本 [[40fb2ca](https://github.com/hr837/vue-template-v3/commit/40fb2ca2607934cb449ebaf4f729be9e4091ecea)]
+- 🎨 切换eslint规则集，添加扩展引导 [[3fda6e0](https://github.com/hr837/vue-template-v3/commit/3fda6e000d08a1f212a1fed42661304164be7254)]
+- 🔧 (config) 修改husky文件格式 [[8d93873](https://github.com/hr837/vue-template-v3/commit/8d938738948dbcedfc0d53108374ae22c8022a5e)]
+
+### Fixed
+
+- 🐛 修改应用初始化的时间点 [[9416e31](https://github.com/hr837/vue-template-v3/commit/9416e31484546c8a2a4722252ea6b26672da685a)]
+- ✏️ 修改git使用文档 [[f27e3e1](https://github.com/hr837/vue-template-v3/commit/f27e3e12f778b962ec337bf070b358bcdb26d48b)]
+- 🐛 修改store使用方式和tailwind对el-button的修复 [[e1f20fb](https://github.com/hr837/vue-template-v3/commit/e1f20fbd71c11ce4c9145de806c00b8436f319f3)]
+- 🐛 修改route-meta 定义，身份验证设置为可选配置 [[00fc0b9](https://github.com/hr837/vue-template-v3/commit/00fc0b98f57f0fa54b506ab5df83ccef190d0a2e)]
+- 🐛 分页组件page-count更改为pager-count [[cdfb56b](https://github.com/hr837/vue-template-v3/commit/cdfb56ba824dd7d8f1a8756da011c0e39ea39a2b)]
+
+### Miscellaneous
+
+-  Merge branch &#x27;dev&#x27; into &#x27;main&#x27; [[e2bce4c](https://github.com/hr837/vue-template-v3/commit/e2bce4c5d2a7d4344ff1061f8d382dc947d8505c)]
+-  Merge branch &#x27;commitlint&#x27; into &#x27;main&#x27; [[8efb780](https://github.com/hr837/vue-template-v3/commit/8efb78006c554613ebd89501718d1fb9ac3a4528)]
+-  Merge branch &#x27;doc&#x27; into &#x27;main&#x27; [[2feca1c](https://github.com/hr837/vue-template-v3/commit/2feca1c86c83634af4aaf4e3989e39fdcd6208d4)]
+-  Merge branch &#x27;style&#x27; into &#x27;main&#x27; [[16a9836](https://github.com/hr837/vue-template-v3/commit/16a9836c3f71955bf5831cfdd2d5c0b76c34f5ab)]
+-  Merge branch &#x27;dev&#x27; into &#x27;main&#x27; [[32537a7](https://github.com/hr837/vue-template-v3/commit/32537a7582e1c8dca2564d145e625d55e78ea885)]
+-  Merge branch &#x27;dev&#x27; into &#x27;main&#x27; [[f708254](https://github.com/hr837/vue-template-v3/commit/f708254e9d4cd0813a2a1108765b6138c652b8e5)]
+-  Merge branch &#x27;dev1&#x27; into &#x27;main&#x27; [[87d7894](https://github.com/hr837/vue-template-v3/commit/87d78943cc52b349202f160945bc9983dd846027)]
+-  Merge branch &#x27;config&#x27; into &#x27;main&#x27; [[b853d66](https://github.com/hr837/vue-template-v3/commit/b853d66afc092d7aa84f29e8e3ee415090ef9676)]
+-  Merge branch &#x27;dev&#x27; into &#x27;main&#x27; [[26b0c15](https://github.com/hr837/vue-template-v3/commit/26b0c1508f7c60b649fe68d371c933b291c6d9f8)]
+-  页面布局修改 分页组件增加参数 表格样式修改 [[b86056e](https://github.com/hr837/vue-template-v3/commit/b86056e47f61eb23a2cc0079ba1961188480e440)]
+-  Merge branch &#x27;config&#x27; into &#x27;main&#x27; [[f02f89a](https://github.com/hr837/vue-template-v3/commit/f02f89aef42ef2716ad9e28e0c13b1c718239ae7)]
+-  Merge branch &#x27;config&#x27; into &#x27;main&#x27; [[79415b3](https://github.com/hr837/vue-template-v3/commit/79415b31e3ab72fcda6781fea2637678bdb29f7b)]
+-  Merge branch &#x27;config&#x27; into &#x27;main&#x27; [[7f1ed5b](https://github.com/hr837/vue-template-v3/commit/7f1ed5b96577363660683cc3e963c905106c1ca8)]
+-  :fix: 页面布局修改 分页组件增加参数 表格fix列样式修改 [[8d2449d](https://github.com/hr837/vue-template-v3/commit/8d2449dea3c51547ad3dc44163bbba38978be2fd)]
+-  Merge branch &#x27;commitlint&#x27; into &#x27;main&#x27; [[1eb1035](https://github.com/hr837/vue-template-v3/commit/1eb1035d12ad0a8b995b3182455de2d78587e591)]
+-  添加CommitLint [[9d68057](https://github.com/hr837/vue-template-v3/commit/9d68057f28957da68abefa69b287c8dfa5b1745e)]
+-  Merge branch &#x27;dev&#x27; into &#x27;main&#x27; [[976f9d7](https://github.com/hr837/vue-template-v3/commit/976f9d7e1e9fc05342613680638041cbe8453897)]
+-  动态设置主题色渐变 滚动条增加类名 [[fab84c8](https://github.com/hr837/vue-template-v3/commit/fab84c83cb01b28468a0b9a4f7c976f71cf5e2cd)]
+-  Merge branch &#x27;config&#x27; into &#x27;main&#x27; [[2f148a8](https://github.com/hr837/vue-template-v3/commit/2f148a8514b35c7aa19274a83d345dd7ccad510b)]
+-  fix:修改自动导入配置，只自动导入common目录下的vue组件 [[93bca53](https://github.com/hr837/vue-template-v3/commit/93bca53b774f0878e3726eeb0e081a1e9cbdc08b)]
+-  Merge branch &#x27;dev&#x27; into &#x27;main&#x27; [[b218e3f](https://github.com/hr837/vue-template-v3/commit/b218e3f0bc7f50ca63ac70a7ec86aa825ba1b723)]
+-  fix:增加eslint [[2484aa2](https://github.com/hr837/vue-template-v3/commit/2484aa28acf702fc9c5c8d105eb0bd283f6e4d3e)]
+-  Merge branch &#x27;dev2&#x27; into &#x27;main&#x27; [[7425cd3](https://github.com/hr837/vue-template-v3/commit/7425cd3bf046da1d1eaf5209f36520e8b5f77d49)]
+-  优化表格和滚动条样式 [[07c2161](https://github.com/hr837/vue-template-v3/commit/07c2161070d3e28e8bf67429212402758469a017)]
+-  Merge branch &#x27;style&#x27; into &#x27;main&#x27; [[9999c23](https://github.com/hr837/vue-template-v3/commit/9999c2363b45d5d938386242c487dffefe674fc9)]
+-  修改main文件style模块 [[cf21093](https://github.com/hr837/vue-template-v3/commit/cf21093f7ec81eed2729dda6b68aa2bce593518c)]
+-  Merge branch &#x27;dev&#x27; into &#x27;main&#x27; [[087c727](https://github.com/hr837/vue-template-v3/commit/087c72748c8c33d97c7707db47fdf31a22c9fc70)]
+-  修改main文件导入 [[6e69c25](https://github.com/hr837/vue-template-v3/commit/6e69c256f2f345dc87cbea604f6517eb454d09b6)]
+-  Merge branch &#x27;dev-10&#x27; into &#x27;main&#x27; [[02ab4d3](https://github.com/hr837/vue-template-v3/commit/02ab4d3f64a79d668e8bcb33013ac7f7829f252b)]
+-  NumberRange组件支持小数点输入 [[113b99a](https://github.com/hr837/vue-template-v3/commit/113b99a6329260f4db87096e943ce79a54d9b2a9)]
+-  Merge branch &#x27;dev1&#x27; into &#x27;main&#x27; [[e81a495](https://github.com/hr837/vue-template-v3/commit/e81a495e88b184c57db27702c04ac59d330777e2)]
+-  修改numberRange样式 增加时间区域查询组件 [[25b0ffa](https://github.com/hr837/vue-template-v3/commit/25b0ffa32c13d448d49e6db6473698a3e925f1a2)]
+-  Merge branch &#x27;dev-9&#x27; into &#x27;main&#x27; [[0cfac72](https://github.com/hr837/vue-template-v3/commit/0cfac72517f366fbaef7899f2309198df25f0cef)]
+-  ContainerHeader组件及示例 [[3ede793](https://github.com/hr837/vue-template-v3/commit/3ede79394a2a79c40cc1b7853f08ecdcafb9c094)]
+-  Merge branch &#x27;dev-8&#x27; into &#x27;main&#x27; [[56a81af](https://github.com/hr837/vue-template-v3/commit/56a81afaba1206a88ce51afd992a5b1dc22c3264)]
+-  NumberRange组件及示例，接口请求增加loading处理。 [[dcc1497](https://github.com/hr837/vue-template-v3/commit/dcc149708dbe38cd5a5e223d2e4b192fab103385)]
+-  Merge branch &#x27;dev-7&#x27; into &#x27;main&#x27; [[a172c0e](https://github.com/hr837/vue-template-v3/commit/a172c0e63dbebf7295e959e58ed7a579a5fde0ae)]
+-  DataUpload组件及示例 [[7b6ea52](https://github.com/hr837/vue-template-v3/commit/7b6ea52a4c3d36cf5b43417d33b5e964eb26da20)]
+-  Merge branch &#x27;dev&#x27; into &#x27;main&#x27; [[af0eae4](https://github.com/hr837/vue-template-v3/commit/af0eae4a927f1b92daa4d9f17b0906d418af046a)]
+-  表单样式优化 loading等组件样式添加 [[ef86543](https://github.com/hr837/vue-template-v3/commit/ef86543cd8e57195000d6b0615cfe82f08b687f4)]
+-  Merge branch &#x27;dev-6&#x27; into &#x27;main&#x27; [[4a568f3](https://github.com/hr837/vue-template-v3/commit/4a568f31f97fd5c1dca2ff72ef6a1d72412753fb)]
+-  增加DataGrid,DataGridItem组件及示例 [[d4fc723](https://github.com/hr837/vue-template-v3/commit/d4fc72308fac6e61948ee607e81e196ddfb29e1d)]
+-  Merge branch &#x27;dev-5&#x27; into &#x27;main&#x27; [[1759509](https://github.com/hr837/vue-template-v3/commit/175950970e6df338cc17474705706e2dbce04c4a)]
+-  DataBox增加可配置项：size,border;调整文件名，文件路径；DataForm增加折叠功能默认值，修改DataForm的属性为labelWidth [[8b69db6](https://github.com/hr837/vue-template-v3/commit/8b69db63a463ac0edbdb9f27c01a5c9bc67afcd6)]
+-  Merge branch &#x27;dev-4&#x27; into &#x27;main&#x27; [[795d955](https://github.com/hr837/vue-template-v3/commit/795d955afa39df3e5ad0c0f39152f5b577c78031)]
+-  增加接口请求配置，sortService及请求示例，pageService警告解除 [[af928da](https://github.com/hr837/vue-template-v3/commit/af928da69d8ceb0260bf7c344dd13121da01dc5a)]
+-  Merge branch &#x27;dev&#x27; into &#x27;main&#x27; [[e10bf7d](https://github.com/hr837/vue-template-v3/commit/e10bf7d09ba4f9d78c1c6e8c94c543a0c5eb928f)]
+-  表格，主体布局，分页样式优化   分页逻辑修改 [[aa0f6b4](https://github.com/hr837/vue-template-v3/commit/aa0f6b4c20a555242ba7ed60d93a6d84f91f2216)]
+-  Merge branch &#x27;main&#x27; into &#x27;main&#x27; [[fc753fd](https://github.com/hr837/vue-template-v3/commit/fc753fd99e6f65a3b00a149d3c35062aa949c398)]
+-  DataFrom增加折叠功能、增加DataPagination组件及示例（目前有警告，暂未解决）、增加DateRange组件及示例、增加dayjs。 [[f7945dc](https://github.com/hr837/vue-template-v3/commit/f7945dcdb5e619bb284a070955731e50bf88f97d)]
+-  Merge branch &#x27;dev1&#x27; into &#x27;main&#x27; [[9a87932](https://github.com/hr837/vue-template-v3/commit/9a8793203e415e58758eada01434f3b4e56f0292)]
+-  优化登录页背景图，logo代码优化 [[7f4ee75](https://github.com/hr837/vue-template-v3/commit/7f4ee75a22d4b9aaa1725d7883647efb9c770dd1)]
+-  Merge branch &#x27;main&#x27; into &#x27;main&#x27; [[21b1322](https://github.com/hr837/vue-template-v3/commit/21b132246433f5dd99b9b09af8ffa25ff826cac0)]
+-  修改icon使用方式 [[b15c07f](https://github.com/hr837/vue-template-v3/commit/b15c07f3854c9eb4b8717806af2a2efa1934d713)]
+-  Merge branch &#x27;main&#x27; into &#x27;main&#x27; [[efa5bd2](https://github.com/hr837/vue-template-v3/commit/efa5bd21109c97bafca7e1ed6231353dc010c7e1)]
+-  创建DataBox,DataFrom组件及组件示例 [[a7d1efd](https://github.com/hr837/vue-template-v3/commit/a7d1efd0e1b7930b4a82d947a8744ca2d6e8e045)]
+-  Merge branch &#x27;dev&#x27; into &#x27;main&#x27; [[fc90212](https://github.com/hr837/vue-template-v3/commit/fc90212e25b9644e4da24d81569a6350f6276942)]
+-  Dev [[34e0723](https://github.com/hr837/vue-template-v3/commit/34e07239fea9b899838c79fb2dccce40f46b3cd7)]
+-  修改文件名称 [[7e69592](https://github.com/hr837/vue-template-v3/commit/7e69592dfe0c3cf30e423889d8b1f8d21d768cf5)]
+-  Update GIT.README.md [[77377c7](https://github.com/hr837/vue-template-v3/commit/77377c7caa7dd538e8c2cb7c392ea297ad9ef925)]
+-  Merge branch &#x27;document&#x27; into &#x27;main&#x27; [[0cfbe4e](https://github.com/hr837/vue-template-v3/commit/0cfbe4e038c00a4409881cd89d23d55760814f04)]
+-  fix:更新git规范 [[a4125be](https://github.com/hr837/vue-template-v3/commit/a4125beb48edce12ea28500976e5d999537152c5)]
+-  Merge branch &#x27;dev-1&#x27; into &#x27;main&#x27; [[3f9012c](https://github.com/hr837/vue-template-v3/commit/3f9012c067fe7cb8df4111056b6ff9fabee64945)]
+-  fix: 修改仓库同步流程说明 [[13e406d](https://github.com/hr837/vue-template-v3/commit/13e406db3be0e8c1152237efbd021b0294cd05bc)]
+-  fix: git operate description [[bedf1b7](https://github.com/hr837/vue-template-v3/commit/bedf1b79cea2740cdc750f37e33a15d756fa6e01)]
+-  fix: git operate example [[6a79d33](https://github.com/hr837/vue-template-v3/commit/6a79d335f14d47a27d2d403d2cb514a849489e09)]
+-  Merge remote-tracking branch &#x27;upstream/main&#x27; into webpack_pinia [[a8e6e12](https://github.com/hr837/vue-template-v3/commit/a8e6e12bab5d7443815bbe74d93840e5c6f9c6de)]
+-  fix: git operate example [[b381b30](https://github.com/hr837/vue-template-v3/commit/b381b3002d70f4105de8195f0384197922ebc1d5)]
+-  路由实例 [[63418b8](https://github.com/hr837/vue-template-v3/commit/63418b82c927f87a3308f8f0be6a7dc64f5b6d67)]
+-  Merge branch &#x27;dev&#x27; into &#x27;main&#x27; [[a69ec99](https://github.com/hr837/vue-template-v3/commit/a69ec9966a60229f7e5ed82bac4ab10ac7b8b1de)]
+-  Update GIT.README.md [[0d5a4d9](https://github.com/hr837/vue-template-v3/commit/0d5a4d9dfad0af02fb8995020c08ae8dec27d67e)]
+-  Merge branch &#x27;main&#x27; into &#x27;main&#x27; [[e94471e](https://github.com/hr837/vue-template-v3/commit/e94471e06db2a904f65b56be6fb7944ef983ddaa)]
+-  merge [[8c0c0f6](https://github.com/hr837/vue-template-v3/commit/8c0c0f6e3e94c5a36d94a7bf77ec9bd2a0c8b1ee)]
+-  add development documents [[1c9ec41](https://github.com/hr837/vue-template-v3/commit/1c9ec41c48e8d251d707eebe495b63b86cc1a3a4)]
+-  Update GIT.README.md [[da9b0c9](https://github.com/hr837/vue-template-v3/commit/da9b0c970a5c4abb7c453785091786edce7f11d2)]
+-  Merge branch &#x27;documents&#x27; into &#x27;main&#x27; [[62c9db9](https://github.com/hr837/vue-template-v3/commit/62c9db9a7952650232ddcb688269ee4a7adb7e4d)]
+-  Merge branch &#x27;huangrui-main-patch-48954&#x27; into &#x27;main&#x27; [[b0540a2](https://github.com/hr837/vue-template-v3/commit/b0540a26614eb72ab780f81ec2b08cd053323fc5)]
+-  Update docs/GIT.README.md [[d67443d](https://github.com/hr837/vue-template-v3/commit/d67443d05549fb8c91e7a8197721daa2b99fd354)]
+-  Merge branch &#x27;documents&#x27; into &#x27;main&#x27; [[1440270](https://github.com/hr837/vue-template-v3/commit/1440270c1cc4b9fe10798f948e34cf398dc33b89)]
+-  Merge branch &#x27;documents&#x27; into &#x27;main&#x27; [[296b49f](https://github.com/hr837/vue-template-v3/commit/296b49fa8e718232fd7a7d6f86b190e220292a3d)]
+-  Merge branch &#x27;v3&#x27; into &#x27;main&#x27; [[7434eda](https://github.com/hr837/vue-template-v3/commit/7434eda2bbd3a0ec5ceffcb5e460cdd6909987fd)]
+-  Merge branch &#x27;main&#x27; into &#x27;v3&#x27; [[e5491f9](https://github.com/hr837/vue-template-v3/commit/e5491f97dbe586df22cd5ff8b2bee44fa0897181)]
+-  feat: 添加store持久化 [[57bccbe](https://github.com/hr837/vue-template-v3/commit/57bccbe529dffe6bac25c004d8a17f9cb1190fc7)]
+-  添加页面布局控制 [[567c9bc](https://github.com/hr837/vue-template-v3/commit/567c9bcc697eca9e136611e358fb56402ffb6455)]
+-  add http-request [[6a39edb](https://github.com/hr837/vue-template-v3/commit/6a39edb1c1656abc019d59f433d38d34a791544d)]
+-  add tailwind.css element-plus [[766438d](https://github.com/hr837/vue-template-v3/commit/766438dd9d65821db1757fb4af4d5f4a6a889e1c)]
+-  init [[08dc1b3](https://github.com/hr837/vue-template-v3/commit/08dc1b3a1254ced63168d33daf1c72ee39a54951)]
+-  update readme doc [[ca1c7c7](https://github.com/hr837/vue-template-v3/commit/ca1c7c735dfcb5297abed1416b4ff9c67ec365e9)]
+-  Initial commit [[7599d22](https://github.com/hr837/vue-template-v3/commit/7599d22aba3262471a93eb213d192c8dfe48e6d4)]
 
 

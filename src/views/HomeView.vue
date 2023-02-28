@@ -15,6 +15,14 @@ export default defineComponent({
     <ul>
       <li>IconPark 图标 <icon-park-outline-config class="text-red-400" /></li>
       <li>本地 SVG 图标<icon-local-bankcard class="text-green-400" /></li>
+      <li>
+        引入图标文件
+        <IconParkOutlineSetting />
+      </li>
+      <li>
+        引入本地图标
+        <IconLocalBankCard />
+      </li>
     </ul>
 
     <h3>link</h3>

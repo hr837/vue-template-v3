@@ -1,8 +1,16 @@
-# cgrzzl-platform-front-template 创格平台前端项目模板
 
-使用Vue3+Typescript的模板项目
+# vue3+typescript+webpack模板项目
 
-<br>
+[![node](https://img.shields.io/node/v/webpack.svg)](https://nodejs.org)
+[![typescript](https://img.shields.io/badge/typescript-4.5-blue)](https://www.typescriptlang.org/)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+<a href="https://github.com/ngryman/cz-emoji">
+    <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg" alt="Gitmoji">
+</a>
+[![gitmoji-changelog](https://img.shields.io/badge/Changelog-gitmoji-brightgreen.svg)](https://github.com/frinyvonnick/gitmoji-changelog)
+
+
+
 
 ## 项目使用说明
 
