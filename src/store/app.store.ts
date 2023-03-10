@@ -7,8 +7,6 @@ interface State {
   title: string
   /** 是否微应用 */
   microApp: boolean
-  /** 当前布局 */
-  layout: PageLayout
   /** 是否显示左侧菜单 */
   showAside: boolean
   // 是否显示 二级菜单树
@@ -19,7 +17,6 @@ const initialState: State = {
   ready: false,
   title: '',
   microApp: false,
-  layout: 'WorkSpace',
   showAside: false,
   showWorkMenuTree: false,
 }
@@ -42,12 +39,6 @@ export const useAppStore = defineStore('app', {
     /** 设置应用为微应用状态 */
     setMicroState() {
       this.microApp = !this.microApp
-    },
-    /** 更新页面布局 */
-    updateLayout(layout: PageLayout = 'WorkSpace') {
-      if (this.layout === layout)
-        return
-      this.layout = layout
     },
     /** 设置左侧菜单可见性 */
     setAsideVisible(visible: boolean) {
