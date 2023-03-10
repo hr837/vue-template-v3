@@ -51,7 +51,7 @@ withDefaults(defineProps<PropType>(), {
   @apply h-full overflow-x-hidden overflow-y-auto;
 
   &:not(.el-menu--collapse) {
-    width: 240px;
+    width: 100%;
   }
 
   width: 0;
