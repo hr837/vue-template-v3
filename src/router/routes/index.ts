@@ -16,6 +16,14 @@ const routesConfig: Array<RouteRecordRaw> = [
         name: 'login',
         component: () => import('@/views/LoginView.vue'),
       },
+      {
+        path: '/forbidden',
+        name: 'Forbidden',
+        meta: {
+          ignoreAuth: true,
+        },
+        component: () => import('@/views/ForbiddenView.vue'),
+      },
     ],
   },
   {
@@ -59,6 +67,9 @@ const routesConfig: Array<RouteRecordRaw> = [
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('@/views/NotFoundView.vue'),
+    meta: {
+      ignoreAuth: true,
+    },
   },
 ]
 
