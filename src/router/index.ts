@@ -5,6 +5,7 @@ import { useAppStore } from '@/store/app.store'
 import BlankLayout from '@/layout/BlankLayout.vue'
 import { isAuthenticated } from '@/composables'
 import { useUserStore } from '@/store/user.store'
+import { appConfig } from '@/config/app.config'
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -12,6 +13,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
+  // 开发模式下可以忽略路由鉴权
+  if (appConfig.ignoreAuth === true)
+    return
   // 权限检测 // 路由配置需要权限
   const ignoreAuth = to.meta.ignoreAuth ?? false
   if (!ignoreAuth && to.name !== 'login') {

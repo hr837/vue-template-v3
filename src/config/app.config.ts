@@ -4,6 +4,7 @@ export const appConfig: AppConfig = {
     gateway: process.env.VUE_APP_HTTP_GETWAY,
     timeout: 3000,
   },
+  ignoreAuth: process.env.VUE_APP_ROUTE_IGNOREAUTH === 'true',
 }
 
 export interface AppConfig {
@@ -19,4 +20,6 @@ export interface AppConfig {
      */
     timeout?: number
   }
+  /** 路由是否忽略鉴权 */
+  ignoreAuth?: boolean
 }
