@@ -1,63 +1,75 @@
 import type { RouteRecordRaw } from 'vue-router'
 import HomeView from '../../views/HomeView.vue'
 import { SystemRoutes } from './system.routes'
+import BlankLayout from '@/layout/BlankLayout.vue'
+import WorkSpaceLayout from '@/layout/WorkSpaceLayout.vue'
+import BasicLayout from '@/layout/BasicLayout.vue'
 
 const routesConfig: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView,
-    meta: {
-      ignoreAuth: true,
-      layout: 'Basic',
-    },
+    redirect: '/home',
+    component: BlankLayout,
+    children: [
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import('@/views/LoginView.vue'),
+      },
+      {
+        path: '/forbidden',
+        name: 'Forbidden',
+        meta: {
+          ignoreAuth: true,
+        },
+        component: () => import('@/views/ForbiddenView.vue'),
+      },
+    ],
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/LoginView.vue'),
-    meta: {
-      ignoreAuth: true,
-      layout: 'Blank',
-    },
+    path: '/basic',
+    component: BasicLayout,
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: HomeView,
+      },
+    ],
   },
   {
-    path: '/user',
-    name: 'user',
-    meta: {
-      ignoreAuth: true,
-      layout: 'WorkSpace',
-    },
-    component: () => import('@/views/UserView.vue'),
+    path: '/workspace',
+    component: WorkSpaceLayout,
+    children: [
+      {
+        path: '/user',
+        name: 'user',
+        component: () => import('@/views/UserView.vue'),
+      },
+      {
+        path: '/about',
+        name: 'about',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+          import(/* webpackChunkName: "about" */ '../../views/AboutView.vue'),
+      },
+    ],
   },
   {
-    path: '/about',
-    name: 'about',
-    meta: {
-      ignoreAuth: true,
-      layout: 'WorkSpace',
-    },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../../views/AboutView.vue'),
+    path: '/system',
+    component: WorkSpaceLayout,
+    redirect: { name: 'users' }, // 此处可以不写跳转
+    children: SystemRoutes,
   },
-  // {
-  //   path: "/system",
-  //   name: "system",
-  //   component: () => import("@/layout/WorkSpaceLayout.vue"),
-  //   children: SystemRoutes,
-  // },
-  ...SystemRoutes,
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    meta: {
-      ignoreAuth: false,
-      layout: 'Blank',
-    },
     component: () => import('@/views/NotFoundView.vue'),
+    meta: {
+      ignoreAuth: true,
+    },
   },
 ]
 

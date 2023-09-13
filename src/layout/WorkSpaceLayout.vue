@@ -1,13 +1,23 @@
-<script lang="ts" setup>
-import { computed } from 'vue'
-
+<script lang="ts">
+import { defineComponent } from 'vue'
 import LayoutHeaderSysLogo from './components/LayoutHeaderSysLogo.vue'
 import LayoutWorkAction from './components/LayoutWorkAction.vue'
 import LayoutWorkTitle from './components/LayoutWorkTitle.vue'
 import LayoutWorkMenu from './components/LayoutWorkMenu.vue'
 import { useAppStore } from '@/store/app.store'
-const appStore = useAppStore()
-const collapse2 = computed(() => false)
+
+export default defineComponent({
+  name: 'WorkSpaceLayout',
+  components: {
+    LayoutHeaderSysLogo,
+    LayoutWorkAction,
+    LayoutWorkTitle,
+    LayoutWorkMenu,
+  },
+  computed: {
+    collapse2: () => useAppStore().showWorkMenuTree,
+  },
+})
 </script>
 
 <template>
