@@ -17,7 +17,7 @@ const departmentModule: Module<DepartmentState, RootState> = {
 				departCode: "oooooo",
 				id: "1",
 				level: 0,
-				name: "东风财务",
+				name: "风险处置部",
 				status: "ON",
 			},
 		],
